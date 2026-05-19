@@ -6,11 +6,8 @@ Modal.setAppElement('#root')
 export default function EditSessionModal({
 
 session,
-
 isOpen,
-
 onClose,
-
 onSave
 
 }){
@@ -18,7 +15,31 @@ onSave
 const [luogo,setLuogo]=
 useState("")
 
-const [note,setNote]=
+const [tipo,setTipo]=
+useState("")
+
+const [temperatura,
+setTemperatura]=
+useState("")
+
+const [pressione,
+setPressione]=
+useState("")
+
+const [vento,
+setVento]=
+useState("")
+
+const [condizioni,
+setCondizioni]=
+useState("")
+
+const [fase,
+setFase]=
+useState("")
+
+const [note,
+setNote]=
 useState("")
 
 
@@ -28,6 +49,30 @@ if(session){
 
 setLuogo(
 session.luogo||""
+)
+
+setTipo(
+session.tipo_pescata||""
+)
+
+setTemperatura(
+session.temperatura||""
+)
+
+setPressione(
+session.pressione||""
+)
+
+setVento(
+session.vento||""
+)
+
+setCondizioni(
+session.condizioni||""
+)
+
+setFase(
+session.fase_lunare||""
 )
 
 setNote(
@@ -89,6 +134,7 @@ background:
 
 <br/>
 
+
 <label>
 
 Luogo
@@ -105,15 +151,133 @@ setLuogo(
 e.target.value
 )}
 
-style={{
+style={styleInput}
 
-width:'100%',
+/>
 
-padding:10,
 
-marginBottom:15
+<label>
 
-}}
+Tipo pescata
+
+</label>
+
+<input
+
+value={tipo}
+
+onChange={(e)=>
+
+setTipo(
+e.target.value
+)}
+
+style={styleInput}
+
+/>
+
+
+<label>
+
+Temperatura
+
+</label>
+
+<input
+
+value={temperatura}
+
+onChange={(e)=>
+
+setTemperatura(
+e.target.value
+)}
+
+style={styleInput}
+
+/>
+
+
+<label>
+
+Pressione
+
+</label>
+
+<input
+
+value={pressione}
+
+onChange={(e)=>
+
+setPressione(
+e.target.value
+)}
+
+style={styleInput}
+
+/>
+
+
+<label>
+
+Vento
+
+</label>
+
+<input
+
+value={vento}
+
+onChange={(e)=>
+
+setVento(
+e.target.value
+)}
+
+style={styleInput}
+
+/>
+
+
+<label>
+
+Condizioni
+
+</label>
+
+<input
+
+value={condizioni}
+
+onChange={(e)=>
+
+setCondizioni(
+e.target.value
+)}
+
+style={styleInput}
+
+/>
+
+
+<label>
+
+Fase lunare
+
+</label>
+
+<input
+
+value={fase}
+
+onChange={(e)=>
+
+setFase(
+e.target.value
+)}
+
+style={styleInput}
 
 />
 
@@ -126,6 +290,8 @@ Note
 
 <textarea
 
+rows={5}
+
 value={note}
 
 onChange={(e)=>
@@ -134,25 +300,26 @@ setNote(
 e.target.value
 )}
 
-rows={5}
-
 style={{
 
-width:'100%',
+...styleInput,
 
-padding:10
+height:120
 
 }}
 
 />
 
-<br/><br/>
+
+<br/>
 
 <div style={{
 
 display:'flex',
 
-gap:10
+gap:10,
+
+marginTop:20
 
 }}>
 
@@ -165,6 +332,18 @@ onSave({
 ...session,
 
 luogo,
+
+tipo_pescata:tipo,
+
+temperatura,
+
+pressione,
+
+vento,
+
+condizioni,
+
+fase_lunare:fase,
 
 note
 
@@ -194,5 +373,20 @@ Annulla
 </Modal>
 
 )
+
+}
+
+
+const styleInput={
+
+width:'100%',
+
+padding:'10px',
+
+marginBottom:'15px',
+
+borderRadius:'8px',
+
+border:'1px solid #ccc'
 
 }

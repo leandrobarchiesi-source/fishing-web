@@ -51,43 +51,39 @@ useState(null)
 
 
 
-async function eliminaSessione(
-
-session
-
-){
+async function eliminaSessione(session){
 
 if(
-
 !window.confirm(
-
 "Eliminare sessione?"
-
 )
-
 ){
-
 return
-
 }
 
 await supabase
-
 .from(
 'fishing_sessions'
 )
-
 .delete()
-
 .eq(
 'id',
 session.id
 )
 
-window.location.reload()
+setSessions(
+
+prev=>
+
+prev.filter(
+
+s=>s.id!==session.id
+
+)
+
+)
 
 }
-
 
 
 async function salvaModifica(
@@ -107,6 +103,24 @@ await supabase
 luogo:
 sessione.luogo,
 
+tipo_pescata:
+sessione.tipo_pescata,
+
+temperatura:
+sessione.temperatura,
+
+pressione:
+sessione.pressione,
+
+vento:
+sessione.vento,
+
+condizioni:
+sessione.condizioni,
+
+fase_lunare:
+sessione.fase_lunare,
+
 note:
 sessione.note
 
@@ -117,14 +131,34 @@ sessione.note
 sessione.id
 )
 
+
+setSessions(
+
+prev=>
+
+prev.map(
+
+s=>
+
+s.id===sessione.id
+
+?
+
+sessione
+
+:
+
+s
+
+)
+
+)
+
 setEditingSession(
 null
 )
 
-window.location.reload()
-
 }
-
 
 
 return(
