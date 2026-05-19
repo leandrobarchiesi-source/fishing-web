@@ -12,35 +12,16 @@ onSave
 
 }){
 
-const [luogo,setLuogo]=
-useState("")
-
-const [tipo,setTipo]=
-useState("")
-
-const [temperatura,
-setTemperatura]=
-useState("")
-
-const [pressione,
-setPressione]=
-useState("")
-
-const [vento,
-setVento]=
-useState("")
-
-const [condizioni,
-setCondizioni]=
-useState("")
-
-const [fase,
-setFase]=
-useState("")
-
-const [note,
-setNote]=
-useState("")
+const [luogo,setLuogo]=useState("")
+const [tipo,setTipo]=useState("")
+const [data,setData]=useState("")
+const [oraInizio,setOraInizio]=useState("")
+const [oraFine,setOraFine]=useState("")
+const [temperatura,setTemperatura]=useState("")
+const [pressione,setPressione]=useState("")
+const [vento,setVento]=useState("")
+const [fase,setFase]=useState("")
+const [note,setNote]=useState("")
 
 
 useEffect(()=>{
@@ -55,6 +36,42 @@ setTipo(
 session.tipo_pescata||""
 )
 
+setData(
+session.data?.substring(0,10)||""
+)
+
+setOraInizio(
+
+session.ora_inizio
+
+? new Date(
+session.ora_inizio
+)
+
+.toISOString()
+
+.substring(11,16)
+
+: ""
+
+)
+
+setOraFine(
+
+session.ora_fine
+
+? new Date(
+session.ora_fine
+)
+
+.toISOString()
+
+.substring(11,16)
+
+: ""
+
+)
+
 setTemperatura(
 session.temperatura||""
 )
@@ -65,10 +82,6 @@ session.pressione||""
 
 setVento(
 session.vento||""
-)
-
-setCondizioni(
-session.condizioni||""
 )
 
 setFase(
@@ -107,8 +120,6 @@ maxWidth:'700px',
 
 margin:'auto',
 
-height:'fit-content',
-
 borderRadius:'20px',
 
 padding:'30px'
@@ -128,165 +139,126 @@ background:
 
 <h2>
 
-✏ Modifica Sessione
+🎣 Modifica Sessione
 
 </h2>
 
 <br/>
 
-
-<label>
-
-Luogo
-
-</label>
-
+<label>Luogo</label>
 <input
-
 value={luogo}
-
-onChange={(e)=>
-
-setLuogo(
-e.target.value
-)}
-
+onChange={(e)=>setLuogo(e.target.value)}
 style={styleInput}
-
 />
 
-
-<label>
-
-Tipo pescata
-
-</label>
-
+<label>Tipo</label>
 <input
-
 value={tipo}
-
-onChange={(e)=>
-
-setTipo(
-e.target.value
-)}
-
+onChange={(e)=>setTipo(e.target.value)}
 style={styleInput}
-
 />
 
+<label>Data</label>
+<input
+type='date'
+value={data}
+onChange={(e)=>setData(e.target.value)}
+style={styleInput}
+/>
+
+<div style={{
+display:'flex',
+gap:10
+}}>
+
+<div style={{flex:1}}>
 
 <label>
 
-Temperatura
+Ora inizio
 
 </label>
 
 <input
-
-value={temperatura}
-
+type='time'
+value={oraInizio}
 onChange={(e)=>
+setOraInizio(
+e.target.value
+)
+}
+style={styleInput}
+/>
 
+</div>
+
+
+<div style={{flex:1}}>
+
+<label>
+
+Ora fine
+
+</label>
+
+<input
+type='time'
+value={oraFine}
+onChange={(e)=>
+setOraFine(
+e.target.value
+)
+}
+style={styleInput}
+/>
+
+</div>
+
+</div>
+
+
+<label>Temperatura</label>
+<input
+value={temperatura}
+onChange={(e)=>
 setTemperatura(
 e.target.value
 )}
-
 style={styleInput}
-
 />
 
-
-<label>
-
-Pressione
-
-</label>
-
+<label>Pressione</label>
 <input
-
 value={pressione}
-
 onChange={(e)=>
-
 setPressione(
 e.target.value
 )}
-
 style={styleInput}
-
 />
 
-
-<label>
-
-Vento
-
-</label>
-
+<label>Vento</label>
 <input
-
 value={vento}
-
 onChange={(e)=>
-
 setVento(
 e.target.value
 )}
-
 style={styleInput}
-
 />
 
-
-<label>
-
-Condizioni
-
-</label>
-
+<label>Fase lunare</label>
 <input
-
-value={condizioni}
-
-onChange={(e)=>
-
-setCondizioni(
-e.target.value
-)}
-
-style={styleInput}
-
-/>
-
-
-<label>
-
-Fase lunare
-
-</label>
-
-<input
-
 value={fase}
-
 onChange={(e)=>
-
 setFase(
 e.target.value
 )}
-
 style={styleInput}
-
 />
 
-
-<label>
-
-Note
-
-</label>
+<label>Note</label>
 
 <textarea
 
@@ -317,15 +289,13 @@ height:120
 
 display:'flex',
 
-gap:10,
-
-marginTop:20
+gap:10
 
 }}>
 
 <button
 
-onClick={()=>
+onClick={()=>{
 
 onSave({
 
@@ -335,13 +305,19 @@ luogo,
 
 tipo_pescata:tipo,
 
+data,
+
+ora_inizio:
+`${data}T${oraInizio}:00`,
+
+ora_fine:
+`${data}T${oraFine}:00`,
+
 temperatura,
 
 pressione,
 
 vento,
-
-condizioni,
 
 fase_lunare:fase,
 
@@ -349,7 +325,7 @@ note
 
 })
 
-}
+}}
 
 >
 

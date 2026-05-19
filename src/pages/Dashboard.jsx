@@ -86,11 +86,9 @@ s=>s.id!==session.id
 }
 
 
-async function salvaModifica(
+async function salvaModifica(sessione){
 
-sessione
-
-){
+const {error}=
 
 await supabase
 
@@ -106,6 +104,15 @@ sessione.luogo,
 tipo_pescata:
 sessione.tipo_pescata,
 
+data:
+sessione.data,
+
+ora_inizio:
+sessione.ora_inizio,
+
+ora_fine:
+sessione.ora_fine,
+
 temperatura:
 sessione.temperatura,
 
@@ -114,9 +121,6 @@ sessione.pressione,
 
 vento:
 sessione.vento,
-
-condizioni:
-sessione.condizioni,
 
 fase_lunare:
 sessione.fase_lunare,
@@ -130,6 +134,15 @@ sessione.note
 'id',
 sessione.id
 )
+
+
+if(error){
+
+console.log(error)
+
+return
+
+}
 
 
 setSessions(
@@ -157,9 +170,7 @@ s
 setEditingSession(
 null
 )
-
 }
-
 
 return(
 
