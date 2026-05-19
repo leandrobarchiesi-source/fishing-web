@@ -10,6 +10,12 @@ from './pages/Dashboard'
 
 function App(){
 
+const [email,setEmail]=
+useState("")
+
+const [password,setPassword]=
+useState("")
+
 const [user,setUser]=
 useState(null)
 
@@ -138,6 +144,32 @@ spotsResult
 
 }
 
+async function login(){
+
+const {error}=
+
+await supabase
+.auth
+.signInWithPassword({
+
+email,
+password
+
+})
+
+if(error){
+
+alert(
+error.message
+)
+
+return
+
+}
+
+window.location.reload()
+
+}
 
 async function logout(){
 
@@ -153,15 +185,119 @@ window.location.reload()
 if(!user){
 
 return(
-<div>
 
-Login necessario
+<div style={{
+
+display:'flex',
+
+justifyContent:'center',
+
+alignItems:'center',
+
+height:'100vh',
+
+background:'#EAF6FF'
+
+}}>
+
+<div style={{
+
+background:'white',
+
+padding:30,
+
+borderRadius:20,
+
+width:350,
+
+boxShadow:
+'0 2px 10px rgba(0,0,0,.1)'
+
+}}>
+
+<h1>
+
+Fishing Web 🎣
+
+</h1>
+
+<br/>
+
+<input
+
+placeholder='Email'
+
+value={email}
+
+onChange={(e)=>
+
+setEmail(
+e.target.value
+)}
+
+style={{
+
+width:'100%',
+
+padding:12,
+
+marginBottom:10
+
+}}
+
+/>
+
+<input
+
+type='password'
+
+placeholder='Password'
+
+value={password}
+
+onChange={(e)=>
+
+setPassword(
+e.target.value
+)}
+
+style={{
+
+width:'100%',
+
+padding:12,
+
+marginBottom:20
+
+}}
+
+/>
+
+<button
+
+onClick={login}
+
+style={{
+
+width:'100%',
+
+padding:12
+
+}}
+
+>
+
+Login
+
+</button>
 
 </div>
+
+</div>
+
 )
 
 }
-
 
 return(
 
