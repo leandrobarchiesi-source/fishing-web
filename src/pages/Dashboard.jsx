@@ -1,10 +1,16 @@
-import { useState } from 'react'
+import {useState} from 'react'
 
 import SessionCard
 from '../components/SessionCard'
 
 import SessionModal
 from '../components/SessionModal'
+
+import EditSessionModal
+from '../components/EditSessionModal'
+
+import {supabase}
+from '../supabase'
 
 
 export default function Dashboard({
@@ -17,6 +23,7 @@ sessions
 
 }){
 
+
 const [
 
 selectedSession,
@@ -28,6 +35,96 @@ setSelectedSession
 =
 
 useState(null)
+
+
+const [
+
+editingSession,
+
+setEditingSession
+
+]
+
+=
+
+useState(null)
+
+
+
+async function eliminaSessione(
+
+session
+
+){
+
+if(
+
+!window.confirm(
+
+"Eliminare sessione?"
+
+)
+
+){
+
+return
+
+}
+
+await supabase
+
+.from(
+'fishing_sessions'
+)
+
+.delete()
+
+.eq(
+'id',
+session.id
+)
+
+window.location.reload()
+
+}
+
+
+
+async function salvaModifica(
+
+sessione
+
+){
+
+await supabase
+
+.from(
+'fishing_sessions'
+)
+
+.update({
+
+luogo:
+sessione.luogo,
+
+note:
+sessione.note
+
+})
+
+.eq(
+'id',
+sessione.id
+)
+
+setEditingSession(
+null
+)
+
+window.location.reload()
+
+}
+
 
 
 return(
@@ -53,19 +150,13 @@ marginBottom:30
 }}>
 
 <Box
-
 title="🎣 Sessioni"
-
 value={sessionCount}
-
 />
 
 <Box
-
 title="📍 Spot"
-
 value={spotCount}
-
 />
 
 </div>
@@ -81,18 +172,6 @@ Ultime Sessioni
 
 {
 
-sessions.length===0
-
-?
-
-<p>
-
-Nessuna sessione
-
-</p>
-
-:
-
 sessions.map(
 
 (s)=>
@@ -103,31 +182,23 @@ key={s.id}
 
 session={s}
 
-onView={(session)=>
+onView={(x)=>
 
-setSelectedSession(
-session
-)
+setSelectedSession(x)
 
 }
 
-onEdit={(session)=>{
+onEdit={(x)=>
 
-console.log(
-"modifica",
-session
-)
+setEditingSession(x)
 
-}}
+}
 
-onDelete={(session)=>{
+onDelete={(x)=>
 
-console.log(
-"elimina",
-session
-)
+eliminaSessione(x)
 
-}}
+}
 
 />
 
@@ -141,19 +212,33 @@ session
 session={selectedSession}
 
 isOpen={
-
-selectedSession
-!=null
-
+selectedSession!=null
 }
 
 onClose={()=>
 
-setSelectedSession(
-null
-)
+setSelectedSession(null)
 
 }
+
+/>
+
+
+<EditSessionModal
+
+session={editingSession}
+
+isOpen={
+editingSession!=null
+}
+
+onClose={()=>
+
+setEditingSession(null)
+
+}
+
+onSave={salvaModifica}
 
 />
 
@@ -185,22 +270,13 @@ background:'white',
 borderRadius:20,
 
 boxShadow:
-
 '0 2px 10px rgba(0,0,0,.1)'
 
 }}>
 
-<h3>
+<h3>{title}</h3>
 
-{title}
-
-</h3>
-
-<h1>
-
-{value}
-
-</h1>
+<h1>{value}</h1>
 
 </div>
 
