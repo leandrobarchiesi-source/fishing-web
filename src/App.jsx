@@ -1,171 +1,193 @@
-import { useEffect, useState } from 'react'
+import { useEffect,useState } from 'react'
 import { supabase } from './supabase'
 
-function App() {
+function App(){
 
-  const [user,setUser]=
-      useState(null)
+const [user,setUser]=
+useState(null)
 
-  const [email,setEmail]=
-      useState("")
+const [email,setEmail]=
+useState("")
 
-  const [password,setPassword]=
-      useState("")
+const [password,setPassword]=
+useState("")
 
-  const [sessionCount,
-         setSessionCount]=
-      useState(0)
+const [sessionCount,
+setSessionCount]=
+useState(0)
 
-  const [spotCount,
-         setSpotCount]=
-      useState(0)
+const [spotCount,
+setSpotCount]=
+useState(0)
 
-  const [loading,
-         setLoading]=
-      useState(true)
+const [sessions,
+setSessions]=
+useState([])
 
-  useEffect(()=>{
-
-    checkUser()
-
-  },[])
+const [loading,
+setLoading]=
+useState(true)
 
 
-  async function checkUser(){
+useEffect(()=>{
 
-    const {
+checkUser()
 
-      data
-
-    }=
-
-    await supabase
-    .auth
-    .getUser()
-
-    if(data.user){
-
-      setUser(
-        data.user
-      )
-
-      loadData()
-    }
-
-    setLoading(false)
-  }
+},[])
 
 
-  async function loadData(){
+async function checkUser(){
 
-    const userId=
-    (
-      await supabase
-      .auth
-      .getUser()
-    ).data.user.id
+const {data}=
 
-    const sessions=
+await supabase
+.auth
+.getUser()
 
-    await supabase
-    .from(
-      'fishing_sessions'
-    )
-    .select(
-      'id'
-    )
-    .eq(
-      'user_id',
-      userId
-    )
+if(data.user){
 
-    const spots=
+setUser(
+data.user
+)
 
-    await supabase
-    .from(
-      'spots'
-    )
-    .select(
-      'id'
-    )
-    .eq(
-      'user_id',
-      userId
-    )
+loadData()
+}
 
-    setSessionCount(
-      sessions.data.length
-    )
+setLoading(false)
 
-    setSpotCount(
-      spots.data.length
-    )
-  }
+}
 
 
-  async function login(){
+async function loadData(){
 
-    const {error}=
+const userId=
 
-    await supabase
-    .auth
-    .signInWithPassword({
-
-      email,
-      password
-
-    })
-
-    if(error){
-
-      alert(
-        error.message
-      )
-
-      return
-    }
-
-    window.location.reload()
-  }
+(
+await supabase
+.auth
+.getUser()
+)
+.data.user.id
 
 
-  async function logout(){
+const sessionsResult=
 
-    await supabase
-    .auth
-    .signOut()
+await supabase
 
-    window.location.reload()
-  }
+.from(
+'fishing_sessions'
+)
+
+.select()
+
+.eq(
+'user_id',
+userId
+)
+
+.order(
+'data',
+{
+ascending:false
+}
+)
+
+const spotsResult=
+
+await supabase
+
+.from(
+'spots'
+)
+
+.select(
+'id'
+)
+
+.eq(
+'user_id',
+userId
+)
 
 
-  if(loading){
+setSessions(
+sessionsResult.data||[]
+)
 
-    return(
+setSessionCount(
+sessionsResult
+.data
+.length
+)
 
-      <div>
+setSpotCount(
+spotsResult
+.data
+.length
+)
 
-      Caricamento...
-
-      </div>
-    )
-  }
+}
 
 
-  if(!user){
+async function login(){
 
-    return (
+const {error}=
+
+await supabase
+.auth
+.signInWithPassword({
+
+email,
+password
+
+})
+
+if(error){
+
+alert(
+error.message
+)
+
+return
+}
+
+window.location.reload()
+
+}
+
+
+async function logout(){
+
+await supabase
+.auth
+.signOut()
+
+window.location.reload()
+
+}
+
+
+if(loading){
+
+return(
+<div>
+Caricamento...
+</div>
+)
+
+}
+
+
+if(!user){
+
+return(
 
 <div style={{
 
 display:'flex',
-
 justifyContent:'center',
-
 alignItems:'center',
-
 height:'100vh',
-
 background:'#EAF6FF'
 
 }}>
@@ -173,11 +195,8 @@ background:'#EAF6FF'
 <div style={{
 
 background:'white',
-
 padding:30,
-
 borderRadius:20,
-
 width:350
 
 }}>
@@ -203,9 +222,7 @@ e.target.value
 style={{
 
 width:'100%',
-
 padding:10,
-
 marginBottom:10
 
 }}
@@ -228,9 +245,7 @@ e.target.value
 style={{
 
 width:'100%',
-
 padding:10,
-
 marginBottom:20
 
 }}
@@ -243,7 +258,6 @@ onClick={login}
 style={{
 
 width:'100%',
-
 padding:12
 
 }}>
@@ -256,8 +270,9 @@ Login
 
 </div>
 
-    )
-  }
+)
+
+}
 
 
 return(
@@ -279,7 +294,6 @@ Bentornato 🎣
 <div style={{
 
 display:'flex',
-
 gap:20
 
 }}>
@@ -287,11 +301,8 @@ gap:20
 <div style={{
 
 padding:20,
-
 background:'#f4f4f4',
-
 borderRadius:20,
-
 width:200
 
 }}>
@@ -314,11 +325,8 @@ width:200
 <div style={{
 
 padding:20,
-
 background:'#f4f4f4',
-
 borderRadius:20,
-
 width:200
 
 }}>
@@ -341,10 +349,99 @@ width:200
 
 <br/>
 
+<h2>
+
+Ultime Sessioni
+
+</h2>
+
+<table style={{
+
+width:'100%',
+borderCollapse:
+'collapse'
+
+}}>
+
+<thead>
+
+<tr>
+
+<th>
+Luogo
+</th>
+
+<th>
+Tipo
+</th>
+
+<th>
+Data
+</th>
+
+<th>
+Note
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{sessions.map(
+(s)=>(
+
+<tr
+key={s.id}
+style={{
+borderBottom:
+'1px solid #ddd'
+}}
+>
+
+<td>
+
+{s.luogo}
+
+</td>
+
+<td>
+
+{s.tipo_pescata}
+
+</td>
+
+<td>
+
+{
+new Date(
+s.data
+)
+.toLocaleDateString()
+}
+
+</td>
+
+<td>
+
+{s.note}
+
+</td>
+
+</tr>
+
+)
+)}
+
+</tbody>
+
+</table>
+
+<br/>
+
 <button
-
 onClick={logout}
-
 >
 
 Logout
