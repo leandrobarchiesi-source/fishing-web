@@ -155,6 +155,69 @@ window.location.reload()
 
 }
 
+async function eliminaSessione(
+id
+){
+
+if(
+
+!window.confirm(
+"Eliminare?"
+)
+
+){
+
+return
+
+}
+
+await supabase
+
+.from(
+'fishing_sessions'
+)
+
+.delete()
+
+.eq(
+'id',
+id
+)
+
+loadData()
+
+}
+
+
+async function modificaSessione(
+
+id,
+
+luogo
+
+){
+
+await supabase
+
+.from(
+'fishing_sessions'
+)
+
+.update({
+
+luogo
+
+})
+
+.eq(
+'id',
+id
+)
+
+loadData()
+
+}
+
 
 async function logout(){
 
@@ -358,8 +421,7 @@ Ultime Sessioni
 <table style={{
 
 width:'100%',
-borderCollapse:
-'collapse'
+borderCollapse:'collapse'
 
 }}>
 
@@ -367,21 +429,13 @@ borderCollapse:
 
 <tr>
 
-<th>
-Luogo
-</th>
+<th>Luogo</th>
 
-<th>
-Tipo
-</th>
+<th>Tipo</th>
 
-<th>
-Data
-</th>
+<th>Data</th>
 
-<th>
-Note
-</th>
+<th>Azioni</th>
 
 </tr>
 
@@ -389,15 +443,23 @@ Note
 
 <tbody>
 
-{sessions.map(
+{
+
+sessions.map(
+
 (s)=>(
 
 <tr
+
 key={s.id}
+
 style={{
+
 borderBottom:
 '1px solid #ddd'
+
 }}
+
 >
 
 <td>
@@ -415,30 +477,117 @@ borderBottom:
 <td>
 
 {
+
 new Date(
 s.data
 )
+
 .toLocaleDateString()
+
 }
 
 </td>
 
 <td>
 
-{s.note}
+<button
+
+onClick={()=>{
+
+alert(
+
+`
+Luogo: ${s.luogo}
+
+Tipo:
+${s.tipo_pescata}
+
+Note:
+${s.note??"-"}
+
+Temperatura:
+${s.temperatura??"-"}°
+
+Vento:
+${s.vento??"-"}
+
+`
+)
+
+}}
+
+>
+
+👁
+
+</button>
+
+
+<button
+
+onClick={()=>{
+
+const nuovo=
+
+prompt(
+
+"Nuovo luogo",
+
+s.luogo
+
+)
+
+if(
+!nuovo
+)return
+
+modificaSessione(
+
+s.id,
+
+nuovo
+
+)
+
+}}
+
+>
+
+✏
+
+</button>
+
+
+<button
+
+onClick={()=>{
+
+eliminaSessione(
+s.id
+)
+
+}}
+
+>
+
+🗑
+
+</button>
 
 </td>
 
 </tr>
 
-)
-)}
+))
+
+}
 
 </tbody>
 
 </table>
 
 <br/>
+
 
 <button
 onClick={logout}
