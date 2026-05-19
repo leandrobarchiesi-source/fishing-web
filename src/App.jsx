@@ -1,7 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { supabase } from './supabase'
 
 function App() {
+
+  const [user,setUser]=
+      useState(null)
 
   const [email,setEmail]=
       useState("")
@@ -9,147 +12,349 @@ function App() {
   const [password,setPassword]=
       useState("")
 
-  const [loading,setLoading]=
-      useState(false)
+  const [sessionCount,
+         setSessionCount]=
+      useState(0)
 
-  async function login(){
+  const [spotCount,
+         setSpotCount]=
+      useState(0)
 
-    try{
+  const [loading,
+         setLoading]=
+      useState(true)
 
-      setLoading(true)
+  useEffect(()=>{
 
-      const {error}=
-      await supabase.auth.signInWithPassword({
+    checkUser()
 
-        email,
-        password
+  },[])
 
-      })
 
-      if(error){
+  async function checkUser(){
 
-        alert(
-          error.message
-        )
+    const {
 
-        return
-      }
+      data
 
-      alert(
-        "Login effettuato 🎣"
+    }=
+
+    await supabase
+    .auth
+    .getUser()
+
+    if(data.user){
+
+      setUser(
+        data.user
       )
 
-    }
-
-    catch(e){
-
-      alert(
-        e.toString()
-      )
+      loadData()
     }
 
     setLoading(false)
   }
 
-  return (
 
-    <div
-      style={{
+  async function loadData(){
 
-      display:'flex',
+    const userId=
+    (
+      await supabase
+      .auth
+      .getUser()
+    ).data.user.id
 
-      justifyContent:'center',
+    const sessions=
 
-      alignItems:'center',
+    await supabase
+    .from(
+      'fishing_sessions'
+    )
+    .select(
+      'id'
+    )
+    .eq(
+      'user_id',
+      userId
+    )
 
-      height:'100vh',
+    const spots=
 
-      background:'#e8f4ff'
+    await supabase
+    .from(
+      'spots'
+    )
+    .select(
+      'id'
+    )
+    .eq(
+      'user_id',
+      userId
+    )
 
-    }}>
+    setSessionCount(
+      sessions.data.length
+    )
 
-      <div
-      style={{
+    setSpotCount(
+      spots.data.length
+    )
+  }
 
-      background:'white',
 
-      padding:30,
+  async function login(){
 
-      borderRadius:20,
+    const {error}=
 
-      width:350
+    await supabase
+    .auth
+    .signInWithPassword({
 
-      }}>
+      email,
+      password
 
-      <h1>
-      Fishing Web 🎣
-      </h1>
+    })
 
-      <input
+    if(error){
 
-      placeholder='Email'
+      alert(
+        error.message
+      )
 
-      value={email}
+      return
+    }
 
-      onChange={(e)=>
+    window.location.reload()
+  }
 
-      setEmail(
-        e.target.value
-      )}
 
-      style={{
+  async function logout(){
 
-      width:'100%',
-      marginBottom:10,
-      padding:10
+    await supabase
+    .auth
+    .signOut()
 
-      }}
-      />
+    window.location.reload()
+  }
 
-      <input
 
-      type='password'
+  if(loading){
 
-      placeholder='Password'
+    return(
 
-      value={password}
+      <div>
 
-      onChange={(e)=>
-
-      setPassword(
-        e.target.value
-      )}
-
-      style={{
-
-      width:'100%',
-      marginBottom:20,
-      padding:10
-
-      }}
-      />
-
-      <button
-
-      onClick={login}
-
-      disabled={loading}
-
-      style={{
-
-      width:'100%',
-      padding:12
-
-      }}>
-
-      Login
-
-      </button>
+      Caricamento...
 
       </div>
+    )
+  }
 
-    </div>
-  )
+
+  if(!user){
+
+    return (
+
+<div style={{
+
+display:'flex',
+
+justifyContent:'center',
+
+alignItems:'center',
+
+height:'100vh',
+
+background:'#EAF6FF'
+
+}}>
+
+<div style={{
+
+background:'white',
+
+padding:30,
+
+borderRadius:20,
+
+width:350
+
+}}>
+
+<h1>
+
+Fishing Web 🎣
+
+</h1>
+
+<input
+
+placeholder='Email'
+
+value={email}
+
+onChange={(e)=>
+
+setEmail(
+e.target.value
+)}
+
+style={{
+
+width:'100%',
+
+padding:10,
+
+marginBottom:10
+
+}}
+/>
+
+<input
+
+type='password'
+
+placeholder='Password'
+
+value={password}
+
+onChange={(e)=>
+
+setPassword(
+e.target.value
+)}
+
+style={{
+
+width:'100%',
+
+padding:10,
+
+marginBottom:20
+
+}}
+/>
+
+<button
+
+onClick={login}
+
+style={{
+
+width:'100%',
+
+padding:12
+
+}}>
+
+Login
+
+</button>
+
+</div>
+
+</div>
+
+    )
+  }
+
+
+return(
+
+<div style={{
+
+padding:40
+
+}}>
+
+<h1>
+
+Bentornato 🎣
+
+</h1>
+
+<br/>
+
+<div style={{
+
+display:'flex',
+
+gap:20
+
+}}>
+
+<div style={{
+
+padding:20,
+
+background:'#f4f4f4',
+
+borderRadius:20,
+
+width:200
+
+}}>
+
+<h2>
+
+🎣 Sessioni
+
+</h2>
+
+<h1>
+
+{sessionCount}
+
+</h1>
+
+</div>
+
+
+<div style={{
+
+padding:20,
+
+background:'#f4f4f4',
+
+borderRadius:20,
+
+width:200
+
+}}>
+
+<h2>
+
+📍 Spot
+
+</h2>
+
+<h1>
+
+{spotCount}
+
+</h1>
+
+</div>
+
+</div>
+
+<br/>
+
+<button
+
+onClick={logout}
+
+>
+
+Logout
+
+</button>
+
+</div>
+
+)
+
 }
 
 export default App
