@@ -1,6 +1,11 @@
+import { useState } from 'react'
+
 import SessionCard
-from
-'../components/SessionCard'
+from '../components/SessionCard'
+
+import SessionModal
+from '../components/SessionModal'
+
 
 export default function Dashboard({
 
@@ -12,6 +17,19 @@ sessions
 
 }){
 
+const [
+
+selectedSession,
+
+setSelectedSession
+
+]
+
+=
+
+useState(null)
+
+
 return(
 
 <div>
@@ -22,39 +40,62 @@ Bentornato 🎣
 
 </h1>
 
+<br/>
+
 <div style={{
 
 display:'flex',
 
-gap:20
+gap:20,
+
+marginBottom:30
 
 }}>
 
 <Box
+
 title="🎣 Sessioni"
+
 value={sessionCount}
+
 />
 
 <Box
+
 title="📍 Spot"
+
 value={spotCount}
+
 />
 
 </div>
 
-<br/>
 
 <h2>
 
-Ultime sessioni
+Ultime Sessioni
 
 </h2>
 
+<br/>
+
 {
+
+sessions.length===0
+
+?
+
+<p>
+
+Nessuna sessione
+
+</p>
+
+:
 
 sessions.map(
 
-s=>
+(s)=>
 
 <SessionCard
 
@@ -62,11 +103,31 @@ key={s.id}
 
 session={s}
 
-onView={()=>{}}
+onView={(session)=>
 
-onEdit={()=>{}}
+setSelectedSession(
+session
+)
 
-onDelete={()=>{}}
+}
+
+onEdit={(session)=>{
+
+console.log(
+"modifica",
+session
+)
+
+}}
+
+onDelete={(session)=>{
+
+console.log(
+"elimina",
+session
+)
+
+}}
 
 />
 
@@ -74,15 +135,39 @@ onDelete={()=>{}}
 
 }
 
+
+<SessionModal
+
+session={selectedSession}
+
+isOpen={
+
+selectedSession
+!=null
+
+}
+
+onClose={()=>
+
+setSelectedSession(
+null
+)
+
+}
+
+/>
+
 </div>
 
 )
 
 }
 
+
 function Box({
 
 title,
+
 value
 
 }){
@@ -93,11 +178,15 @@ return(
 
 padding:20,
 
-width:180,
+width:200,
 
-background:"#F1F5F9",
+background:'white',
 
-borderRadius:20
+borderRadius:20,
+
+boxShadow:
+
+'0 2px 10px rgba(0,0,0,.1)'
 
 }}>
 
