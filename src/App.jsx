@@ -2,13 +2,15 @@ import {useEffect,useState} from 'react'
 
 import {supabase} from './supabase'
 
-import Sidebar
-from './components/Sidebar'
+import Sidebar from './components/Sidebar'
 
-import Dashboard
-from './pages/Dashboard'
+import Dashboard from './pages/Dashboard'
+
 
 function App(){
+
+const [user,setUser]=
+useState(null)
 
 const [email,setEmail]=
 useState("")
@@ -16,20 +18,21 @@ useState("")
 const [password,setPassword]=
 useState("")
 
-const [user,setUser]=
-useState(null)
-
-const [sessions,
-setSessions]=
+const [sessions,setSessions]=
 useState([])
 
-const [sessionCount,
-setSessionCount]=
+const [sessionCount,setSessionCount]=
 useState(0)
 
-const [spotCount,
-setSpotCount]=
+const [spotCount,setSpotCount]=
 useState(0)
+
+const [selectedPage,
+setSelectedPage]=
+useState(
+'dashboard'
+)
+
 
 useEffect(()=>{
 
@@ -38,15 +41,14 @@ checkUser()
 },[])
 
 
+
 async function checkUser(){
 
 const {
 
 data
 
-}
-
-=
+}=
 
 await supabase
 .auth
@@ -63,6 +65,7 @@ loadData()
 }
 
 }
+
 
 
 async function loadData(){
@@ -97,7 +100,8 @@ userId
 'data',
 {
 ascending:false
-})
+}
+)
 
 
 const spotsResult=
@@ -119,30 +123,20 @@ userId
 
 
 setSessions(
-
-sessionsResult
-.data
-||[]
-
+sessionsResult.data||[]
 )
 
 setSessionCount(
-
-sessionsResult
-.data
-.length
-
+sessionsResult.data.length
 )
 
 setSpotCount(
-
-spotsResult
-.data
-.length
-
+spotsResult.data.length
 )
 
 }
+
+
 
 async function login(){
 
@@ -171,6 +165,7 @@ window.location.reload()
 
 }
 
+
 async function logout(){
 
 await supabase
@@ -180,6 +175,7 @@ await supabase
 window.location.reload()
 
 }
+
 
 
 if(!user){
@@ -208,10 +204,7 @@ padding:30,
 
 borderRadius:20,
 
-width:350,
-
-boxShadow:
-'0 2px 10px rgba(0,0,0,.1)'
+width:350
 
 }}>
 
@@ -220,8 +213,6 @@ boxShadow:
 Fishing Web 🎣
 
 </h1>
-
-<br/>
 
 <input
 
@@ -233,19 +224,12 @@ onChange={(e)=>
 
 setEmail(
 e.target.value
-)}
-
-style={{
-
-width:'100%',
-
-padding:12,
-
-marginBottom:10
-
-}}
+)
+}
 
 />
+
+<br/><br/>
 
 <input
 
@@ -259,31 +243,16 @@ onChange={(e)=>
 
 setPassword(
 e.target.value
-)}
-
-style={{
-
-width:'100%',
-
-padding:12,
-
-marginBottom:20
-
-}}
+)
+}
 
 />
+
+<br/><br/>
 
 <button
 
 onClick={login}
-
-style={{
-
-width:'100%',
-
-padding:12
-
-}}
 
 >
 
@@ -299,6 +268,8 @@ Login
 
 }
 
+
+
 return(
 
 <div style={{
@@ -309,7 +280,17 @@ display:'flex'
 
 <Sidebar
 
-logout={logout}
+selected={
+selectedPage
+}
+
+setSelected={
+setSelectedPage
+}
+
+logout={
+logout
+}
 
 />
 
@@ -328,17 +309,100 @@ minHeight:'100vh'
 
 }}>
 
+
+{
+
+selectedPage==="dashboard"
+
+&&
+
 <Dashboard
 
-sessionCount={sessionCount}
+sessionCount={
+sessionCount
+}
 
-spotCount={spotCount}
+spotCount={
+spotCount
+}
 
-sessions={sessions}
+sessions={
+sessions
+}
 
-refreshData={loadData}
+refreshData={
+loadData
+}
 
 />
+
+}
+
+
+
+{
+
+selectedPage==="sessioni"
+
+&&
+
+<h1>
+
+🎣 Sessioni
+
+</h1>
+
+}
+
+
+
+{
+
+selectedPage==="spot"
+
+&&
+
+<h1>
+
+📍 Spot
+
+</h1>
+
+}
+
+
+
+{
+
+selectedPage==="statistiche"
+
+&&
+
+<h1>
+
+📊 Statistiche
+
+</h1>
+
+}
+
+
+
+{
+
+selectedPage==="profilo"
+
+&&
+
+<h1>
+
+👤 Profilo
+
+</h1>
+
+}
+
+
 </div>
 
 </div>
@@ -346,5 +410,6 @@ refreshData={loadData}
 )
 
 }
+
 
 export default App
