@@ -3,7 +3,8 @@ import SpotPickerMap from '../components/SpotPickerMap'
 export default function SpotPage({
 
 spots,
-addSpot
+addSpot,
+onDelete
 
 }){
 
@@ -88,6 +89,8 @@ position={null}
 setPosition={()=>{}}
 
 spots={spots}
+
+onDelete={onDelete}
 
 />
 

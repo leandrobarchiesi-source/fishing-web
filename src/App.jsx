@@ -257,9 +257,85 @@ return
 }
 
 
-setAddingSpot(
-false
+setAddingSpot(false)
+
+await loadData()
+
+}
+
+
+
+async function eliminaSpot(spot){
+
+const {data}=
+
+await supabase
+
+.from(
+'fishing_sessions'
 )
+
+.select('id')
+
+.eq(
+'spot_id',
+spot.id
+)
+
+
+if(data?.length>0){
+
+alert(
+
+"Impossibile eliminare.\n\nSpot utilizzato da "+
+
+data.length+
+
+" sessioni"
+
+)
+
+return
+
+}
+
+
+if(
+
+!window.confirm(
+"Eliminare spot?"
+)
+
+){
+
+return
+
+}
+
+
+const {error}=
+
+await supabase
+
+.from(
+'spots'
+)
+
+.delete()
+
+.eq(
+'id',
+spot.id)
+
+
+if(error){
+
+console.log(error)
+
+return
+
+}
+
 
 await loadData()
 
@@ -325,9 +401,7 @@ return
 }
 
 
-setEditingSession(
-null
-)
+setEditingSession(null)
 
 await loadData()
 
@@ -387,13 +461,9 @@ return(
 <div style={{
 
 display:'flex',
-
 justifyContent:'center',
-
 alignItems:'center',
-
 height:'100vh',
-
 background:
 'linear-gradient(to bottom,#EAF6FF,#D8ECFF)'
 
@@ -402,16 +472,11 @@ background:
 <div style={{
 
 background:'white',
-
 padding:'40px',
-
 width:'420px',
-
 borderRadius:'25px',
-
 boxShadow:
 '0 10px 30px rgba(0,0,0,.15)',
-
 textAlign:'center'
 
 }}>
@@ -426,10 +491,10 @@ fontSize:'70px'
 
 </div>
 
+
 <h1 style={{
 
 fontSize:'34px',
-
 color:'#17233C'
 
 }}>
@@ -442,7 +507,6 @@ Fishing Web
 <p style={{
 
 marginBottom:30,
-
 color:'#666'
 
 }}>
@@ -453,38 +517,23 @@ Accedi al tuo account
 
 
 <input
-
 placeholder='Email'
-
 value={email}
-
 onChange={(e)=>
-
-setEmail(
-e.target.value
-)}
-
+setEmail(e.target.value)
+}
 style={inputStyle}
-
 />
 
 
 <input
-
 type='password'
-
 placeholder='Password'
-
 value={password}
-
 onChange={(e)=>
-
-setPassword(
-e.target.value
-)}
-
+setPassword(e.target.value)
+}
 style={inputStyle}
-
 />
 
 
@@ -495,17 +544,11 @@ onClick={login}
 style={{
 
 width:'100%',
-
 padding:'14px',
-
 fontSize:'18px',
-
 background:'#17233C',
-
 color:'white',
-
 border:'none',
-
 borderRadius:'12px'
 
 }}
@@ -544,13 +587,9 @@ logout={logout}
 <div style={{
 
 marginLeft:260,
-
 padding:30,
-
 width:'100%',
-
 background:"#E2E8F0",
-
 minHeight:'100vh'
 
 }}>
@@ -595,6 +634,8 @@ onDelete={eliminaSessione}
 <SpotPage
 
 spots={spots}
+
+onDelete={eliminaSpot}
 
 addSpot={()=>
 
@@ -698,6 +739,7 @@ salvaSpot
 )
 
 }
+
 
 
 const inputStyle={
