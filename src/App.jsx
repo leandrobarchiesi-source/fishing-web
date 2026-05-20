@@ -500,7 +500,7 @@ color:'#17233C'
 
 }}>
 
-Fishing Web
+FishingTrack
 
 </h1>
 
@@ -512,7 +512,7 @@ color:'#666'
 
 }}>
 
-Accedi al tuo account
+Il tuo diario di pesca digitale
 
 </p>
 
