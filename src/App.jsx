@@ -10,6 +10,7 @@ import AddSpotModal from './components/AddSpotModal'
 import Dashboard from './pages/Dashboard'
 import SessionsPage from './pages/SessionsPage'
 import SpotPage from './pages/SpotPage'
+import ProfilePage from './pages/ProfilePage'
 
 
 function App(){
@@ -663,14 +664,19 @@ true
 
 {selectedPage==="profilo" &&
 
-<h1>
+<ProfilePage
 
-👤 Profilo
+user={user}
 
-</h1>
+sessionCount={sessionCount}
+
+spotCount={spotCount}
+
+logout={logout}
+
+/>
 
 }
-
 
 <SessionModal
 
