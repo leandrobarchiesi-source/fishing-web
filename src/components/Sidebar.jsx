@@ -21,17 +21,17 @@ return(
 
 <div style={{
 
-width:240,
+width:'240px',
 
-background:"#17233C",
+background:'#17233C',
 
-color:"white",
+color:'white',
 
-height:"100vh",
+height:'100vh',
 
-padding:"20px",
+padding:'20px',
 
-position:"fixed",
+position:'fixed',
 
 left:0,
 
@@ -41,19 +41,89 @@ display:'flex',
 
 flexDirection:'column',
 
-boxSizing:'border-box'
+boxSizing:'border-box',
+
+boxShadow:
+'2px 0 15px rgba(0,0,0,.15)'
 
 }}>
+
+
+<div style={{
+
+textAlign:'center',
+
+paddingBottom:'25px',
+
+borderBottom:
+'1px solid rgba(255,255,255,.08)',
+
+marginBottom:'30px'
+
+}}>
+
+
+<div style={{
+
+width:'72px',
+
+height:'72px',
+
+margin:'0 auto',
+
+borderRadius:'50%',
+
+background:'#304567',
+
+display:'flex',
+
+alignItems:'center',
+
+justifyContent:'center',
+
+fontSize:'34px',
+
+boxShadow:
+'0 4px 10px rgba(0,0,0,.2)'
+
+}}>
+
+🎣
+
+</div>
+
 
 <h2 style={{
 
-marginBottom:30
+margin:'15px 0 4px 0',
+
+fontSize:'24px',
+
+fontWeight:'700'
 
 }}>
 
-🎣 Fishing
+FishingTrack
 
 </h2>
+
+
+<p style={{
+
+fontSize:'12px',
+
+opacity:.65,
+
+margin:0
+
+}}>
+
+Track your fishing life
+
+</p>
+
+</div>
+
 
 
 <MenuItem
@@ -158,8 +228,9 @@ setSelected(
 
 }
 
-
 />
+
+
 
 <div style={{
 
@@ -169,11 +240,15 @@ marginTop:'auto'
 
 <hr style={{
 
-borderColor:"#334155",
+border:'none',
 
-marginBottom:15
+borderTop:
+'1px solid rgba(255,255,255,.08)',
+
+marginBottom:'15px'
 
 }}/>
+
 
 <MenuItem
 
@@ -186,6 +261,7 @@ onClick={logout}
 />
 
 </div>
+
 
 </div>
 
@@ -216,18 +292,17 @@ display:'flex',
 
 alignItems:'center',
 
-gap:12,
+gap:'14px',
 
 padding:'14px',
 
 cursor:'pointer',
 
-borderRadius:12,
+borderRadius:'14px',
 
-marginBottom:8,
+marginBottom:'8px',
 
-transition:
-'0.2s',
+transition:'all .2s ease',
 
 background:
 
@@ -243,15 +318,50 @@ active
 
 }}
 
+onMouseEnter={(e)=>{
+
+if(!active){
+
+e.currentTarget.style.background=
+
+'rgba(255,255,255,.05)'
+
+}
+
+}}
+
+onMouseLeave={(e)=>{
+
+if(!active){
+
+e.currentTarget.style.background=
+
+'transparent'
+
+}
+
+}}
+
 >
 
-<div>
+<div style={{
+
+fontSize:'16px',
+
+width:'20px'
+
+}}>
 
 {icon}
 
 </div>
 
-<div>
+
+<div style={{
+
+fontSize:'16px'
+
+}}>
 
 {label}
 
