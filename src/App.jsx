@@ -590,7 +590,7 @@ logout={logout}
 marginLeft:260,
 padding:30,
 width:'100%',
-background:"#E2E8F0",
+background:"#EEF4F8",
 minHeight:'100vh'
 
 }}>

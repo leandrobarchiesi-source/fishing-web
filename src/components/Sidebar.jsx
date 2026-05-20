@@ -23,7 +23,7 @@ return(
 
 width:'240px',
 
-background:'#17233C',
+background:'#234E70',
 
 color:'white',
 
@@ -73,7 +73,7 @@ margin:'0 auto',
 
 borderRadius:'50%',
 
-background:'#304567',
+background:'#4A90B8',
 
 display:'flex',
 
@@ -324,7 +324,7 @@ if(!active){
 
 e.currentTarget.style.background=
 
-'rgba(255,255,255,.05)'
+'rgba(255,255,255,.12)'
 
 }
 
