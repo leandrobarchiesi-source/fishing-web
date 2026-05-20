@@ -1,48 +1,24 @@
-import { useEffect, useState } from 'react'
+import SpotPickerMap from '../components/SpotPickerMap'
 
-import {
-MapContainer,
-TileLayer
-}
-from 'react-leaflet'
+export default function SpotMapPage({
 
-import 'leaflet/dist/leaflet.css'
+spots
 
-
-export default function SpotMapPage(){
-
-const [mounted,setMounted]=
-useState(false)
-
-useEffect(()=>{
-
-setTimeout(()=>{
-
-setMounted(true)
-
-},300)
-
-},[])
-
-
-if(!mounted){
+}){
 
 return(
 
 <div>
 
-Caricamento mappa...
+<div style={{
 
-</div>
+display:'flex',
 
-)
+justifyContent:'space-between',
 
-}
+alignItems:'center'
 
-
-return(
-
-<div>
+}}>
 
 <h1>
 
@@ -50,45 +26,48 @@ return(
 
 </h1>
 
-<div style={{
+<button
 
-height:'80vh',
+onClick={()=>{
 
-width:'100%',
+window.history.back()
 
-borderRadius:'20px',
-
-overflow:'hidden',
-
-background:'white'
-
-}}>
-
-<MapContainer
-
-center={[41.9,12.5]}
-
-zoom={6}
+}}
 
 style={{
 
-height:'100%',
+padding:'10px 15px',
 
-width:'100%'
+border:'none',
+
+borderRadius:'10px',
+
+background:'#17233C',
+
+color:'white'
 
 }}
 
 >
 
-<TileLayer
+Indietro
 
-url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-
-/>
-
-</MapContainer>
+</button>
 
 </div>
+
+<br/>
+
+
+<SpotPickerMap
+
+position={null}
+
+setPosition={()=>{}}
+
+spots={spots}
+
+/>
 
 </div>
 

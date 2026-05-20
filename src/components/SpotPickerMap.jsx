@@ -1,6 +1,19 @@
-import {MapContainer,TileLayer,Marker,useMapEvents} from 'react-leaflet'
+import {
+
+MapContainer,
+TileLayer,
+Marker,
+Popup,
+useMapEvents
+
+}
+
+from 'react-leaflet'
+
 import L from 'leaflet'
+
 import 'leaflet/dist/leaflet.css'
+
 
 const icon=L.icon({
 
@@ -28,6 +41,8 @@ useMapEvents({
 
 click(e){
 
+if(setPosition){
+
 setPosition(
 
 e.latlng
@@ -36,13 +51,17 @@ e.latlng
 
 }
 
+}
+
 })
+
 
 if(!position){
 
 return null
 
 }
+
 
 return(
 
@@ -62,7 +81,8 @@ icon={icon}
 export default function SpotPickerMap({
 
 position,
-setPosition
+setPosition,
+spots=[]
 
 }){
 
@@ -76,7 +96,9 @@ zoom={6}
 
 style={{
 
-height:'400px',
+height:'70vh',
+
+width:'100%',
 
 borderRadius:'20px'
 
@@ -89,6 +111,56 @@ borderRadius:'20px'
 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
 />
+
+
+{
+
+spots.map(
+
+spot=>
+
+<Marker
+
+key={spot.id}
+
+position={[
+
+Number(
+spot.latitudine
+),
+
+Number(
+spot.longitudine
+)
+
+]}
+
+icon={icon}
+
+>
+
+<Popup>
+
+<b>
+
+{
+
+spot.nome||
+
+"Spot"
+
+}
+
+</b>
+
+</Popup>
+
+</Marker>
+
+)
+
+}
+
 
 <LocationMarker
 
