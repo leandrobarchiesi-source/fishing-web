@@ -1,7 +1,10 @@
 import Modal from 'react-modal'
 import {useState} from 'react'
 
+import SpotPickerMap from './SpotPickerMap'
+
 Modal.setAppElement('#root')
+
 
 export default function AddSpotModal({
 
@@ -14,11 +17,9 @@ onSave
 const [nome,setNome]=
 useState("")
 
-const [lat,setLat]=
-useState("")
-
-const [lon,setLon]=
-useState("")
+const [position,
+setPosition]=
+useState(null)
 
 
 return(
@@ -33,11 +34,9 @@ style={{
 
 content:{
 
-maxWidth:'500px',
+maxWidth:'800px',
 
 margin:'auto',
-
-height:'fit-content',
 
 borderRadius:'20px',
 
@@ -64,6 +63,7 @@ background:
 
 <br/>
 
+
 <input
 
 placeholder='Nome spot'
@@ -81,62 +81,66 @@ style={styleInput}
 />
 
 
-<input
+<SpotPickerMap
 
-placeholder='Latitudine'
+position={position}
 
-value={lat}
-
-onChange={(e)=>
-
-setLat(
-e.target.value
-)}
-
-style={styleInput}
-
-/>
-
-
-<input
-
-placeholder='Longitudine'
-
-value={lon}
-
-onChange={(e)=>
-
-setLon(
-e.target.value
-)}
-
-style={styleInput}
+setPosition={setPosition}
 
 />
 
 <br/>
 
-<div style={{
 
-display:'flex',
+{
 
-gap:10
+position
 
-}}>
+&&
+
+<div>
+
+Lat:
+
+{position.lat.toFixed(6)}
+
+<br/>
+
+Lon:
+
+{position.lng.toFixed(6)}
+
+</div>
+
+}
+
+
+<br/>
+
 
 <button
 
 onClick={()=>{
+
+if(!position){
+
+alert(
+"Seleziona punto"
+)
+
+return
+
+}
 
 onSave({
 
 nome,
 
 latitudine:
-parseFloat(lat),
+position.lat,
 
 longitudine:
-parseFloat(lon)
+position.lng
 
 })
 
@@ -144,22 +148,9 @@ parseFloat(lon)
 
 >
 
-Salva
+Salva Spot
 
 </button>
-
-
-<button
-
-onClick={onClose}
-
->
-
-Annulla
-
-</button>
-
-</div>
 
 </Modal>
 
