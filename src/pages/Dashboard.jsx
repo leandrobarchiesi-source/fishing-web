@@ -6,6 +6,7 @@ import EditSessionModal from '../components/EditSessionModal'
 
 import {supabase} from '../supabase'
 
+
 export default function Dashboard({
 
 sessionCount,
@@ -24,6 +25,7 @@ const [
 editingSession,
 setEditingSession
 ]=useState(null)
+
 
 
 async function eliminaSessione(session){
@@ -50,6 +52,7 @@ await supabase
 'id',
 session.id)
 
+
 if(error){
 
 console.log(error)
@@ -61,6 +64,7 @@ return
 await refreshData()
 
 }
+
 
 
 async function salvaModifica(
@@ -131,6 +135,7 @@ await refreshData()
 }
 
 
+
 return(
 
 <div>
@@ -146,7 +151,9 @@ Bentornato 🎣
 <div style={{
 
 display:'flex',
+
 gap:20,
+
 marginBottom:30
 
 }}>
@@ -263,6 +270,7 @@ salvaModifica
 )
 
 }
+
 
 
 function Box({

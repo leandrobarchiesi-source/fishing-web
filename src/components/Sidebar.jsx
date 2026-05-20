@@ -8,8 +8,11 @@ import {
 }
 from 'react-icons/fa'
 
+
 export default function Sidebar({
 
+selected,
+setSelected,
 logout
 
 }){
@@ -20,65 +23,166 @@ return(
 
 width:240,
 
-background:"#1E293B",
+background:"#17233C",
 
 color:"white",
 
 height:"100vh",
 
-padding:20,
+padding:"20px",
 
 position:"fixed",
 
 left:0,
 
-top:0
+top:0,
+
+display:'flex',
+
+flexDirection:'column',
+
+boxSizing:'border-box'
 
 }}>
 
-<h2>
+<h2 style={{
+
+marginBottom:30
+
+}}>
 
 🎣 Fishing
 
 </h2>
 
-<br/>
 
 <MenuItem
+
 icon={<FaHome/>}
+
 label="Dashboard"
+
+active={
+selected==="dashboard"
+}
+
+onClick={()=>
+
+setSelected(
+"dashboard"
+)
+
+}
+
 />
 
+
 <MenuItem
+
 icon={<FaFish/>}
+
 label="Sessioni"
+
+active={
+selected==="sessioni"
+}
+
+onClick={()=>
+
+setSelected(
+"sessioni"
+)
+
+}
+
 />
 
+
 <MenuItem
+
 icon={<FaMapMarkerAlt/>}
+
 label="Spot"
+
+active={
+selected==="spot"
+}
+
+onClick={()=>
+
+setSelected(
+"spot"
+)
+
+}
+
 />
 
+
 <MenuItem
+
 icon={<FaChartBar/>}
+
 label="Statistiche"
+
+active={
+selected==="statistiche"
+}
+
+onClick={()=>
+
+setSelected(
+"statistiche"
+)
+
+}
+
 />
 
+
 <MenuItem
+
 icon={<FaUser/>}
+
 label="Profilo"
+
+active={
+selected==="profilo"
+}
+
+onClick={()=>
+
+setSelected(
+"profilo"
+)
+
+}
+
+
 />
 
-<div
-style={{
-marginTop:50
-}}
->
+<div style={{
+
+marginTop:'auto'
+
+}}>
+
+<hr style={{
+
+borderColor:"#334155",
+
+marginBottom:15
+
+}}/>
 
 <MenuItem
+
 icon={<FaSignOutAlt/>}
+
 label="Logout"
+
 onClick={logout}
+
 />
 
 </div>
@@ -89,10 +193,13 @@ onClick={logout}
 
 }
 
+
+
 function MenuItem({
 
 icon,
 label,
+active,
 onClick
 
 }){
@@ -107,21 +214,48 @@ style={{
 
 display:'flex',
 
-gap:10,
+alignItems:'center',
 
-padding:15,
+gap:12,
+
+padding:'14px',
 
 cursor:'pointer',
 
-borderRadius:10,
+borderRadius:12,
 
-marginBottom:5
+marginBottom:8,
 
-}}>
+transition:
+'0.2s',
+
+background:
+
+active
+
+?
+
+'#304567'
+
+:
+
+'transparent'
+
+}}
+
+>
+
+<div>
 
 {icon}
 
+</div>
+
+<div>
+
 {label}
+
+</div>
 
 </div>
 
