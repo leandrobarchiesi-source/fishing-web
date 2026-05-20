@@ -87,7 +87,7 @@ style={styleInput}
 
 <div style={{
 
-height:'600px',
+height:'550px',
 
 borderRadius:'15px',
 
