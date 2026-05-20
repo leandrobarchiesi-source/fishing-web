@@ -597,10 +597,6 @@ logout={logout}
 
 position:'relative',
 
-left:'240px',
-
-width:'calc(100% - 240px)',
-
 minHeight:'100vh',
 
 padding:'40px',
@@ -611,7 +607,7 @@ background:'#EEF4F8'
 
 }}>
 
-    
+
 {selectedPage==="dashboard" &&
 
 <Dashboard
