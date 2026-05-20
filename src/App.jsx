@@ -192,6 +192,110 @@ await loadData()
 
 }
 
+async function salvaModifica(sessione){
+
+const {error}=
+
+await supabase
+
+.from(
+'fishing_sessions'
+)
+
+.update({
+
+luogo:
+sessione.luogo,
+
+tipo_pescata:
+sessione.tipo_pescata,
+
+data:
+sessione.data,
+
+ora_inizio:
+sessione.ora_inizio,
+
+ora_fine:
+sessione.ora_fine,
+
+temperatura:
+sessione.temperatura,
+
+pressione:
+sessione.pressione,
+
+vento:
+sessione.vento,
+
+fase_lunare:
+sessione.fase_lunare,
+
+note:
+sessione.note
+
+})
+
+.eq(
+'id',
+sessione.id)
+
+
+if(error){
+
+console.log(error)
+
+return
+
+}
+
+setEditingSession(
+null
+)
+
+await loadData()
+
+}
+
+async function eliminaSessione(session){
+
+if(
+
+!window.confirm(
+"Eliminare sessione?"
+)
+
+){
+return
+}
+
+const {error}=
+
+await supabase
+
+.from(
+'fishing_sessions'
+)
+
+.delete()
+
+.eq(
+'id',
+session.id)
+
+
+if(error){
+
+console.log(error)
+
+return
+
+}
+
+await loadData()
+
+}
+
 
 
 async function logout(){
@@ -445,15 +549,7 @@ setEditingSession(s)
 
 }
 
-onDelete={(s)=>{
-
-console.log(
-"delete",
-s
-)
-
-}}
-
+onDelete={eliminaSessione}
 />
 
 }
@@ -541,15 +637,7 @@ null
 
 }
 
-onSave={(s)=>{
-
-console.log(
-"save",
-s
-)
-
-}}
-
+onSave={salvaModifica}
 />
 
 </div>
