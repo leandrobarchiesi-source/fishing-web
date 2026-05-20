@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard'
 import SessionsPage from './pages/SessionsPage'
 import SpotPage from './pages/SpotPage'
 import SpotMapPage from './pages/SpotMapPage'
+import SpotMapModal from './components/SpotMapModal'
 
 function App(){
 
@@ -43,6 +44,10 @@ addingSpot,
 setAddingSpot
 ]=useState(false)
 
+const [
+showSpotMap,
+setShowSpotMap
+]=useState(false)
 
 useEffect(()=>{
 
@@ -574,8 +579,8 @@ s
 
 openMap={()=>
 
-setSelectedPage(
-"spotMap"
+setShowSpotMap(
+true
 )
 
 }
@@ -662,6 +667,26 @@ setAddingSpot(false)
 
 onSave={
 salvaSpot
+}
+
+/>
+
+<SpotMapModal
+
+isOpen={
+showSpotMap
+}
+
+onClose={()=>
+
+setShowSpotMap(
+false
+)
+
+}
+
+spots={
+spots
 }
 
 />
