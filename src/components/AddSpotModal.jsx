@@ -34,6 +34,8 @@ style={{
 
 content:{
 
+zIndex:10000,
+
 maxWidth:'800px',
 
 margin:'auto',
@@ -47,7 +49,9 @@ padding:'30px'
 overlay:{
 
 background:
-'rgba(0,0,0,.5)'
+'rgba(0,0,0,.5)',
+
+zIndex:9999
 
 }
 

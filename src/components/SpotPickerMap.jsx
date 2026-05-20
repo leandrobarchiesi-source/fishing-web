@@ -99,12 +99,14 @@ height:'100%',
 
 width:'100%',
 
-borderRadius:'20px'
+borderRadius:'20px',
+
+zIndex:1
 
 }}
 
 >
-
+    
 <TileLayer
 
 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
