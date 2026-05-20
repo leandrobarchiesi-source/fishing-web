@@ -1,75 +1,7 @@
-import { useEffect, useRef } from 'react'
-
-import {
-MapContainer,
-TileLayer,
-Marker,
-Popup,
-useMap
-}
-from 'react-leaflet'
-
-import L from 'leaflet'
-
+import { MapContainer, TileLayer } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 
-
-delete L.Icon.Default.prototype._getIconUrl
-
-L.Icon.Default.mergeOptions({
-
-iconRetinaUrl:
-'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
-
-iconUrl:
-'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-
-shadowUrl:
-'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png'
-
-})
-
-
-function ResizeMap(){
-
-const map=useMap()
-
-useEffect(()=>{
-
-setTimeout(()=>{
-
-map.invalidateSize()
-
-},200)
-
-},[map])
-
-return null
-
-}
-
-
-export default function SpotMapPage({
-
-spots
-
-}){
-
-const center=
-
-spots.length
-
-?
-
-[
-Number(spots[0].latitudine),
-Number(spots[0].longitudine)
-]
-
-:
-
-[41.9,12.5]
-
+export default function SpotMapPage(){
 
 return(
 
@@ -81,25 +13,19 @@ return(
 
 </h1>
 
-<br/>
-
 <div style={{
 
-height:'75vh',
+height:'80vh',
 
-width:'100%',
-
-borderRadius:'20px',
-
-overflow:'hidden'
+width:'100%'
 
 }}>
 
 <MapContainer
 
-center={center}
+center={[41.9,12.5]}
 
-zoom={7}
+zoom={6}
 
 style={{
 
@@ -111,73 +37,11 @@ width:'100%'
 
 >
 
-<ResizeMap/>
-
 <TileLayer
 
 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
-attribution="OpenStreetMap"
-
 />
-
-{
-
-spots.map(
-
-spot=>
-
-<Marker
-
-key={spot.id}
-
-position={[
-
-Number(
-spot.latitudine
-),
-
-Number(
-spot.longitudine
-)
-
-]}
-
->
-
-<Popup>
-
-<b>
-
-{
-
-spot.nome||
-
-"Spot"
-
-}
-
-</b>
-
-<br/>
-
-Lat:
-
-{spot.latitudine}
-
-<br/>
-
-Lon:
-
-{spot.longitudine}
-
-</Popup>
-
-</Marker>
-
-)
-
-}
 
 </MapContainer>
 

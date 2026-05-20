@@ -547,11 +547,7 @@ selectedPage==="spotMap"
 
 &&
 
-<SpotMapPage
-
-spots={spots}
-
-/>
+<SpotMapPage/>
 
 }
 
