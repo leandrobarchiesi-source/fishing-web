@@ -19,10 +19,11 @@ sessionCount,
 
 spotCount,
 
-sessions
+sessions,
+
+refreshData
 
 }){
-
 
 const [
 
@@ -54,39 +55,51 @@ useState(null)
 async function eliminaSessione(session){
 
 if(
+
 !window.confirm(
+
 "Eliminare sessione?"
+
 )
+
 ){
+
 return
+
 }
 
+const {error}=
+
 await supabase
+
 .from(
 'fishing_sessions'
 )
+
 .delete()
+
 .eq(
 'id',
-session.id
-)
+session.id)
 
-setSessions(
 
-prev=>
+if(error){
 
-prev.filter(
+console.log(error)
 
-s=>s.id!==session.id
-
-)
-
-)
+return
 
 }
 
+await refreshData()
 
-async function salvaModifica(sessione){
+}
+
+async function salvaModifica(
+
+sessione
+
+){
 
 const {error}=
 
@@ -132,8 +145,7 @@ sessione.note
 
 .eq(
 'id',
-sessione.id
-)
+sessione.id)
 
 
 if(error){
@@ -141,6 +153,14 @@ if(error){
 console.log(error)
 
 return
+
+}
+
+setEditingSession(
+null
+)
+
+await refreshData()
 
 }
 
@@ -291,7 +311,7 @@ onSave={salvaModifica}
 
 )
 
-}
+
 
 
 function Box({

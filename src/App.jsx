@@ -330,20 +330,15 @@ minHeight:'100vh'
 
 <Dashboard
 
-sessionCount={
-sessionCount
-}
+sessionCount={sessionCount}
 
-spotCount={
-spotCount
-}
+spotCount={spotCount}
 
-sessions={
-sessions
-}
+sessions={sessions}
+
+refreshData={loadData}
 
 />
-
 </div>
 
 </div>
