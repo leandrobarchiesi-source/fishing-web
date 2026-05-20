@@ -4,6 +4,7 @@ import { supabase } from './supabase'
 
 import Sidebar from './components/Sidebar'
 import Dashboard from './pages/Dashboard'
+import SessionsPage from './pages/SessionsPage'
 
 
 function App() {
@@ -464,11 +465,17 @@ selectedPage==="sessioni"
 
 &&
 
-<h1>
+<SessionsPage
 
-🎣 Sessioni
+sessions={sessions}
 
-</h1>
+onView={()=>{}}
+
+onEdit={()=>{}}
+
+onDelete={()=>{}}
+
+/>
 
 }
 
