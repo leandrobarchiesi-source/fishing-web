@@ -142,11 +142,9 @@ return(
 
 width:'100%',
 
-display:'flex',
+maxWidth:'1200px',
 
-flexDirection:'column',
-
-alignItems:'center'
+margin:'0 auto'
 
 }}>
 
@@ -200,7 +198,7 @@ width:'100%',
 
 textAlign:'center',
 
-marginBottom:'30px'
+marginBottom:'35px'
 
 }}>
     Ultime Sessioni

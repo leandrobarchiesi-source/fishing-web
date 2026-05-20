@@ -1,22 +1,16 @@
 import {
-
 FaEye,
 FaEdit,
 FaTrash
-
 }
-
 from 'react-icons/fa'
 
 
 export default function SessionCard({
 
 session,
-
 onView,
-
 onEdit,
-
 onDelete
 
 }){
@@ -38,7 +32,7 @@ return(
 
 background:'white',
 
-padding:'20px 25px',
+padding:'18px 25px',
 
 borderRadius:'20px',
 
@@ -47,9 +41,9 @@ marginBottom:'15px',
 boxShadow:
 '0 2px 12px rgba(0,0,0,.08)',
 
-maxWidth:'1000px',
-
 width:'100%',
+
+maxWidth:'950px',
 
 display:'flex',
 
@@ -64,23 +58,27 @@ boxSizing:'border-box'
 
 <div style={{
 
-display:'flex',
+display:'grid',
+
+gridTemplateColumns:
+'280px 180px',
 
 alignItems:'center',
 
-gap:'20px',
+gap:'30px',
 
 flex:1
 
 }}>
 
+
 <div>
 
 <h3 style={{
 
-margin:'0',
+margin:0,
 
-fontSize:'22px',
+fontSize:'20px',
 
 color:'#334155'
 
@@ -90,26 +88,25 @@ color:'#334155'
 
 </h3>
 
+</div>
+
 
 <div style={{
 
-marginTop:'8px',
+fontSize:'14px',
 
-color:'#64748B',
-
-fontSize:'14px'
+color:'#64748B'
 
 }}>
 
 {session.tipo_pescata}
 
-•
+{" • "}
 
 {data}
 
 </div>
 
-</div>
 
 </div>
 
@@ -122,7 +119,6 @@ display:'flex',
 gap:'10px'
 
 }}>
-
 
 <IconButton
 
@@ -139,7 +135,6 @@ onView(session)
 </IconButton>
 
 
-
 <IconButton
 
 onClick={()=>
@@ -153,7 +148,6 @@ onEdit(session)
 <FaEdit/>
 
 </IconButton>
-
 
 
 <IconButton
@@ -198,13 +192,13 @@ onClick={onClick}
 
 style={{
 
-width:'40px',
+width:'42px',
 
-height:'40px',
+height:'42px',
 
 border:'none',
 
-borderRadius:'10px',
+borderRadius:'12px',
 
 cursor:'pointer',
 
