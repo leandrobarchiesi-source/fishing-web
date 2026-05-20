@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react'
 import { supabase } from './supabase'
+
 import Sidebar from './components/Sidebar'
+
 import SessionModal from './components/SessionModal'
 import EditSessionModal from './components/EditSessionModal'
+import AddSpotModal from './components/AddSpotModal'
+
 import Dashboard from './pages/Dashboard'
 import SessionsPage from './pages/SessionsPage'
 import SpotPage from './pages/SpotPage'
-import AddSpotModal from './components/AddSpotModal'
+
 
 function App(){
 
@@ -37,9 +41,8 @@ setEditingSession
 const [
 addingSpot,
 setAddingSpot
-]
-=
-useState(false)
+]=useState(false)
+
 
 useEffect(()=>{
 
@@ -172,7 +175,6 @@ return
 
 }
 
-
 const {data}=
 
 await supabase
@@ -186,6 +188,24 @@ data.user
 await loadData()
 
 }
+
+
+
+async function logout(){
+
+await supabase
+.auth
+.signOut()
+
+setUser(null)
+
+setSessions([])
+
+setSpots([])
+
+}
+
+
 
 async function salvaSpot(spot){
 
@@ -236,20 +256,6 @@ return
 setAddingSpot(false)
 
 await loadData()
-
-}
-
-async function logout(){
-
-await supabase
-.auth
-.signOut()
-
-setUser(null)
-
-setSessions([])
-
-setSpots([])
 
 }
 
@@ -325,17 +331,12 @@ await loadData()
 async function eliminaSessione(session){
 
 if(
-
 !window.confirm(
 "Eliminare sessione?"
 )
-
 ){
-
 return
-
 }
-
 
 const {error}=
 
@@ -359,7 +360,6 @@ console.log(error)
 return
 
 }
-
 
 await loadData()
 
@@ -385,16 +385,11 @@ background:
 <div style={{
 
 background:'white',
-
 padding:'40px',
-
 width:'420px',
-
 borderRadius:'25px',
-
 boxShadow:
 '0 10px 30px rgba(0,0,0,.15)',
-
 textAlign:'center'
 
 }}>
@@ -409,11 +404,9 @@ fontSize:'70px'
 
 </div>
 
-
 <h1 style={{
 
 fontSize:'34px',
-
 color:'#17233C'
 
 }}>
@@ -422,11 +415,9 @@ Fishing Web
 
 </h1>
 
-
 <p style={{
 
 marginBottom:30,
-
 color:'#666'
 
 }}>
@@ -435,61 +426,32 @@ Accedi al tuo account
 
 </p>
 
-
 <input
-
 placeholder='Email'
-
 value={email}
-
-onChange={(e)=>
-
-setEmail(
-e.target.value
-)}
-
+onChange={(e)=>setEmail(e.target.value)}
 style={inputStyle}
-
 />
-
 
 <input
-
 type='password'
-
 placeholder='Password'
-
 value={password}
-
-onChange={(e)=>
-
-setPassword(
-e.target.value
-)}
-
+onChange={(e)=>setPassword(e.target.value)}
 style={inputStyle}
-
 />
-
 
 <button
-
 onClick={login}
 
 style={{
 
 width:'100%',
-
 padding:'14px',
-
 fontSize:'18px',
-
 background:'#17233C',
-
 color:'white',
-
 border:'none',
-
 borderRadius:'12px'
 
 }}
@@ -512,49 +474,27 @@ Accedi
 
 return(
 
-<div style={{
-
-display:'flex'
-
-}}>
+<div style={{display:'flex'}}>
 
 <Sidebar
-
-selected={
-selectedPage
-}
-
-setSelected={
-setSelectedPage
-}
-
-logout={
-logout
-}
-
+selected={selectedPage}
+setSelected={setSelectedPage}
+logout={logout}
 />
 
 
 <div style={{
 
 marginLeft:260,
-
 padding:30,
-
 width:'100%',
-
 background:"#E2E8F0",
-
 minHeight:'100vh'
 
 }}>
 
 
-{
-
-selectedPage==="dashboard"
-
-&&
+{selectedPage==="dashboard" &&
 
 <Dashboard
 
@@ -571,11 +511,7 @@ refreshData={loadData}
 }
 
 
-{
-
-selectedPage==="sessioni"
-
-&&
+{selectedPage==="sessioni" &&
 
 <SessionsPage
 
@@ -592,11 +528,7 @@ onDelete={eliminaSessione}
 }
 
 
-{
-
-selectedPage==="spot"
-
-&&
+{selectedPage==="spot" &&
 
 <SpotPage
 
@@ -605,7 +537,7 @@ spots={spots}
 onView={(s)=>{
 
 console.log(
-"view spot",
+"spot view",
 s
 )
 
@@ -614,7 +546,7 @@ s
 onEdit={(s)=>{
 
 console.log(
-"edit spot",
+"spot edit",
 s
 )
 
@@ -623,7 +555,7 @@ s
 onDelete={(s)=>{
 
 console.log(
-"delete spot",
+"spot delete",
 s
 )
 
@@ -639,9 +571,7 @@ alert(
 
 addSpot={()=>
 
-setAddingSpot(
-true
-)
+setAddingSpot(true)
 
 }
 
@@ -650,27 +580,26 @@ true
 }
 
 
-{
+{selectedPage==="statistiche" &&
 
-selectedPage==="statistiche"
+<h1>
 
-&&
+📊 Statistiche
 
-<h1>📊 Statistiche</h1>
-
-}
-
-
-{
-
-selectedPage==="profilo"
-
-&&
-
-<h1>👤 Profilo</h1>
+</h1>
 
 }
 
+
+{selectedPage==="profilo" &&
+
+<h1>
+
+👤 Profilo
+
+</h1>
+
+}
 
 
 <SessionModal
@@ -683,9 +612,7 @@ selectedSession!=null
 
 onClose={()=>
 
-setSelectedSession(
-null
-)
+setSelectedSession(null)
 
 }
 
@@ -702,23 +629,13 @@ editingSession!=null
 
 onClose={()=>
 
-setEditingSession(
-null
-)}
-
-onSave={
-salvaModifica
+setEditingSession(null)
 }
+
+onSave={salvaModifica}
 
 />
 
-</div>
-
-</div>
-
-)
-
-}
 
 <AddSpotModal
 
@@ -728,9 +645,7 @@ addingSpot
 
 onClose={()=>
 
-setAddingSpot(
-false
-)
+setAddingSpot(false)
 
 }
 
@@ -739,6 +654,15 @@ salvaSpot
 }
 
 />
+
+</div>
+
+</div>
+
+)
+
+}
+
 
 
 const inputStyle={
