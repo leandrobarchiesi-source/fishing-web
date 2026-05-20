@@ -9,35 +9,24 @@ import EditSessionModal from './components/EditSessionModal'
 
 import Dashboard from './pages/Dashboard'
 import SessionsPage from './pages/SessionsPage'
+import SpotPage from './pages/SpotPage'
 
 
 function App(){
 
-const [user,setUser]=
-useState(null)
+const [user,setUser]=useState(null)
 
-const [email,setEmail]=
-useState("")
+const [email,setEmail]=useState("")
+const [password,setPassword]=useState("")
 
-const [password,setPassword]=
-useState("")
+const [sessions,setSessions]=useState([])
+const [spots,setSpots]=useState([])
 
-const [sessions,setSessions]=
-useState([])
+const [sessionCount,setSessionCount]=useState(0)
+const [spotCount,setSpotCount]=useState(0)
 
-const [sessionCount,
-setSessionCount]=
-useState(0)
-
-const [spotCount,
-setSpotCount]=
-useState(0)
-
-const [selectedPage,
-setSelectedPage]=
-useState(
-'dashboard'
-)
+const [selectedPage,setSelectedPage]=
+useState("dashboard")
 
 const [
 selectedSession,
@@ -48,6 +37,7 @@ const [
 editingSession,
 setEditingSession
 ]=useState(null)
+
 
 
 useEffect(()=>{
@@ -99,6 +89,7 @@ return
 
 }
 
+
 const sessionsResult=
 
 await supabase
@@ -129,9 +120,7 @@ await supabase
 'spots'
 )
 
-.select(
-'id'
-)
+.select()
 
 .eq(
 'user_id',
@@ -140,15 +129,19 @@ user.id
 
 
 setSessions(
-sessionsResult.data||[]
+sessionsResult.data || []
+)
+
+setSpots(
+spotsResult.data || []
 )
 
 setSessionCount(
-sessionsResult.data?.length||0
+sessionsResult.data?.length || 0
 )
 
 setSpotCount(
-spotsResult.data?.length||0
+spotsResult.data?.length || 0
 )
 
 }
@@ -178,6 +171,7 @@ return
 
 }
 
+
 const {data}=
 
 await supabase
@@ -191,6 +185,24 @@ data.user
 await loadData()
 
 }
+
+
+
+async function logout(){
+
+await supabase
+.auth
+.signOut()
+
+setUser(null)
+
+setSessions([])
+
+setSpots([])
+
+}
+
+
 
 async function salvaModifica(sessione){
 
@@ -257,6 +269,8 @@ await loadData()
 
 }
 
+
+
 async function eliminaSessione(session){
 
 if(
@@ -266,8 +280,11 @@ if(
 )
 
 ){
+
 return
+
 }
+
 
 const {error}=
 
@@ -292,42 +309,23 @@ return
 
 }
 
+
 await loadData()
 
 }
 
 
 
-async function logout(){
-
-await supabase
-.auth
-.signOut()
-
-setUser(null)
-
-setSessions([])
-
-}
-
-
+if(!user){
 
 return(
-
-!user
-
-?
 
 <div style={{
 
 display:'flex',
-
 justifyContent:'center',
-
 alignItems:'center',
-
 height:'100vh',
-
 background:
 'linear-gradient(to bottom,#EAF6FF,#D8ECFF)'
 
@@ -352,9 +350,7 @@ textAlign:'center'
 
 <div style={{
 
-fontSize:'70px',
-
-marginBottom:'10px'
+fontSize:'70px'
 
 }}>
 
@@ -362,9 +358,8 @@ marginBottom:'10px'
 
 </div>
 
-<h1 style={{
 
-margin:0,
+<h1 style={{
 
 fontSize:'34px',
 
@@ -376,11 +371,12 @@ Fishing Web
 
 </h1>
 
+
 <p style={{
 
-color:'#666',
+marginBottom:30,
 
-marginBottom:'30px'
+color:'#666'
 
 }}>
 
@@ -457,7 +453,13 @@ Accedi
 
 </div>
 
-:
+)
+
+}
+
+
+
+return(
 
 <div style={{
 
@@ -505,26 +507,17 @@ selectedPage==="dashboard"
 
 <Dashboard
 
-sessionCount={
-sessionCount
-}
+sessionCount={sessionCount}
 
-spotCount={
-spotCount
-}
+spotCount={spotCount}
 
-sessions={
-sessions
-}
+sessions={sessions}
 
-refreshData={
-loadData
-}
+refreshData={loadData}
 
 />
 
 }
-
 
 
 {
@@ -537,19 +530,12 @@ selectedPage==="sessioni"
 
 sessions={sessions}
 
-onView={(s)=>
+onView={setSelectedSession}
 
-setSelectedSession(s)
-
-}
-
-onEdit={(s)=>
-
-setEditingSession(s)
-
-}
+onEdit={setEditingSession}
 
 onDelete={eliminaSessione}
+
 />
 
 }
@@ -561,14 +547,56 @@ selectedPage==="spot"
 
 &&
 
-<h1>
+<SpotPage
 
-📍 Spot
+spots={spots}
 
-</h1>
+onView={(s)=>{
+
+console.log(
+"view spot",
+s
+)
+
+}}
+
+onEdit={(s)=>{
+
+console.log(
+"edit spot",
+s
+)
+
+}}
+
+onDelete={(s)=>{
+
+console.log(
+"delete spot",
+s
+)
+
+}}
+
+openMap={()=>{
+
+alert(
+"Apri mappa"
+)
+
+}}
+
+addSpot={()=>{
+
+alert(
+"Aggiungi spot"
+)
+
+}}
+
+/>
 
 }
-
 
 
 {
@@ -577,14 +605,9 @@ selectedPage==="statistiche"
 
 &&
 
-<h1>
-
-📊 Statistiche
-
-</h1>
+<h1>📊 Statistiche</h1>
 
 }
-
 
 
 {
@@ -593,13 +616,10 @@ selectedPage==="profilo"
 
 &&
 
-<h1>
-
-👤 Profilo
-
-</h1>
+<h1>👤 Profilo</h1>
 
 }
+
 
 
 <SessionModal
@@ -633,11 +653,12 @@ onClose={()=>
 
 setEditingSession(
 null
-)
+)}
 
+onSave={
+salvaModifica
 }
 
-onSave={salvaModifica}
 />
 
 </div>
@@ -652,19 +673,14 @@ onSave={salvaModifica}
 const inputStyle={
 
 width:'100%',
-
 padding:'14px',
-
 fontSize:'16px',
-
 borderRadius:'12px',
-
 border:'1px solid #ddd',
-
 marginBottom:'15px',
-
 boxSizing:'border-box'
 
 }
+
 
 export default App
