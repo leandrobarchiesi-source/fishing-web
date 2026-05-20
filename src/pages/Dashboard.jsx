@@ -140,14 +140,10 @@ return(
 
 <div style={{
 
-width:'100%',
-
-maxWidth:'1500px',
-
-margin:'0 auto'
+width:'100%'
 
 }}>
-    
+        
 <h1 style={{
 
 fontSize:'52px',
@@ -169,11 +165,14 @@ Bentornato
 
 display:'flex',
 
+justifyContent:'center',
+
 gap:'25px',
 
-marginBottom:'40px',
+marginBottom:'50px',
 
 flexWrap:'wrap'
+
 }}>
 
 <Box
