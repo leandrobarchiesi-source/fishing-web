@@ -85,7 +85,6 @@ spots=[]
 
 }){
 
-
 return(
 
 <MapContainer
@@ -173,33 +172,41 @@ spot.nome||
 </p>
 
 
-<div style={{
+<button
 
-display:'flex',
+onClick={()=>{
 
-gap:8
+alert(
 
-}}>
+"Modifica spot:\n"+
 
-<button>
+spot.nome
 
-👁
+)
+
+}}
+
+style={{
+
+padding:'8px 12px',
+
+background:'#17233C',
+
+color:'white',
+
+border:'none',
+
+borderRadius:'8px',
+
+cursor:'pointer'
+
+}}
+
+>
+
+✏ Modifica
 
 </button>
-
-<button>
-
-✏
-
-</button>
-
-<button>
-
-🗑
-
-</button>
-
-</div>
 
 </div>
 
