@@ -140,10 +140,16 @@ return(
 
 <div style={{
 
-width:'100%'
+width:'100%',
+
+display:'flex',
+
+flexDirection:'column',
+
+alignItems:'center'
 
 }}>
-        
+
 <h1 style={{
 
 fontSize:'52px',
@@ -188,10 +194,16 @@ value={spotCount}
 </div>
 
 
-<h2>
+<h2 style={{
 
-Ultime Sessioni
+width:'100%',
 
+textAlign:'center',
+
+marginBottom:'30px'
+
+}}>
+    Ultime Sessioni
 </h2>
 
 <br/>

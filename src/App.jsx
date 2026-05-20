@@ -597,14 +597,15 @@ logout={logout}
 
 marginLeft:'240px',
 
-width:'calc(100vw - 240px)',
-
 padding:'40px',
 
-boxSizing:'border-box'
+boxSizing:'border-box',
+
+width:'auto',
+
+overflowX:'hidden'
 
 }}>
-
 
 {selectedPage==="dashboard" &&
 
