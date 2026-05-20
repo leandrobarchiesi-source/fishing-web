@@ -55,9 +55,13 @@ center={[41.9,12.5]}
 
 zoom={6}
 
+scrollWheelZoom={true}
+
 style={{
 
-height:'75vh',
+height:'80vh',
+
+width:'100%',
 
 borderRadius:'20px'
 
@@ -67,13 +71,13 @@ borderRadius:'20px'
 
 <TileLayer
 
+attribution='OpenStreetMap'
+
 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
 />
 
-
 {
-
 spots.map(
 
 spot=>
@@ -84,9 +88,13 @@ key={spot.id}
 
 position={[
 
-spot.latitudine,
+Number(
+spot.latitudine
+),
 
+Number(
 spot.longitudine
+)
 
 ]}
 
@@ -98,25 +106,15 @@ icon={icon}
 
 <b>
 
-{
-
-spot.nome||
-
-"Spot"
-
-}
+{spot.nome || "Spot"}
 
 </b>
 
 <br/>
 
-Lat:
-
 {spot.latitudine}
 
 <br/>
-
-Lon:
 
 {spot.longitudine}
 
