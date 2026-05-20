@@ -597,13 +597,11 @@ logout={logout}
 
 marginLeft:'240px',
 
+width:'calc(100% - 240px)',
+
 minHeight:'100vh',
 
 background:'#EEF4F8',
-
-display:'flex',
-
-justifyContent:'center',
 
 padding:'40px',
 
@@ -611,6 +609,7 @@ boxSizing:'border-box'
 
 }}>
 
+    
 {selectedPage==="dashboard" &&
 
 <Dashboard
