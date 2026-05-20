@@ -64,9 +64,7 @@ await supabase
 
 if(data.user){
 
-setUser(
-data.user
-)
+setUser(data.user)
 
 await loadData()
 
@@ -135,19 +133,19 @@ user.id)
 
 
 setSessions(
-sessionsResult.data || []
+sessionsResult.data||[]
 )
 
 setSpots(
-spotsResult.data || []
+spotsResult.data||[]
 )
 
 setSessionCount(
-sessionsResult.data?.length || 0
+sessionsResult.data?.length||0
 )
 
 setSpotCount(
-spotsResult.data?.length || 0
+spotsResult.data?.length||0
 )
 
 }
@@ -234,17 +232,13 @@ await supabase
 
 .insert({
 
-user_id:
-user.id,
+user_id:user.id,
 
-nome:
-spot.nome,
+nome:spot.nome,
 
-latitudine:
-spot.latitudine,
+latitudine:spot.latitudine,
 
-longitudine:
-spot.longitudine
+longitudine:spot.longitudine
 
 })
 
@@ -314,8 +308,6 @@ return
 }
 
 
-const {error}=
-
 await supabase
 
 .from(
@@ -327,15 +319,6 @@ await supabase
 .eq(
 'id',
 spot.id)
-
-
-if(error){
-
-console.log(error)
-
-return
-
-}
 
 
 await loadData()
@@ -356,14 +339,12 @@ await supabase
 
 .update({
 
-luogo:
-sessione.luogo,
+luogo:sessione.luogo,
 
 tipo_pescata:
 sessione.tipo_pescata,
 
-data:
-sessione.data,
+data:sessione.data,
 
 ora_inizio:
 sessione.ora_inizio,
@@ -425,8 +406,6 @@ return
 }
 
 
-const {error}=
-
 await supabase
 
 .from(
@@ -438,15 +417,6 @@ await supabase
 .eq(
 'id',
 session.id)
-
-
-if(error){
-
-console.log(error)
-
-return
-
-}
 
 
 await loadData()
@@ -462,9 +432,13 @@ return(
 <div style={{
 
 display:'flex',
+
 justifyContent:'center',
+
 alignItems:'center',
+
 height:'100vh',
+
 background:
 'linear-gradient(to bottom,#EAF6FF,#D8ECFF)'
 
@@ -473,11 +447,16 @@ background:
 <div style={{
 
 background:'white',
+
 padding:'40px',
+
 width:'420px',
+
 borderRadius:'25px',
+
 boxShadow:
 '0 10px 30px rgba(0,0,0,.15)',
+
 textAlign:'center'
 
 }}>
@@ -496,7 +475,8 @@ fontSize:'70px'
 <h1 style={{
 
 fontSize:'34px',
-color:'#17233C'
+
+color:'#234E70'
 
 }}>
 
@@ -508,6 +488,7 @@ FishingTrack
 <p style={{
 
 marginBottom:30,
+
 color:'#666'
 
 }}>
@@ -518,23 +499,38 @@ Il tuo diario di pesca digitale
 
 
 <input
+
 placeholder='Email'
+
 value={email}
+
 onChange={(e)=>
-setEmail(e.target.value)
-}
+
+setEmail(
+e.target.value
+)}
+
 style={inputStyle}
+
 />
 
 
 <input
+
 type='password'
+
 placeholder='Password'
+
 value={password}
+
 onChange={(e)=>
-setPassword(e.target.value)
-}
+
+setPassword(
+e.target.value
+)}
+
 style={inputStyle}
+
 />
 
 
@@ -545,11 +541,17 @@ onClick={login}
 style={{
 
 width:'100%',
+
 padding:'14px',
+
 fontSize:'18px',
-background:'#17233C',
+
+background:'#234E70',
+
 color:'white',
+
 border:'none',
+
 borderRadius:'12px'
 
 }}
@@ -572,7 +574,13 @@ Accedi
 
 return(
 
-<div style={{display:'flex'}}>
+<div style={{
+
+background:'#EEF4F8',
+
+minHeight:'100vh'
+
+}}>
 
 <Sidebar
 
@@ -589,18 +597,15 @@ logout={logout}
 
 marginLeft:'240px',
 
+width:'calc(100vw - 240px)',
+
 padding:'40px',
 
-background:'#EEF4F8',
-
-minHeight:'100vh',
-
-boxSizing:'border-box',
-
-flex:1
+boxSizing:'border-box'
 
 }}>
-    
+
+
 {selectedPage==="dashboard" &&
 
 <Dashboard
@@ -645,24 +650,11 @@ onDelete={eliminaSpot}
 
 addSpot={()=>
 
-setAddingSpot(
-true
-)
+setAddingSpot(true)
 
 }
 
 />
-
-}
-
-
-{selectedPage==="statistiche" &&
-
-<h1>
-
-📊 Statistiche
-
-</h1>
 
 }
 
@@ -679,6 +671,7 @@ logout={logout}
 
 }
 
+
 <SessionModal
 
 session={selectedSession}
@@ -689,9 +682,7 @@ selectedSession!=null
 
 onClose={()=>
 
-setSelectedSession(
-null
-)
+setSelectedSession(null)
 
 }
 
@@ -708,9 +699,8 @@ editingSession!=null
 
 onClose={()=>
 
-setEditingSession(
-null
-)}
+setEditingSession(null)
+}
 
 onSave={
 salvaModifica
@@ -727,10 +717,7 @@ addingSpot
 
 onClose={()=>
 
-setAddingSpot(
-false
-)
-
+setAddingSpot(false)
 }
 
 onSave={
