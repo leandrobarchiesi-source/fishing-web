@@ -541,16 +541,17 @@ console.log(
 s
 )
 
-{
+{selectedPage==="spotMap" &&
 
-selectedPage==="spotMap"
+<div key="spotmap">
 
-&&
+<SpotMapPage
+spots={spots}
+/>
 
-<SpotMapPage/>
+</div>
 
 }
-
 }}
 
 onEdit={(s)=>{

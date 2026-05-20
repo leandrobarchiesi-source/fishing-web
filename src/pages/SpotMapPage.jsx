@@ -1,27 +1,44 @@
-import { MapContainer, TileLayer } from 'react-leaflet'
-import L from 'leaflet'
+import { useEffect, useState } from 'react'
+
+import {
+MapContainer,
+TileLayer
+}
+from 'react-leaflet'
 
 import 'leaflet/dist/leaflet.css'
 
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png'
-import markerIcon from 'leaflet/dist/images/marker-icon.png'
-import markerShadow from 'leaflet/dist/images/marker-shadow.png'
-
-
-delete L.Icon.Default.prototype._getIconUrl
-
-L.Icon.Default.mergeOptions({
-
-iconRetinaUrl:markerIcon2x,
-
-iconUrl:markerIcon,
-
-shadowUrl:markerShadow
-
-})
-
 
 export default function SpotMapPage(){
+
+const [mounted,setMounted]=
+useState(false)
+
+useEffect(()=>{
+
+setTimeout(()=>{
+
+setMounted(true)
+
+},300)
+
+},[])
+
+
+if(!mounted){
+
+return(
+
+<div>
+
+Caricamento mappa...
+
+</div>
+
+)
+
+}
+
 
 return(
 
@@ -38,6 +55,10 @@ return(
 height:'80vh',
 
 width:'100%',
+
+borderRadius:'20px',
+
+overflow:'hidden',
 
 background:'white'
 
@@ -60,8 +81,6 @@ width:'100%'
 >
 
 <TileLayer
-
-attribution='OpenStreetMap'
 
 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
