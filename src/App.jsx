@@ -597,12 +597,11 @@ height:'100vh',
 
 overflowY:'auto',
 
-background:'#EEF4F8',
+boxSizing:'border-box',
 
-boxSizing:'border-box'
+background:'#EEF4F8'
 
 }}>
-
 
 {selectedPage==="dashboard" &&
 
