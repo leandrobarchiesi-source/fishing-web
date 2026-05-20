@@ -668,10 +668,6 @@ true
 
 user={user}
 
-sessionCount={sessionCount}
-
-spotCount={spotCount}
-
 logout={logout}
 
 />

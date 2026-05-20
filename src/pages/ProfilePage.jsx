@@ -1,11 +1,180 @@
+import {useEffect,useState} from 'react'
+import {supabase} from '../supabase'
+
 export default function ProfilePage({
 
 user,
-sessionCount,
-spotCount,
 logout
 
 }){
+
+const [nome,setNome]=useState("")
+const [cognome,setCognome]=useState("")
+const [lingua,setLingua]=useState("it")
+
+const [loading,setLoading]=
+useState(true)
+
+
+useEffect(()=>{
+
+caricaProfilo()
+
+},[])
+
+
+
+async function caricaProfilo(){
+
+const {data}=
+
+await supabase
+
+.from(
+'profiles'
+)
+
+.select()
+
+.eq(
+'id',
+user.id
+)
+
+.single()
+
+
+if(data){
+
+setNome(
+data.nome || ""
+)
+
+setCognome(
+data.cognome || ""
+)
+
+setLingua(
+data.language || "it"
+)
+
+}
+
+setLoading(false)
+
+}
+
+
+
+async function salva(){
+
+await supabase
+
+.from(
+'profiles'
+)
+
+.update({
+
+nome,
+
+cognome,
+
+language:
+lingua
+
+})
+
+.eq(
+'id',
+user.id
+)
+
+
+alert(
+"Profilo aggiornato"
+)
+
+}
+
+
+
+async function cambiaPassword(){
+
+const nuova=
+
+prompt(
+"Nuova password"
+)
+
+
+if(!nuova){
+
+return
+
+}
+
+
+if(
+
+nuova.length<6
+
+){
+
+alert(
+"Minimo 6 caratteri"
+)
+
+return
+
+}
+
+
+try{
+
+await supabase
+.auth
+.updateUser({
+
+password:
+nuova
+
+})
+
+
+alert(
+"Password aggiornata"
+)
+
+}
+
+catch(e){
+
+alert(
+e.message
+)
+
+}
+
+}
+
+
+
+if(loading){
+
+return(
+
+<h2>
+
+Caricamento...
+
+</h2>
+
+)
+
+}
+
+
 
 return(
 
@@ -32,87 +201,128 @@ maxWidth:'700px'
 
 }}>
 
+
 <div style={{
 
-fontSize:'80px',
+textAlign:'center',
 
-marginBottom:20
+marginBottom:'30px'
 
 }}>
 
-🎣
+<div style={{
+
+fontSize:'80px'
+
+}}>
+
+👤
+
+</div>
 
 </div>
 
 
-<h2>
+<Input
 
-Utente
+label="Nome"
 
-</h2>
+value={nome}
 
-<p>
+setValue={setNome}
 
-📧
+/>
 
-{user?.email}
 
-</p>
+<Input
 
-<br/>
+label="Cognome"
+
+value={cognome}
+
+setValue={setCognome}
+
+/>
 
 
 <div style={{
 
-display:'flex',
-
-gap:20
+marginBottom:'15px'
 
 }}>
 
-<Box
+<label>
 
-title="Sessioni"
+Lingua
 
-value={sessionCount}
+</label>
 
-/>
 
-<Box
+<select
 
-title="Spot"
+value={lingua}
 
-value={spotCount}
+onChange={(e)=>
 
-/>
+setLingua(
+e.target.value
+)}
+
+style={style}
+
+>
+
+<option value="it">
+
+🇮🇹 Italiano
+
+</option>
+
+<option value="en">
+
+🇬🇧 English
+
+</option>
+
+<option value="fr">
+
+🇫🇷 Français
+
+</option>
+
+<option value="es">
+
+🇪🇸 Español
+
+</option>
+
+</select>
 
 </div>
-
-
-<br/>
 
 
 <button
 
-style={{
+onClick={salva}
 
-padding:'12px 20px',
-
-background:'#17233C',
-
-color:'white',
-
-border:'none',
-
-borderRadius:'12px',
-
-marginRight:10
-
-}}
+style={btn}
 
 >
 
-✏ Modifica profilo
+Salva profilo
+
+</button>
+
+
+<button
+
+onClick={cambiaPassword}
+
+style={btn}
+
+>
+
+🔒 Cambia password
 
 </button>
 
@@ -121,19 +331,7 @@ marginRight:10
 
 onClick={logout}
 
-style={{
-
-padding:'12px 20px',
-
-background:'#cc3333',
-
-color:'white',
-
-border:'none',
-
-borderRadius:'12px'
-
-}}
+style={logoutBtn}
 
 >
 
@@ -151,10 +349,11 @@ Logout
 
 
 
-function Box({
+function Input({
 
-title,
-value
+label,
+value,
+setValue
 
 }){
 
@@ -162,30 +361,82 @@ return(
 
 <div style={{
 
-padding:20,
-
-width:150,
-
-background:'#E2E8F0',
-
-borderRadius:15
+marginBottom:'15px'
 
 }}>
 
-<h3>
+<label>
 
-{title}
+{label}
 
-</h3>
+</label>
 
-<h1>
+<input
 
-{value}
+value={value}
 
-</h1>
+onChange={(e)=>
+
+setValue(
+e.target.value
+)}
+
+style={style}
+
+/>
 
 </div>
 
 )
+
+}
+
+
+
+const style={
+
+width:'100%',
+
+padding:'10px',
+
+borderRadius:'10px',
+
+border:'1px solid #ccc'
+
+}
+
+
+const btn={
+
+padding:'12px 20px',
+
+marginRight:'10px',
+
+background:'#17233C',
+
+color:'white',
+
+border:'none',
+
+borderRadius:'10px',
+
+cursor:'pointer'
+
+}
+
+
+const logoutBtn={
+
+padding:'12px 20px',
+
+background:'#cc3333',
+
+color:'white',
+
+border:'none',
+
+borderRadius:'10px',
+
+cursor:'pointer'
 
 }
