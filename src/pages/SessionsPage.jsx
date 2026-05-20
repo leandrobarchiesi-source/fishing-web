@@ -3,11 +3,8 @@ import SessionCard from '../components/SessionCard'
 export default function SessionsPage({
 
 sessions,
-
 onView,
-
 onEdit,
-
 onDelete
 
 }){
@@ -24,7 +21,7 @@ return(
 
 <p>
 
-Gestisci le tue sessioni di pesca
+Gestisci e modifica le sessioni
 
 </p>
 
@@ -62,11 +59,17 @@ key={s.id}
 
 session={s}
 
-onView={onView}
+onView={()=>
+onView(s)
+}
 
-onEdit={onEdit}
+onEdit={()=>
+onEdit(s)
+}
 
-onDelete={onDelete}
+onDelete={()=>
+onDelete(s)
+}
 
 />
 

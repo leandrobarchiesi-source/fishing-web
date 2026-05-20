@@ -469,14 +469,34 @@ selectedPage==="sessioni"
 
 sessions={sessions}
 
-onView={()=>{}}
+onView={(s)=>{
 
-onEdit={()=>{}}
+console.log(
+"view",
+s
+)
 
-onDelete={()=>{}}
+}}
+
+onEdit={(s)=>{
+
+console.log(
+"edit",
+s
+)
+
+}}
+
+onDelete={(s)=>{
+
+console.log(
+"delete",
+s
+)
+
+}}
 
 />
-
 }
 
 
