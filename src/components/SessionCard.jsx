@@ -26,7 +26,7 @@ return(
 
 background:'white',
 
-padding:20,
+padding:30,
 
 borderRadius:20,
 

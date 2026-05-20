@@ -587,11 +587,19 @@ logout={logout}
 
 <div style={{
 
-marginLeft:260,
-padding:30,
-width:'100%',
-background:"#EEF4F8",
-minHeight:'100vh'
+marginLeft:'240px',
+
+padding:'35px',
+
+width:'calc(100vw - 240px)',
+
+height:'100vh',
+
+overflowY:'auto',
+
+background:'#EEF4F8',
+
+boxSizing:'border-box'
 
 }}>
 

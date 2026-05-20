@@ -138,12 +138,29 @@ await refreshData()
 
 return(
 
-<div>
+<div style={{
 
-<h1>
+width:'100%',
 
-Bentornato 🎣
+maxWidth:'1500px',
 
+margin:'0 auto'
+
+}}>
+    
+<h1 style={{
+
+fontSize:'52px',
+
+marginTop:0,
+
+marginBottom:'30px',
+
+fontWeight:'700'
+
+}}>
+
+Bentornato
 </h1>
 
 <br/>
@@ -152,10 +169,11 @@ Bentornato 🎣
 
 display:'flex',
 
-gap:20,
+gap:'25px',
 
-marginBottom:30
+marginBottom:'40px',
 
+flexWrap:'wrap'
 }}>
 
 <Box
