@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react'
-
 import { supabase } from './supabase'
-
 import Sidebar from './components/Sidebar'
-
 import SessionModal from './components/SessionModal'
 import EditSessionModal from './components/EditSessionModal'
-
 import Dashboard from './pages/Dashboard'
 import SessionsPage from './pages/SessionsPage'
 import SpotPage from './pages/SpotPage'
-
+import AddSpotModal from './components/AddSpotModal'
 
 function App(){
 
@@ -38,7 +34,12 @@ editingSession,
 setEditingSession
 ]=useState(null)
 
-
+const [
+addingSpot,
+setAddingSpot
+]
+=
+useState(false)
 
 useEffect(()=>{
 
@@ -186,7 +187,57 @@ await loadData()
 
 }
 
+async function salvaSpot(spot){
 
+const user=
+
+(
+await supabase
+.auth
+.getUser()
+)
+
+.data.user
+
+
+const {error}=
+
+await supabase
+
+.from(
+'spots'
+)
+
+.insert({
+
+user_id:
+user.id,
+
+nome:
+spot.nome,
+
+latitudine:
+spot.latitudine,
+
+longitudine:
+spot.longitudine
+
+})
+
+
+if(error){
+
+console.log(error)
+
+return
+
+}
+
+setAddingSpot(false)
+
+await loadData()
+
+}
 
 async function logout(){
 
@@ -586,13 +637,13 @@ alert(
 
 }}
 
-addSpot={()=>{
+addSpot={()=>
 
-alert(
-"Aggiungi spot"
+setAddingSpot(
+true
 )
 
-}}
+}
 
 />
 
@@ -668,6 +719,26 @@ salvaModifica
 )
 
 }
+
+<AddSpotModal
+
+isOpen={
+addingSpot
+}
+
+onClose={()=>
+
+setAddingSpot(
+false
+)
+
+}
+
+onSave={
+salvaSpot
+}
+
+/>
 
 
 const inputStyle={
