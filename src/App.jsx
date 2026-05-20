@@ -3,11 +3,15 @@ import { useEffect, useState } from 'react'
 import { supabase } from './supabase'
 
 import Sidebar from './components/Sidebar'
+
+import SessionModal from './components/SessionModal'
+import EditSessionModal from './components/EditSessionModal'
+
 import Dashboard from './pages/Dashboard'
 import SessionsPage from './pages/SessionsPage'
 
 
-function App() {
+function App(){
 
 const [user,setUser]=
 useState(null)
@@ -35,6 +39,16 @@ useState(
 'dashboard'
 )
 
+const [
+selectedSession,
+setSelectedSession
+]=useState(null)
+
+const [
+editingSession,
+setEditingSession
+]=useState(null)
+
 
 useEffect(()=>{
 
@@ -46,16 +60,11 @@ checkUser()
 
 async function checkUser(){
 
-const {
-
-data
-
-}=
+const {data}=
 
 await supabase
 .auth
 .getUser()
-
 
 if(data.user){
 
@@ -90,10 +99,6 @@ return
 
 }
 
-const userId=
-user.id
-
-
 const sessionsResult=
 
 await supabase
@@ -106,7 +111,8 @@ await supabase
 
 .eq(
 'user_id',
-userId)
+user.id
+)
 
 .order(
 'data',
@@ -129,19 +135,20 @@ await supabase
 
 .eq(
 'user_id',
-userId)
+user.id
+)
 
 
 setSessions(
-sessionsResult.data || []
+sessionsResult.data||[]
 )
 
 setSessionCount(
-sessionsResult.data?.length || 0
+sessionsResult.data?.length||0
 )
 
 setSpotCount(
-spotsResult.data?.length || 0
+spotsResult.data?.length||0
 )
 
 }
@@ -171,11 +178,7 @@ return
 
 }
 
-const {
-
-data
-
-}=
+const {data}=
 
 await supabase
 .auth
@@ -205,9 +208,11 @@ setSessions([])
 
 
 
-if(!user){
-
 return(
+
+!user
+
+?
 
 <div style={{
 
@@ -253,7 +258,6 @@ marginBottom:'10px'
 
 </div>
 
-
 <h1 style={{
 
 margin:0,
@@ -293,24 +297,7 @@ setEmail(
 e.target.value
 )}
 
-style={{
-
-width:'100%',
-
-padding:'14px',
-
-fontSize:'16px',
-
-borderRadius:'12px',
-
-border:
-'1px solid #ddd',
-
-marginBottom:'15px',
-
-boxSizing:'border-box'
-
-}}
+style={inputStyle}
 
 />
 
@@ -329,24 +316,7 @@ setPassword(
 e.target.value
 )}
 
-style={{
-
-width:'100%',
-
-padding:'14px',
-
-fontSize:'16px',
-
-borderRadius:'12px',
-
-border:
-'1px solid #ddd',
-
-marginBottom:'20px',
-
-boxSizing:'border-box'
-
-}}
+style={inputStyle}
 
 />
 
@@ -369,9 +339,7 @@ color:'white',
 
 border:'none',
 
-borderRadius:'12px',
-
-cursor:'pointer'
+borderRadius:'12px'
 
 }}
 
@@ -385,13 +353,7 @@ Accedi
 
 </div>
 
-)
-
-}
-
-
-
-return(
+:
 
 <div style={{
 
@@ -430,6 +392,7 @@ minHeight:'100vh'
 
 }}>
 
+
 {
 
 selectedPage==="dashboard"
@@ -459,6 +422,7 @@ loadData
 }
 
 
+
 {
 
 selectedPage==="sessioni"
@@ -469,23 +433,17 @@ selectedPage==="sessioni"
 
 sessions={sessions}
 
-onView={(s)=>{
+onView={(s)=>
 
-console.log(
-"view",
-s
-)
+setSelectedSession(s)
 
-}}
+}
 
-onEdit={(s)=>{
+onEdit={(s)=>
 
-console.log(
-"edit",
-s
-)
+setEditingSession(s)
 
-}}
+}
 
 onDelete={(s)=>{
 
@@ -497,6 +455,7 @@ s
 }}
 
 />
+
 }
 
 
@@ -515,6 +474,7 @@ selectedPage==="spot"
 }
 
 
+
 {
 
 selectedPage==="statistiche"
@@ -528,6 +488,7 @@ selectedPage==="statistiche"
 </h1>
 
 }
+
 
 
 {
@@ -544,6 +505,53 @@ selectedPage==="profilo"
 
 }
 
+
+<SessionModal
+
+session={selectedSession}
+
+isOpen={
+selectedSession!=null
+}
+
+onClose={()=>
+
+setSelectedSession(
+null
+)
+
+}
+
+/>
+
+
+<EditSessionModal
+
+session={editingSession}
+
+isOpen={
+editingSession!=null
+}
+
+onClose={()=>
+
+setEditingSession(
+null
+)
+
+}
+
+onSave={(s)=>{
+
+console.log(
+"save",
+s
+)
+
+}}
+
+/>
+
 </div>
 
 </div>
@@ -552,5 +560,23 @@ selectedPage==="profilo"
 
 }
 
+
+const inputStyle={
+
+width:'100%',
+
+padding:'14px',
+
+fontSize:'16px',
+
+borderRadius:'12px',
+
+border:'1px solid #ddd',
+
+marginBottom:'15px',
+
+boxSizing:'border-box'
+
+}
 
 export default App
