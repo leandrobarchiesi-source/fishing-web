@@ -10,7 +10,7 @@ import AddSpotModal from './components/AddSpotModal'
 import Dashboard from './pages/Dashboard'
 import SessionsPage from './pages/SessionsPage'
 import SpotPage from './pages/SpotPage'
-
+import SpotMapPage from './pages/SpotMapPage'
 
 function App(){
 
@@ -541,6 +541,20 @@ console.log(
 s
 )
 
+{
+
+selectedPage==="spotMap"
+
+&&
+
+<SpotMapPage
+
+spots={spots}
+
+/>
+
+}
+
 }}
 
 onEdit={(s)=>{
@@ -561,13 +575,13 @@ s
 
 }}
 
-openMap={()=>{
+openMap={()=>
 
-alert(
-"Apri mappa"
+setSelectedPage(
+"spotMap"
 )
 
-}}
+}
 
 addSpot={()=>
 
