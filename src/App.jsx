@@ -10,8 +10,7 @@ import AddSpotModal from './components/AddSpotModal'
 import Dashboard from './pages/Dashboard'
 import SessionsPage from './pages/SessionsPage'
 import SpotPage from './pages/SpotPage'
-import SpotMapPage from './pages/SpotMapPage'
-import SpotMapModal from './components/SpotMapModal'
+
 
 function App(){
 
@@ -44,10 +43,7 @@ addingSpot,
 setAddingSpot
 ]=useState(false)
 
-const [
-showSpotMap,
-setShowSpotMap
-]=useState(false)
+
 
 useEffect(()=>{
 
@@ -133,8 +129,8 @@ await supabase
 
 .eq(
 'user_id',
-user.id
-)
+user.id)
+
 
 
 setSessions(
@@ -170,6 +166,7 @@ password
 
 })
 
+
 if(error){
 
 alert(
@@ -179,6 +176,7 @@ error.message
 return
 
 }
+
 
 const {data}=
 
@@ -258,7 +256,10 @@ return
 
 }
 
-setAddingSpot(false)
+
+setAddingSpot(
+false
+)
 
 await loadData()
 
@@ -323,6 +324,7 @@ return
 
 }
 
+
 setEditingSession(
 null
 )
@@ -336,12 +338,17 @@ await loadData()
 async function eliminaSessione(session){
 
 if(
+
 !window.confirm(
 "Eliminare sessione?"
 )
+
 ){
+
 return
+
 }
+
 
 const {error}=
 
@@ -366,6 +373,7 @@ return
 
 }
 
+
 await loadData()
 
 }
@@ -379,9 +387,13 @@ return(
 <div style={{
 
 display:'flex',
+
 justifyContent:'center',
+
 alignItems:'center',
+
 height:'100vh',
+
 background:
 'linear-gradient(to bottom,#EAF6FF,#D8ECFF)'
 
@@ -390,11 +402,16 @@ background:
 <div style={{
 
 background:'white',
+
 padding:'40px',
+
 width:'420px',
+
 borderRadius:'25px',
+
 boxShadow:
 '0 10px 30px rgba(0,0,0,.15)',
+
 textAlign:'center'
 
 }}>
@@ -412,6 +429,7 @@ fontSize:'70px'
 <h1 style={{
 
 fontSize:'34px',
+
 color:'#17233C'
 
 }}>
@@ -420,9 +438,11 @@ Fishing Web
 
 </h1>
 
+
 <p style={{
 
 marginBottom:30,
+
 color:'#666'
 
 }}>
@@ -431,32 +451,61 @@ Accedi al tuo account
 
 </p>
 
-<input
-placeholder='Email'
-value={email}
-onChange={(e)=>setEmail(e.target.value)}
-style={inputStyle}
-/>
 
 <input
-type='password'
-placeholder='Password'
-value={password}
-onChange={(e)=>setPassword(e.target.value)}
+
+placeholder='Email'
+
+value={email}
+
+onChange={(e)=>
+
+setEmail(
+e.target.value
+)}
+
 style={inputStyle}
+
 />
+
+
+<input
+
+type='password'
+
+placeholder='Password'
+
+value={password}
+
+onChange={(e)=>
+
+setPassword(
+e.target.value
+)}
+
+style={inputStyle}
+
+/>
+
 
 <button
+
 onClick={login}
 
 style={{
 
 width:'100%',
+
 padding:'14px',
+
 fontSize:'18px',
+
 background:'#17233C',
+
 color:'white',
+
 border:'none',
+
 borderRadius:'12px'
 
 }}
@@ -482,18 +531,26 @@ return(
 <div style={{display:'flex'}}>
 
 <Sidebar
+
 selected={selectedPage}
+
 setSelected={setSelectedPage}
+
 logout={logout}
+
 />
 
 
 <div style={{
 
 marginLeft:260,
+
 padding:30,
+
 width:'100%',
+
 background:"#E2E8F0",
+
 minHeight:'100vh'
 
 }}>
@@ -539,55 +596,11 @@ onDelete={eliminaSessione}
 
 spots={spots}
 
-onView={(s)=>{
-
-console.log(
-"spot view",
-s
-)
-
-{selectedPage==="spotMap" &&
-
-<div key="spotmap">
-
-<SpotMapPage
-spots={spots}
-/>
-
-</div>
-
-}
-}}
-
-onEdit={(s)=>{
-
-console.log(
-"spot edit",
-s
-)
-
-}}
-
-onDelete={(s)=>{
-
-console.log(
-"spot delete",
-s
-)
-
-}}
-
-openMap={()=>
-
-setShowSpotMap(
-true
-)
-
-}
-
 addSpot={()=>
 
-setAddingSpot(true)
+setAddingSpot(
+true
+)
 
 }
 
@@ -628,7 +641,9 @@ selectedSession!=null
 
 onClose={()=>
 
-setSelectedSession(null)
+setSelectedSession(
+null
+)
 
 }
 
@@ -645,10 +660,13 @@ editingSession!=null
 
 onClose={()=>
 
-setEditingSession(null)
-}
+setEditingSession(
+null
+)}
 
-onSave={salvaModifica}
+onSave={
+salvaModifica
+}
 
 />
 
@@ -661,7 +679,9 @@ addingSpot
 
 onClose={()=>
 
-setAddingSpot(false)
+setAddingSpot(
+false
+)
 
 }
 
@@ -671,26 +691,6 @@ salvaSpot
 
 />
 
-<SpotMapModal
-
-isOpen={
-showSpotMap
-}
-
-onClose={()=>
-
-setShowSpotMap(
-false
-)
-
-}
-
-spots={
-spots
-}
-
-/>
-
 </div>
 
 </div>
@@ -698,7 +698,6 @@ spots
 )
 
 }
-
 
 
 const inputStyle={
@@ -712,6 +711,5 @@ marginBottom:'15px',
 boxSizing:'border-box'
 
 }
-
 
 export default App

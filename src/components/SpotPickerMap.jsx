@@ -44,9 +44,7 @@ click(e){
 if(setPosition){
 
 setPosition(
-
 e.latlng
-
 )
 
 }
@@ -78,6 +76,7 @@ icon={icon}
 }
 
 
+
 export default function SpotPickerMap({
 
 position,
@@ -85,6 +84,7 @@ setPosition,
 spots=[]
 
 }){
+
 
 return(
 
@@ -96,7 +96,7 @@ zoom={6}
 
 style={{
 
-height:'70vh',
+height:'100%',
 
 width:'100%',
 
@@ -141,7 +141,9 @@ icon={icon}
 
 <Popup>
 
-<b>
+<div>
+
+<h3>
 
 {
 
@@ -151,7 +153,55 @@ spot.nome||
 
 }
 
-</b>
+</h3>
+
+
+<p>
+
+📍
+
+{spot.latitudine}
+
+</p>
+
+<p>
+
+📍
+
+{spot.longitudine}
+
+</p>
+
+
+<div style={{
+
+display:'flex',
+
+gap:8
+
+}}>
+
+<button>
+
+👁
+
+</button>
+
+<button>
+
+✏
+
+</button>
+
+<button>
+
+🗑
+
+</button>
+
+</div>
+
+</div>
 
 </Popup>
 
