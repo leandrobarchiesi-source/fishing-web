@@ -85,6 +85,18 @@ style={styleInput}
 />
 
 
+<div style={{
+
+height:'300px',
+
+borderRadius:'15px',
+
+overflow:'hidden',
+
+marginBottom:'15px'
+
+}}>
+
 <SpotPickerMap
 
 position={position}
@@ -92,6 +104,8 @@ position={position}
 setPosition={setPosition}
 
 />
+
+</div>
 
 <br/>
 
@@ -122,6 +136,16 @@ Lon:
 <br/>
 
 
+<div style={{
+
+display:'flex',
+
+gap:10,
+
+marginTop:20
+
+}}>
+
 <button
 
 onClick={()=>{
@@ -150,11 +174,54 @@ position.lng
 
 }}
 
+style={{
+
+padding:'10px 20px',
+
+background:'#17233C',
+
+color:'white',
+
+border:'none',
+
+borderRadius:'10px',
+
+cursor:'pointer'
+
+}}
+
 >
 
 Salva Spot
 
 </button>
+
+
+<button
+
+onClick={onClose}
+
+style={{
+
+padding:'10px 20px',
+
+background:'#ddd',
+
+border:'none',
+
+borderRadius:'10px',
+
+cursor:'pointer'
+
+}}
+
+>
+
+Annulla
+
+</button>
+
+</div>
 
 </Modal>
 
