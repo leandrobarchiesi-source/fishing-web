@@ -1,13 +1,12 @@
-import {useEffect,useState} from 'react'
+import { useEffect, useState } from 'react'
 
-import {supabase} from './supabase'
+import { supabase } from './supabase'
 
 import Sidebar from './components/Sidebar'
-
 import Dashboard from './pages/Dashboard'
 
 
-function App(){
+function App() {
 
 const [user,setUser]=
 useState(null)
@@ -21,10 +20,12 @@ useState("")
 const [sessions,setSessions]=
 useState([])
 
-const [sessionCount,setSessionCount]=
+const [sessionCount,
+setSessionCount]=
 useState(0)
 
-const [spotCount,setSpotCount]=
+const [spotCount,
+setSpotCount]=
 useState(0)
 
 const [selectedPage,
@@ -54,13 +55,14 @@ await supabase
 .auth
 .getUser()
 
+
 if(data.user){
 
 setUser(
 data.user
 )
 
-loadData()
+await loadData()
 
 }
 
@@ -70,7 +72,7 @@ loadData()
 
 async function loadData(){
 
-const userId=
+const user=
 
 (
 await supabase
@@ -78,7 +80,17 @@ await supabase
 .getUser()
 )
 
-.data.user.id
+.data.user
+
+
+if(!user){
+
+return
+
+}
+
+const userId=
+user.id
 
 
 const sessionsResult=
@@ -93,15 +105,13 @@ await supabase
 
 .eq(
 'user_id',
-userId
-)
+userId)
 
 .order(
 'data',
 {
 ascending:false
-}
-)
+})
 
 
 const spotsResult=
@@ -118,20 +128,19 @@ await supabase
 
 .eq(
 'user_id',
-userId
-)
+userId)
 
 
 setSessions(
-sessionsResult.data||[]
+sessionsResult.data || []
 )
 
 setSessionCount(
-sessionsResult.data.length
+sessionsResult.data?.length || 0
 )
 
 setSpotCount(
-spotsResult.data.length
+spotsResult.data?.length || 0
 )
 
 }
@@ -161,9 +170,24 @@ return
 
 }
 
-window.location.reload()
+const {
+
+data
+
+}=
+
+await supabase
+.auth
+.getUser()
+
+setUser(
+data.user
+)
+
+await loadData()
 
 }
+
 
 
 async function logout(){
@@ -172,7 +196,9 @@ await supabase
 .auth
 .signOut()
 
-window.location.reload()
+setUser(null)
+
+setSessions([])
 
 }
 
@@ -192,7 +218,8 @@ alignItems:'center',
 
 height:'100vh',
 
-background:'#EAF6FF'
+background:
+'linear-gradient(to bottom,#EAF6FF,#D8ECFF)'
 
 }}>
 
@@ -200,19 +227,58 @@ background:'#EAF6FF'
 
 background:'white',
 
-padding:30,
+padding:'40px',
 
-borderRadius:20,
+width:'420px',
 
-width:350
+borderRadius:'25px',
+
+boxShadow:
+'0 10px 30px rgba(0,0,0,.15)',
+
+textAlign:'center'
 
 }}>
 
-<h1>
+<div style={{
 
-Fishing Web 🎣
+fontSize:'70px',
+
+marginBottom:'10px'
+
+}}>
+
+🎣
+
+</div>
+
+
+<h1 style={{
+
+margin:0,
+
+fontSize:'34px',
+
+color:'#17233C'
+
+}}>
+
+Fishing Web
 
 </h1>
+
+<p style={{
+
+color:'#666',
+
+marginBottom:'30px'
+
+}}>
+
+Accedi al tuo account
+
+</p>
+
 
 <input
 
@@ -224,12 +290,29 @@ onChange={(e)=>
 
 setEmail(
 e.target.value
-)
-}
+)}
+
+style={{
+
+width:'100%',
+
+padding:'14px',
+
+fontSize:'16px',
+
+borderRadius:'12px',
+
+border:
+'1px solid #ddd',
+
+marginBottom:'15px',
+
+boxSizing:'border-box'
+
+}}
 
 />
 
-<br/><br/>
 
 <input
 
@@ -243,20 +326,57 @@ onChange={(e)=>
 
 setPassword(
 e.target.value
-)
-}
+)}
+
+style={{
+
+width:'100%',
+
+padding:'14px',
+
+fontSize:'16px',
+
+borderRadius:'12px',
+
+border:
+'1px solid #ddd',
+
+marginBottom:'20px',
+
+boxSizing:'border-box'
+
+}}
 
 />
 
-<br/><br/>
 
 <button
 
 onClick={login}
 
+style={{
+
+width:'100%',
+
+padding:'14px',
+
+fontSize:'18px',
+
+background:'#17233C',
+
+color:'white',
+
+border:'none',
+
+borderRadius:'12px',
+
+cursor:'pointer'
+
+}}
+
 >
 
-Login
+Accedi
 
 </button>
 
@@ -309,7 +429,6 @@ minHeight:'100vh'
 
 }}>
 
-
 {
 
 selectedPage==="dashboard"
@@ -339,7 +458,6 @@ loadData
 }
 
 
-
 {
 
 selectedPage==="sessioni"
@@ -353,7 +471,6 @@ selectedPage==="sessioni"
 </h1>
 
 }
-
 
 
 {
@@ -371,7 +488,6 @@ selectedPage==="spot"
 }
 
 
-
 {
 
 selectedPage==="statistiche"
@@ -387,7 +503,6 @@ selectedPage==="statistiche"
 }
 
 
-
 {
 
 selectedPage==="profilo"
@@ -401,7 +516,6 @@ selectedPage==="profilo"
 </h1>
 
 }
-
 
 </div>
 
