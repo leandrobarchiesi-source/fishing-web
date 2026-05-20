@@ -1,71 +1,39 @@
 import {useState} from 'react'
 
-import SessionCard
-from '../components/SessionCard'
+import SessionCard from '../components/SessionCard'
+import SessionModal from '../components/SessionModal'
+import EditSessionModal from '../components/EditSessionModal'
 
-import SessionModal
-from '../components/SessionModal'
-
-import EditSessionModal
-from '../components/EditSessionModal'
-
-import {supabase}
-from '../supabase'
-
+import {supabase} from '../supabase'
 
 export default function Dashboard({
 
 sessionCount,
-
 spotCount,
-
 sessions,
-
 refreshData
 
 }){
 
 const [
-
 selectedSession,
-
 setSelectedSession
-
-]
-
-=
-
-useState(null)
-
+]=useState(null)
 
 const [
-
 editingSession,
-
 setEditingSession
-
-]
-
-=
-
-useState(null)
-
+]=useState(null)
 
 
 async function eliminaSessione(session){
 
 if(
-
 !window.confirm(
-
 "Eliminare sessione?"
-
 )
-
 ){
-
 return
-
 }
 
 const {error}=
@@ -82,7 +50,6 @@ await supabase
 'id',
 session.id)
 
-
 if(error){
 
 console.log(error)
@@ -95,10 +62,9 @@ await refreshData()
 
 }
 
+
 async function salvaModifica(
-
 sessione
-
 ){
 
 const {error}=
@@ -165,33 +131,6 @@ await refreshData()
 }
 
 
-setSessions(
-
-prev=>
-
-prev.map(
-
-s=>
-
-s.id===sessione.id
-
-?
-
-sessione
-
-:
-
-s
-
-)
-
-)
-
-setEditingSession(
-null
-)
-}
-
 return(
 
 <div>
@@ -207,9 +146,7 @@ Bentornato 🎣
 <div style={{
 
 display:'flex',
-
 gap:20,
-
 marginBottom:30
 
 }}>
@@ -236,6 +173,18 @@ Ultime Sessioni
 <br/>
 
 {
+
+sessions.length===0
+
+?
+
+<p>
+
+Nessuna sessione
+
+</p>
+
+:
 
 sessions.map(
 
@@ -303,7 +252,9 @@ setEditingSession(null)
 
 }
 
-onSave={salvaModifica}
+onSave={
+salvaModifica
+}
 
 />
 
@@ -311,13 +262,12 @@ onSave={salvaModifica}
 
 )
 
-
+}
 
 
 function Box({
 
 title,
-
 value
 
 }){
@@ -339,9 +289,17 @@ boxShadow:
 
 }}>
 
-<h3>{title}</h3>
+<h3>
 
-<h1>{value}</h1>
+{title}
+
+</h3>
+
+<h1>
+
+{value}
+
+</h1>
 
 </div>
 
