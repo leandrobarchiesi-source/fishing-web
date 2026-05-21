@@ -32,6 +32,7 @@ const [registerMode,setRegisterMode]=useState(false)
 const [nome,setNome]=useState("")
 const [cognome,setCognome]=useState("")
 const [lingua,setLingua]=useState("it")
+const [profile,setProfile]=useState(null)
 
 
 useEffect(()=>{checkUser()},[])
@@ -78,6 +79,26 @@ return
 
 }
 
+const {data:profilo}=
+
+await supabase
+
+.from(
+'profiles'
+)
+
+.select()
+
+.eq(
+'id',
+user.id)
+
+.single()
+
+
+setProfile(
+profilo
+)
 
 const sessionsResult=
 
@@ -971,7 +992,7 @@ spotCount={spotCount}
 
 sessions={sessions}
 
-user={user}
+profile={profile}
 
 refreshData={loadData}
 

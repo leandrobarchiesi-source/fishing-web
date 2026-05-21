@@ -3,7 +3,7 @@ export default function Dashboard({
 sessionCount,
 spotCount,
 sessions,
-user
+profile
 
 }){
 
@@ -78,11 +78,11 @@ Bentornato
 
 {
 
-user?.name
+profile?.nome
 
 ?
 
-` ${user.name}`
+` ${profile.nome}`
 
 :
 
@@ -92,6 +92,22 @@ user?.name
 
 </h1>
 
+
+<p style={{
+
+textAlign:'center',
+
+color:'#64748B',
+
+fontSize:'18px',
+
+marginBottom:'40px'
+
+}}>
+
+La tua home FishingTrack
+
+</p>
 
 <p style={{
 
