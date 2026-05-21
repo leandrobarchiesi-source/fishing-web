@@ -142,26 +142,29 @@ return(
 
 width:'100%',
 
-maxWidth:'1000px'
+maxWidth:'1200px',
+
+margin:'0 auto'
 
 }}>
-    
+
 <h1 style={{
 
 fontSize:'52px',
 
-marginTop:0,
+margin:'0 0 40px 0',
 
-marginBottom:'30px',
+fontWeight:'700',
 
-fontWeight:'700'
+textAlign:'center'
 
 }}>
 
 Bentornato
+
 </h1>
 
-<br/>
+
 
 <div style={{
 
@@ -171,7 +174,7 @@ justifyContent:'center',
 
 gap:'25px',
 
-marginBottom:'50px',
+marginBottom:'60px',
 
 flexWrap:'wrap'
 
@@ -192,17 +195,27 @@ value={spotCount}
 
 <h2 style={{
 
-width:'100%',
-
 textAlign:'center',
 
 marginBottom:'35px'
 
 }}>
-    Ultime Sessioni
+
+Ultime Sessioni
+
 </h2>
 
-<br/>
+
+
+<div style={{
+
+display:'flex',
+
+flexDirection:'column',
+
+alignItems:'center'
+
+}}>
 
 {
 
@@ -229,21 +242,15 @@ key={s.id}
 session={s}
 
 onView={(x)=>
-
 setSelectedSession(x)
-
 }
 
 onEdit={(x)=>
-
 setEditingSession(x)
-
 }
 
 onDelete={(x)=>
-
 eliminaSessione(x)
-
 }
 
 />
@@ -251,6 +258,9 @@ eliminaSessione(x)
 )
 
 }
+
+</div>
+
 
 
 <SessionModal
@@ -309,30 +319,50 @@ return(
 
 <div style={{
 
-padding:20,
+width:'220px',
 
-width:200,
+height:'160px',
 
 background:'white',
 
-borderRadius:20,
+borderRadius:'25px',
+
+display:'flex',
+
+flexDirection:'column',
+
+justifyContent:'center',
+
+alignItems:'center',
 
 boxShadow:
-'0 2px 10px rgba(0,0,0,.1)'
+'0 2px 12px rgba(0,0,0,.08)'
 
 }}>
 
-<h3>
+<div style={{
+
+fontSize:'24px',
+
+marginBottom:'15px'
+
+}}>
 
 {title}
 
-</h3>
+</div>
 
-<h1>
+<div style={{
+
+fontSize:'56px',
+
+fontWeight:'bold'
+
+}}>
 
 {value}
 
-</h1>
+</div>
 
 </div>
 

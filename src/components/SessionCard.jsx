@@ -43,13 +43,7 @@ boxShadow:
 
 width:'100%',
 
-maxWidth:'950px',
-
-display:'flex',
-
-alignItems:'center',
-
-justifyContent:'space-between',
+maxWidth:'900px',
 
 boxSizing:'border-box'
 
@@ -58,21 +52,34 @@ boxSizing:'border-box'
 
 <div style={{
 
-display:'grid',
+display:'flex',
 
-gridTemplateColumns:
-'280px 180px',
+justifyContent:'space-between',
 
 alignItems:'center',
 
-gap:'30px',
+flexWrap:'wrap',
+
+gap:'15px'
+
+}}>
+
+
+
+<div style={{
+
+display:'flex',
+
+alignItems:'center',
+
+gap:'20px',
+
+flexWrap:'wrap',
 
 flex:1
 
 }}>
 
-
-<div>
 
 <h3 style={{
 
@@ -80,7 +87,9 @@ margin:0,
 
 fontSize:'20px',
 
-color:'#334155'
+color:'#334155',
+
+minWidth:'220px'
 
 }}>
 
@@ -88,14 +97,15 @@ color:'#334155'
 
 </h3>
 
-</div>
 
 
 <div style={{
 
 fontSize:'14px',
 
-color:'#64748B'
+color:'#64748B',
+
+whiteSpace:'nowrap'
 
 }}>
 
@@ -107,7 +117,6 @@ color:'#64748B'
 
 </div>
 
-
 </div>
 
 
@@ -116,7 +125,9 @@ color:'#64748B'
 
 display:'flex',
 
-gap:'10px'
+gap:'10px',
+
+flexShrink:0
 
 }}>
 
@@ -165,6 +176,8 @@ onDelete(session)
 <FaTrash/>
 
 </IconButton>
+
+</div>
 
 </div>
 
