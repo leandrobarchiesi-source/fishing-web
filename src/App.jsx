@@ -281,6 +281,77 @@ await loadData()
 
 }
 
+async function salvaModifica(sessione){
+
+const {error}=
+
+await supabase
+
+.from(
+'fishing_sessions'
+)
+
+.update({
+
+luogo:
+sessione.luogo,
+
+tipo_pescata:
+sessione.tipo_pescata,
+
+data:
+sessione.data,
+
+ora_inizio:
+sessione.ora_inizio,
+
+ora_fine:
+sessione.ora_fine,
+
+temperatura:
+sessione.temperatura,
+
+pressione:
+sessione.pressione,
+
+vento:
+sessione.vento,
+
+condizioni:
+sessione.condizioni,
+
+fase_lunare:
+sessione.fase_lunare,
+
+note:
+sessione.note
+
+})
+
+.eq(
+'id',
+sessione.id)
+
+
+if(error){
+
+alert(
+error.message
+)
+
+return
+
+}
+
+
+setEditingSession(
+null
+)
+
+await loadData()
+
+}
+
 function getLunarPhase(date){
 
 const phases=[
