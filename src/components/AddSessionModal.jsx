@@ -173,26 +173,37 @@ style={input}
 
 >
 
-<option>
-
-Libera
-
-</option>
-
-<option>
+<option value="Gara">
 
 Gara
 
 </option>
 
-<option>
+<option value="Test-Match">
 
-Allenamento
+Test-Match
+
+</option>
+
+<option value="Pool">
+
+Pool
+
+</option>
+
+<option value="Prova">
+
+Prova
+
+</option>
+
+<option value="Libera">
+
+Libera
 
 </option>
 
 </select>
-
 
 
 <label>

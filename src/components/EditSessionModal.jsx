@@ -12,89 +12,97 @@ onSave
 
 }){
 
-const [luogo,setLuogo]=useState("")
-const [tipo,setTipo]=useState("")
-const [data,setData]=useState("")
-const [oraInizio,setOraInizio]=useState("")
-const [oraFine,setOraFine]=useState("")
-const [temperatura,setTemperatura]=useState("")
-const [pressione,setPressione]=useState("")
-const [vento,setVento]=useState("")
-const [fase,setFase]=useState("")
-const [note,setNote]=useState("")
+const [form,setForm]=useState({
+
+luogo:"",
+tipo:"",
+data:"",
+oraInizio:"",
+oraFine:"",
+temperatura:"",
+pressione:"",
+vento:"",
+fase:"",
+note:""
+
+})
 
 
 useEffect(()=>{
 
-if(session){
+if(!session){
 
-setLuogo(
-session.luogo||""
-)
-
-setTipo(
-session.tipo_pescata||""
-)
-
-setData(
-session.data?.substring(0,10)||""
-)
-
-setOraInizio(
-
-session.ora_inizio
-
-? new Date(
-session.ora_inizio
-)
-
-.toISOString()
-
-.substring(11,16)
-
-: ""
-
-)
-
-setOraFine(
-
-session.ora_fine
-
-? new Date(
-session.ora_fine
-)
-
-.toISOString()
-
-.substring(11,16)
-
-: ""
-
-)
-
-setTemperatura(
-session.temperatura||""
-)
-
-setPressione(
-session.pressione||""
-)
-
-setVento(
-session.vento||""
-)
-
-setFase(
-session.fase_lunare||""
-)
-
-setNote(
-session.note||""
-)
+return
 
 }
 
+
+setForm({
+
+luogo:
+session.luogo||"",
+
+tipo:
+session.tipo_pescata||"",
+
+data:
+session.data?.substring(0,10)||"",
+
+oraInizio:
+
+session.ora_inizio
+
+?
+
+new Date(
+session.ora_inizio
+)
+
+.toISOString()
+
+.substring(11,16)
+
+:
+
+"",
+
+oraFine:
+
+session.ora_fine
+
+?
+
+new Date(
+session.ora_fine
+)
+
+.toISOString()
+
+.substring(11,16)
+
+:
+
+"",
+
+temperatura:
+session.temperatura||"",
+
+pressione:
+session.pressione||"",
+
+vento:
+session.vento||"",
+
+fase:
+session.fase_lunare||"",
+
+note:
+session.note||""
+
+})
+
 },[session])
+
 
 
 if(!session){
@@ -102,6 +110,74 @@ if(!session){
 return null
 
 }
+
+
+
+function update(nome,valore){
+
+setForm(prev=>({
+
+...prev,
+
+[nome]:valore
+
+}))
+
+}
+
+
+
+function salva(){
+
+if(typeof onSave!=="function"){
+
+console.log(
+"onSave mancante"
+)
+
+return
+
+}
+
+
+onSave({
+
+...session,
+
+luogo:
+form.luogo,
+
+tipo_pescata:
+form.tipo,
+
+data:
+form.data,
+
+ora_inizio:
+`${form.data}T${form.oraInizio}:00`,
+
+ora_fine:
+`${form.data}T${form.oraFine}:00`,
+
+temperatura:
+form.temperatura,
+
+pressione:
+form.pressione,
+
+vento:
+form.vento,
+
+fase_lunare:
+form.fase,
+
+note:
+form.note
+
+})
+
+}
+
 
 
 return(
@@ -143,52 +219,91 @@ background:
 
 </h2>
 
-<br/>
 
-<label>Luogo</label>
-<input
-value={luogo}
-onChange={(e)=>setLuogo(e.target.value)}
-style={styleInput}
+
+<Input
+label="Luogo"
+value={form.luogo}
+onChange={(v)=>update("luogo",v)}
 />
 
-<label>Tipo</label>
-<input
-value={tipo}
-onChange={(e)=>setTipo(e.target.value)}
+<label>
+
+Tipo
+
+</label>
+
+<select
+
+value={form.tipo}
+
+onChange={(e)=>
+
+update(
+"tipo",
+e.target.value
+)}
+
 style={styleInput}
+
+>
+
+<option value="Gara">
+
+Gara
+
+</option>
+
+<option value="Test-Match">
+
+Test-Match
+
+</option>
+
+<option value="Pool">
+
+Pool
+
+</option>
+
+<option value="Prova">
+
+Prova
+
+</option>
+
+<option value="Libera">
+
+Libera
+
+</option>
+
+</select>
+
+<Input
+label="Data"
+type="date"
+value={form.data}
+onChange={(v)=>update("data",v)}
 />
 
-<label>Data</label>
-<input
-type='date'
-value={data}
-onChange={(e)=>setData(e.target.value)}
-style={styleInput}
-/>
+
 
 <div style={{
+
 display:'flex',
+
 gap:10
+
 }}>
 
 <div style={{flex:1}}>
 
-<label>
-
-Ora inizio
-
-</label>
-
-<input
-type='time'
-value={oraInizio}
-onChange={(e)=>
-setOraInizio(
-e.target.value
-)
-}
-style={styleInput}
+<Input
+label="Ora inizio"
+type="time"
+value={form.oraInizio}
+onChange={(v)=>update("oraInizio",v)}
 />
 
 </div>
@@ -196,149 +311,93 @@ style={styleInput}
 
 <div style={{flex:1}}>
 
+<Input
+label="Ora fine"
+type="time"
+value={form.oraFine}
+onChange={(v)=>update("oraFine",v)}
+/>
+
+</div>
+
+</div>
+
+
+<Input
+label="Temperatura"
+value={form.temperatura}
+onChange={(v)=>update("temperatura",v)}
+/>
+
+<Input
+label="Pressione"
+value={form.pressione}
+onChange={(v)=>update("pressione",v)}
+/>
+
+<Input
+label="Vento"
+value={form.vento}
+onChange={(v)=>update("vento",v)}
+/>
+
+<Input
+label="Fase lunare"
+value={form.fase}
+onChange={(v)=>update("fase",v)}
+/>
+
+
 <label>
 
-Ora fine
+Note
 
 </label>
-
-<input
-type='time'
-value={oraFine}
-onChange={(e)=>
-setOraFine(
-e.target.value
-)
-}
-style={styleInput}
-/>
-
-</div>
-
-</div>
-
-
-<label>Temperatura</label>
-<input
-value={temperatura}
-onChange={(e)=>
-setTemperatura(
-e.target.value
-)}
-style={styleInput}
-/>
-
-<label>Pressione</label>
-<input
-value={pressione}
-onChange={(e)=>
-setPressione(
-e.target.value
-)}
-style={styleInput}
-/>
-
-<label>Vento</label>
-<input
-value={vento}
-onChange={(e)=>
-setVento(
-e.target.value
-)}
-style={styleInput}
-/>
-
-<label>Fase lunare</label>
-<input
-value={fase}
-onChange={(e)=>
-setFase(
-e.target.value
-)}
-style={styleInput}
-/>
-
-<label>Note</label>
 
 <textarea
 
 rows={5}
 
-value={note}
+value={form.note}
 
 onChange={(e)=>
 
-setNote(
+update(
+"note",
 e.target.value
-)}
+)
+
+}
 
 style={{
 
 ...styleInput,
 
-height:120
+height:'120px'
 
 }}
 
 />
 
 
-<br/>
-
 <div style={{
 
 display:'flex',
 
-gap:10
+gap:'10px',
+
+marginTop:'20px'
 
 }}>
 
-<button
-
-onClick={()=>{
-
-onSave({
-
-...session,
-
-luogo,
-
-tipo_pescata:tipo,
-
-data,
-
-ora_inizio:
-`${data}T${oraInizio}:00`,
-
-ora_fine:
-`${data}T${oraFine}:00`,
-
-temperatura,
-
-pressione,
-
-vento,
-
-fase_lunare:fase,
-
-note
-
-})
-
-}}
-
->
+<button onClick={salva}>
 
 Salva
 
 </button>
 
 
-<button
-
-onClick={onClose}
-
->
+<button onClick={onClose}>
 
 Annulla
 
@@ -351,6 +410,50 @@ Annulla
 )
 
 }
+
+
+
+function Input({
+
+label,
+value,
+onChange,
+type="text"
+
+}){
+
+return(
+
+<>
+
+<label>
+
+{label}
+
+</label>
+
+<input
+
+type={type}
+
+value={value}
+
+onChange={(e)=>
+
+onChange(
+e.target.value
+)}
+
+style={styleInput}
+
+/>
+
+</>
+
+)
+
+}
+
 
 
 const styleInput={

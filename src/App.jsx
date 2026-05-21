@@ -302,30 +302,61 @@ try{
 const giorno=
 
 dataOra
-
 .toISOString()
-
 .split("T")[0]
 
 
 const ora=
-
 dataOra.getHours()
-
 
 
 const response=
 
 await fetch(
 
-`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,pressure_msl,wind_speed_10m&start_date=${giorno}&end_date=${giorno}`
+`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,pressure_msl,wind_speed_10m,weather_code&start_date=${giorno}&end_date=${giorno}`
 
 )
-
 
 const data=
 
 await response.json()
+
+
+const codice=
+
+data.hourly.weather_code[ora]
+
+
+const condizioni={
+
+0:"Sereno",
+
+1:"Prevalentemente sereno",
+
+2:"Parzialmente nuvoloso",
+
+3:"Nuvoloso",
+
+45:"Nebbia",
+
+48:"Nebbia intensa",
+
+51:"Pioviggine",
+
+61:"Pioggia",
+
+63:"Pioggia moderata",
+
+65:"Pioggia intensa",
+
+71:"Neve",
+
+80:"Rovesci",
+
+95:"Temporale"
+
+}
 
 
 return{
@@ -337,7 +368,15 @@ pressione:
 data.hourly.pressure_msl[ora],
 
 vento:
-data.hourly.wind_speed_10m[ora]+" km/h"
+data.hourly.wind_speed_10m[ora]+" km/h",
+
+condizioni:
+
+condizioni[codice]
+
+||
+
+"Non disponibile"
 
 }
 
@@ -351,7 +390,9 @@ temperatura:null,
 
 pressione:null,
 
-vento:null
+vento:null,
+
+condizioni:null
 
 }
 
