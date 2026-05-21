@@ -10,6 +10,7 @@ from 'react-leaflet'
 
 import L from 'leaflet'
 import {useState,useRef} from 'react'
+import {FaTrash} from 'react-icons/fa'
 import {supabase} from '../supabase'
 
 import 'leaflet/dist/leaflet.css'
@@ -187,6 +188,86 @@ markerRef.current?.closePopup()
 refreshData?.()
 }
 
+async function elimina(){
+
+if(
+
+!window.confirm(
+"Eliminare spot?"
+)
+
+){
+
+return
+
+}
+
+
+const {data:sessioni}=
+
+await supabase
+
+.from(
+'fishing_sessions'
+)
+
+.select('id')
+
+.eq(
+'spot_id',
+spot.id)
+
+
+if(
+
+sessioni &&
+
+sessioni.length>0
+
+){
+
+alert(
+
+"Spot utilizzato in sessioni esistenti"
+
+)
+
+return
+
+}
+
+
+const {error}=
+
+await supabase
+
+.from(
+'spots'
+)
+
+.delete()
+
+.eq(
+'id',
+spot.id)
+
+
+if(error){
+
+alert(
+error.message
+)
+
+return
+
+}
+
+
+markerRef.current?.closePopup()
+
+refreshData?.()
+
+}
 
 
 return(
@@ -396,6 +477,42 @@ fontSize:'16px'
 >
 
 💾 Salva
+
+</button>
+
+<button
+
+onClick={elimina}
+
+style={{
+
+width:'100%',
+
+padding:'12px',
+
+marginTop:'10px',
+
+background:'#FFE5E5',
+
+color:'#C53030',
+
+border:'none',
+
+borderRadius:'14px',
+
+cursor:'pointer',
+
+fontWeight:'600'
+
+}}
+
+>
+
+<FaTrash/>
+
+{' '}
+
+Elimina Spot
 
 </button>
 
