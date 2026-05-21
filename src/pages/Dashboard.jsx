@@ -101,7 +101,7 @@ color:'#64748B',
 
 fontSize:'18px',
 
-marginBottom:'40px'
+marginBottom:'50px'
 
 }}>
 
@@ -109,20 +109,6 @@ La tua home FishingTrack
 
 </p>
 
-<p style={{
-
-textAlign:'center',
-
-color:'#64748B',
-
-fontSize:'18px',
-
-marginBottom:'40px'
-
-}}>
-
-
-</p>
 
 <div style={{
 
