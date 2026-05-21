@@ -164,11 +164,19 @@ if(loading){
 
 return(
 
+<div style={{
+
+textAlign:'center'
+
+}}>
+
 <h2>
 
 Caricamento...
 
 </h2>
+
+</div>
 
 )
 
@@ -178,26 +186,68 @@ Caricamento...
 
 return(
 
-<div>
+<div style={{
 
-<h1>
+width:'100%',
+
+maxWidth:'1000px',
+
+margin:'0 auto'
+
+}}>
+
+
+<h1 style={{
+
+textAlign:'center',
+
+fontSize:'58px',
+
+margin:'0',
+
+fontWeight:'700'
+
+}}>
 
 👤 Profilo
 
 </h1>
 
-<br/>
+
+<p style={{
+
+textAlign:'center',
+
+color:'#64748B',
+
+fontSize:'18px',
+
+marginTop:'10px',
+
+marginBottom:'40px'
+
+}}>
+
+Gestisci le informazioni del tuo account
+
+</p>
+
 
 
 <div style={{
 
 background:'white',
 
-padding:'30px',
+padding:'35px',
 
-borderRadius:'20px',
+borderRadius:'25px',
 
-maxWidth:'700px'
+maxWidth:'700px',
+
+margin:'0 auto',
+
+boxShadow:
+'0 2px 12px rgba(0,0,0,.08)'
 
 }}>
 
@@ -223,6 +273,7 @@ fontSize:'80px'
 </div>
 
 
+
 <Input
 
 label="Nome"
@@ -245,13 +296,22 @@ setValue={setCognome}
 />
 
 
+
 <div style={{
 
-marginBottom:'15px'
+marginBottom:'20px'
 
 }}>
 
-<label>
+<label style={{
+
+display:'block',
+
+marginBottom:'8px',
+
+fontWeight:'600'
+
+}}>
 
 Lingua
 
@@ -268,7 +328,7 @@ setLingua(
 e.target.value
 )}
 
-style={style}
+style={inputStyle}
 
 >
 
@@ -301,6 +361,21 @@ style={style}
 </div>
 
 
+
+<div style={{
+
+display:'flex',
+
+justifyContent:'center',
+
+gap:'12px',
+
+flexWrap:'wrap',
+
+marginTop:'30px'
+
+}}>
+
 <button
 
 onClick={salva}
@@ -322,7 +397,7 @@ style={btn}
 
 >
 
-🔒 Cambia password
+🔒 Password
 
 </button>
 
@@ -338,6 +413,8 @@ style={logoutBtn}
 Logout
 
 </button>
+
+</div>
 
 </div>
 
@@ -361,15 +438,24 @@ return(
 
 <div style={{
 
-marginBottom:'15px'
+marginBottom:'20px'
 
 }}>
 
-<label>
+<label style={{
+
+display:'block',
+
+marginBottom:'8px',
+
+fontWeight:'600'
+
+}}>
 
 {label}
 
 </label>
+
 
 <input
 
@@ -381,7 +467,7 @@ setValue(
 e.target.value
 )}
 
-style={style}
+style={inputStyle}
 
 />
 
@@ -393,49 +479,53 @@ style={style}
 
 
 
-const style={
+const inputStyle={
 
 width:'100%',
 
-padding:'10px',
+padding:'14px',
 
-borderRadius:'10px',
+borderRadius:'12px',
 
-border:'1px solid #ccc'
+border:'1px solid #D5DCE5',
+
+fontSize:'15px',
+
+boxSizing:'border-box'
 
 }
+
 
 
 const btn={
 
 padding:'12px 20px',
 
-marginRight:'10px',
-
-background:'#17233C',
+background:'#234E70',
 
 color:'white',
 
 border:'none',
 
-borderRadius:'10px',
+borderRadius:'12px',
 
 cursor:'pointer'
 
 }
 
 
+
 const logoutBtn={
 
 padding:'12px 20px',
 
-background:'#cc3333',
+background:'#CC3333',
 
 color:'white',
 
 border:'none',
 
-borderRadius:'10px',
+borderRadius:'12px',
 
 cursor:'pointer'
 

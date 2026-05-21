@@ -11,21 +11,63 @@ onDelete
 
 return(
 
-<div>
+<div style={{
 
-<h1>
+width:'100%',
+
+maxWidth:'1200px',
+
+margin:'0 auto'
+
+}}>
+
+
+<h1 style={{
+
+fontSize:'58px',
+
+textAlign:'center',
+
+margin:'0',
+
+fontWeight:'700'
+
+}}>
 
 🎣 Tutte le Sessioni
 
 </h1>
 
-<p>
+
+<p style={{
+
+textAlign:'center',
+
+color:'#64748B',
+
+fontSize:'18px',
+
+marginTop:'10px',
+
+marginBottom:'45px'
+
+}}>
 
 Gestisci e modifica le sessioni
 
 </p>
 
-<br/>
+
+
+<div style={{
+
+display:'flex',
+
+flexDirection:'column',
+
+alignItems:'center'
+
+}}>
 
 {
 
@@ -37,9 +79,18 @@ sessions.length===0
 
 background:'white',
 
-padding:20,
+padding:'25px',
 
-borderRadius:20
+borderRadius:'20px',
+
+width:'100%',
+
+maxWidth:'900px',
+
+textAlign:'center',
+
+boxShadow:
+'0 2px 12px rgba(0,0,0,.08)'
 
 }}>
 
@@ -60,15 +111,21 @@ key={s.id}
 session={s}
 
 onView={()=>
+
 onView(s)
+
 }
 
 onEdit={()=>
+
 onEdit(s)
+
 }
 
 onDelete={()=>
+
 onDelete(s)
+
 }
 
 />
@@ -76,6 +133,8 @@ onDelete(s)
 )
 
 }
+
+</div>
 
 </div>
 
