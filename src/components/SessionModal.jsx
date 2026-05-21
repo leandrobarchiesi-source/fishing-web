@@ -95,6 +95,75 @@ session.data
 
 <p>
 
+🕒 Inizio:
+
+{
+
+session.ora_inizio
+
+?
+
+new Date(
+session.ora_inizio
+)
+
+.toLocaleTimeString(
+'it-IT',
+{
+
+hour:'2-digit',
+
+minute:'2-digit'
+
+}
+
+)
+
+:
+
+"-"
+
+}
+
+</p>
+
+
+<p>
+
+🏁 Fine:
+
+{
+
+session.ora_fine
+
+?
+
+new Date(
+session.ora_fine
+)
+
+.toLocaleTimeString(
+'it-IT',
+{
+
+hour:'2-digit',
+
+minute:'2-digit'
+
+}
+
+)
+
+:
+
+"-"
+
+}
+
+</p>
+
+<p>
+
 <b>Temperatura:</b>
 
 {session.temperatura ?? "-"}
