@@ -693,12 +693,34 @@ return(
 
 <div style={{
 
+minHeight:'100vh',
+
 display:'flex',
+
 justifyContent:'center',
+
 alignItems:'center',
-height:'100vh',
-background:
-'linear-gradient(to bottom,#EAF6FF,#D8ECFF)'
+
+background:'#EAF3FB',
+
+padding:'20px'
+
+}}>
+
+<div style={{
+
+width:'100%',
+
+maxWidth:'520px',
+
+background:'white',
+
+padding:'45px',
+
+borderRadius:'30px',
+
+boxShadow:
+'0 10px 30px rgba(0,0,0,.08)'
 
 }}>
 
@@ -718,17 +740,17 @@ alt="FishingTrack"
 
 style={{
 
-width:'280px',
+width:'260px',
 
 maxWidth:'100%',
 
-height:'auto',
-
-objectFit:'contain'
+height:'auto'
 
 }}
 
 />
+
+</div>
 
 
 {
@@ -818,7 +840,8 @@ fontSize:'18px',
 background:'#234E70',
 color:'white',
 border:'none',
-borderRadius:'12px'
+borderRadius:'12px',
+cursor:'pointer'
 
 }}
 
@@ -835,7 +858,9 @@ marginTop:'20px',
 
 cursor:'pointer',
 
-color:'#234E70'
+color:'#234E70',
+
+textAlign:'center'
 
 }}
 
@@ -876,6 +901,7 @@ setPassword(e.target.value)
 style={inputStyle}
 />
 
+
 <button
 
 onClick={login}
@@ -888,7 +914,8 @@ fontSize:'18px',
 background:'#234E70',
 color:'white',
 border:'none',
-borderRadius:'12px'
+borderRadius:'12px',
+cursor:'pointer'
 
 }}
 
@@ -905,7 +932,9 @@ marginTop:'20px',
 
 cursor:'pointer',
 
-color:'#234E70'
+color:'#234E70',
+
+textAlign:'center'
 
 }}
 
@@ -932,7 +961,6 @@ Non hai un account? Crealo
 )
 
 }
-
 
 
 return(
