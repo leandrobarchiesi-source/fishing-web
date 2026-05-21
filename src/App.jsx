@@ -266,6 +266,8 @@ await supabase
 .data.user
 
 
+const {error}=
+
 await supabase
 
 .from(
@@ -274,12 +276,57 @@ await supabase
 
 .insert({
 
-user_id:
-user.id,
+user_id:user.id,
 
-...sessione
+spot_id:
+sessione.spot_id,
+
+luogo:
+sessione.luogo,
+
+latitudine:
+sessione.latitudine,
+
+longitudine:
+sessione.longitudine,
+
+tipo_pescata:
+sessione.tipo_pescata,
+
+data:
+sessione.data,
+
+ora_inizio:
+sessione.data+"T"+sessione.ora_inizio+":00",
+
+ora_fine:
+sessione.data+"T"+sessione.ora_fine+":00",
+
+note:
+sessione.note,
+
+temperatura:null,
+
+pressione:null,
+
+vento:null,
+
+fase_lunare:null
 
 })
+
+
+if(error){
+
+console.log(error)
+
+alert(
+error.message
+)
+
+return
+
+}
 
 
 setAddingSession(false)
@@ -287,7 +334,6 @@ setAddingSession(false)
 await loadData()
 
 }
-
 
 
 async function eliminaSessione(session){
@@ -488,18 +534,9 @@ onDelete={eliminaSessione}
 
 addSession={()=>{
 
-console.log(
-"Nuova sessione"
-)
-
-alert(
-"Nuova sessione"
-)
-
 setAddingSession(true)
 
 }}
-
 />
 
 }
