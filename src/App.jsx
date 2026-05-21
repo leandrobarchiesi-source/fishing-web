@@ -266,6 +266,11 @@ await supabase
 .data.user
 
 
+const id=
+
+crypto.randomUUID()
+
+
 const {error}=
 
 await supabase
@@ -275,6 +280,8 @@ await supabase
 )
 
 .insert({
+
+id,
 
 user_id:user.id,
 
@@ -334,7 +341,6 @@ setAddingSession(false)
 await loadData()
 
 }
-
 
 async function eliminaSessione(session){
 
