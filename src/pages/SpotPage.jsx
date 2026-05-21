@@ -33,26 +33,53 @@ flexWrap:'wrap',
 
 gap:'20px',
 
-marginBottom:'10px'
+marginBottom:'25px'
 
 }}>
 
 
 <div>
 
-<h1 style={{
+<div style={{
 
-fontSize:'58px',
+display:'flex',
 
-margin:'0',
+alignItems:'center',
 
-fontWeight:'700'
+gap:'12px',
+
+marginBottom:'6px'
 
 }}>
 
-📍 Spot
+<div style={{
+
+fontSize:'34px'
+
+}}>
+
+📍
+
+</div>
+
+
+<h1 style={{
+
+fontSize:'52px',
+
+margin:0,
+
+fontWeight:'700',
+
+lineHeight:1
+
+}}>
+
+Spot
 
 </h1>
+
+</div>
 
 
 <p style={{
@@ -61,7 +88,9 @@ color:'#64748B',
 
 fontSize:'18px',
 
-margin:'8px 0 0 0'
+margin:0,
+
+paddingLeft:'46px'
 
 }}>
 
@@ -104,7 +133,6 @@ height:'50px'
 </button>
 
 </div>
-
 
 
 <div style={{
