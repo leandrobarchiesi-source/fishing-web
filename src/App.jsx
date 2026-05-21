@@ -17,46 +17,25 @@ import AddSessionModal from './components/AddSessionModal'
 function App(){
 
 const [user,setUser]=useState(null)
-
 const [email,setEmail]=useState("")
 const [password,setPassword]=useState("")
-
 const [sessions,setSessions]=useState([])
 const [spots,setSpots]=useState([])
-
 const [sessionCount,setSessionCount]=useState(0)
 const [spotCount,setSpotCount]=useState(0)
-
-const [selectedPage,setSelectedPage]=
-useState("dashboard")
-
-const [
-addingSession,
-setAddingSession
-]=useState(false)
-
-const [
-selectedSession,
-setSelectedSession
-]=useState(null)
-
-const [
-editingSession,
-setEditingSession
-]=useState(null)
-
-const [
-addingSpot,
-setAddingSpot
-]=useState(false)
+const [selectedPage,setSelectedPage]=useState("dashboard")
+const [addingSession,setAddingSession]=useState(false)
+const [selectedSession,setSelectedSession]=useState(null)
+const [editingSession,setEditingSession]=useState(null)
+const [addingSpot,setAddingSpot]=useState(false)
+const [registerMode,setRegisterMode]=useState(false)
+const [nome,setNome]=useState("")
+const [cognome,setCognome]=useState("")
+const [lingua,setLingua]=useState("it")
 
 
+useEffect(()=>{checkUser()},[])
 
-useEffect(()=>{
-
-checkUser()
-
-},[])
 
 
 
@@ -197,6 +176,55 @@ await loadData()
 
 }
 
+async function register(){
+
+const {data,error}=
+
+await supabase.auth.signUp({
+
+email,
+password
+
+})
+
+if(error){
+
+alert(error.message)
+
+return
+
+}
+
+
+const user=data.user
+
+if(user){
+
+await supabase
+
+.from('profiles')
+
+.insert({
+
+id:user.id,
+
+nome,
+
+cognome,
+
+language:lingua
+
+})
+
+}
+
+alert(
+"Account creato"
+)
+
+setRegisterMode(false)
+
+}
 
 
 async function logout(){
@@ -614,6 +642,132 @@ color:'#666'
 Il tuo diario di pesca digitale
 </p>
 
+{
+
+registerMode
+
+?
+
+<>
+
+<input
+placeholder='Nome'
+value={nome}
+onChange={(e)=>
+setNome(e.target.value)
+}
+style={inputStyle}
+/>
+
+<input
+placeholder='Cognome'
+value={cognome}
+onChange={(e)=>
+setCognome(e.target.value)
+}
+style={inputStyle}
+/>
+
+<input
+placeholder='Email'
+value={email}
+onChange={(e)=>
+setEmail(e.target.value)
+}
+style={inputStyle}
+/>
+
+<input
+type='password'
+placeholder='Password'
+value={password}
+onChange={(e)=>
+setPassword(e.target.value)
+}
+style={inputStyle}
+/>
+
+
+<select
+
+value={lingua}
+
+onChange={(e)=>
+
+setLingua(
+e.target.value
+)}
+
+style={inputStyle}
+
+>
+
+<option value="it">
+
+🇮🇹 Italiano
+
+</option>
+
+<option value="en">
+
+🇬🇧 English
+
+</option>
+
+</select>
+
+
+<button
+
+onClick={register}
+
+style={{
+
+width:'100%',
+padding:'14px',
+fontSize:'18px',
+background:'#234E70',
+color:'white',
+border:'none',
+borderRadius:'12px'
+
+}}
+
+>
+
+Crea account
+
+</button>
+
+
+<p style={{
+
+marginTop:'20px',
+
+cursor:'pointer',
+
+color:'#234E70'
+
+}}
+
+onClick={()=>
+
+setRegisterMode(false)
+
+}
+
+>
+
+Hai già un account? Accedi
+
+</p>
+
+</>
+
+:
+
+<>
+
 <input
 placeholder='Email'
 value={email}
@@ -634,7 +788,9 @@ style={inputStyle}
 />
 
 <button
+
 onClick={login}
+
 style={{
 
 width:'100%',
@@ -646,11 +802,39 @@ border:'none',
 borderRadius:'12px'
 
 }}
+
 >
 
 Accedi
 
 </button>
+
+
+<p style={{
+
+marginTop:'20px',
+
+cursor:'pointer',
+
+color:'#234E70'
+
+}}
+
+onClick={()=>
+
+setRegisterMode(true)
+
+}
+
+>
+
+Non hai un account? Crealo
+
+</p>
+
+</>
+
+}
 
 </div>
 
