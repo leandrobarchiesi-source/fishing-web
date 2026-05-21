@@ -141,6 +141,7 @@ spot.longitudine
 
 const [zoom,setZoom]=useState(false)
 const markerRef=useRef(null)
+const map=useMap()
 
 
 async function salva(){
@@ -181,12 +182,9 @@ return
 }
 
 
-alert(
-"Spot aggiornato"
-)
+markerRef.current?.closePopup()
 
 refreshData?.()
-
 }
 
 
@@ -220,11 +218,26 @@ e.target.getLatLng()
 setPosition(p)
 
 
+map.flyTo(
+
+[p.lat,p.lng],
+
+16,
+
+{
+
+duration:0.8
+
+}
+
+)
+
+
 setTimeout(()=>{
 
 markerRef.current?.openPopup()
 
-},100)
+},200)
 
 }
 
