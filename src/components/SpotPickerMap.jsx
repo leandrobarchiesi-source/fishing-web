@@ -3,6 +3,7 @@ MapContainer,
 TileLayer,
 Marker,
 Popup,
+LayersControl,
 useMapEvents,
 useMap
 }
@@ -560,12 +561,37 @@ zIndex:1
 
 >
 
+<LayersControl position="topright">
+
+<LayersControl.BaseLayer
+checked
+name="🗺 Mappa"
+>
+
 <TileLayer
 
 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
 />
 
+</LayersControl.BaseLayer>
+
+
+<LayersControl.BaseLayer
+name="🛰 Satellite"
+>
+
+<TileLayer
+
+url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+
+attribution="Esri"
+
+/>
+
+</LayersControl.BaseLayer>
+
+</LayersControl>
 
 {
 
