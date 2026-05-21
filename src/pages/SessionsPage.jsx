@@ -5,7 +5,8 @@ export default function SessionsPage({
 sessions,
 onView,
 onEdit,
-onDelete
+onDelete,
+addSession
 
 }){
 
@@ -22,11 +23,28 @@ margin:'0 auto'
 }}>
 
 
+<div style={{
+
+display:'flex',
+
+justifyContent:'space-between',
+
+alignItems:'center',
+
+flexWrap:'wrap',
+
+gap:'20px',
+
+marginBottom:'30px'
+
+}}>
+
+
+<div>
+
 <h1 style={{
 
 fontSize:'58px',
-
-textAlign:'center',
 
 margin:'0',
 
@@ -41,21 +59,55 @@ fontWeight:'700'
 
 <p style={{
 
-textAlign:'center',
-
 color:'#64748B',
 
 fontSize:'18px',
 
 marginTop:'10px',
 
-marginBottom:'45px'
+marginBottom:0
 
 }}>
 
 Gestisci e modifica le sessioni
 
 </p>
+
+</div>
+
+
+
+<button
+
+onClick={addSession}
+
+style={{
+
+padding:'14px 25px',
+
+border:'none',
+
+borderRadius:'12px',
+
+background:'#234E70',
+
+color:'white',
+
+cursor:'pointer',
+
+fontSize:'15px',
+
+height:'50px'
+
+}}
+
+>
+
+➕ Nuova Sessione
+
+</button>
+
+</div>
 
 
 

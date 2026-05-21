@@ -30,6 +30,11 @@ const [selectedPage,setSelectedPage]=
 useState("dashboard")
 
 const [
+addingSession,
+setAddingSession
+]=useState(false)
+
+const [
 selectedSession,
 setSelectedSession
 ]=useState(null)
@@ -71,6 +76,22 @@ await loadData()
 }
 
 }
+
+<SessionsPage
+
+sessions={sessions}
+
+onView={setSelectedSession}
+
+onEdit={setEditingSession}
+
+onDelete={eliminaSessione}
+
+addSession={()=>
+setAddingSession(true)
+}
+
+/>
 
 
 
@@ -614,7 +635,7 @@ boxSizing:'border-box',
 overflowY:'auto'
 
 }}>
-        
+
 {selectedPage==="dashboard" &&
 
 <Dashboard
