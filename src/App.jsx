@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard'
 import SessionsPage from './pages/SessionsPage'
 import SpotPage from './pages/SpotPage'
 import ProfilePage from './pages/ProfilePage'
+import AddSessionModal from './components/AddSessionModal'
 
 
 function App(){
@@ -247,6 +248,41 @@ longitudine:spot.longitudine
 
 
 setAddingSpot(false)
+
+await loadData()
+
+}
+
+async function salvaSessione(sessione){
+
+const user=
+
+(
+await supabase
+.auth
+.getUser()
+)
+
+.data.user
+
+
+await supabase
+
+.from(
+'fishing_sessions'
+)
+
+.insert({
+
+user_id:
+user.id,
+
+...sessione
+
+})
+
+
+setAddingSession(false)
 
 await loadData()
 
@@ -546,6 +582,22 @@ setAddingSpot(false)
 }
 
 onSave={salvaSpot}
+
+/>
+
+<AddSessionModal
+
+isOpen={addingSession}
+
+onClose={()=>
+
+setAddingSession(false)
+
+}
+
+onSave={salvaSessione}
+
+spots={spots}
 
 />
 
