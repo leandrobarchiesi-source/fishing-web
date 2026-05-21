@@ -78,11 +78,11 @@ Bentornato
 
 {
 
-user?.email
+user?.name
 
 ?
 
-` ${user.email.split('@')[0]}`
+` ${user.name}`
 
 :
 
