@@ -21,11 +21,28 @@ margin:'0 auto'
 }}>
 
 
+<div style={{
+
+display:'flex',
+
+justifyContent:'space-between',
+
+alignItems:'center',
+
+flexWrap:'wrap',
+
+gap:'20px',
+
+marginBottom:'10px'
+
+}}>
+
+
+<div>
+
 <h1 style={{
 
 fontSize:'58px',
-
-textAlign:'center',
 
 margin:'0',
 
@@ -40,15 +57,11 @@ fontWeight:'700'
 
 <p style={{
 
-textAlign:'center',
-
 color:'#64748B',
 
 fontSize:'18px',
 
-marginTop:'10px',
-
-marginBottom:'30px'
+margin:'8px 0 0 0'
 
 }}>
 
@@ -56,17 +69,9 @@ Tutti i tuoi spot sulla mappa
 
 </p>
 
+</div>
 
 
-<div style={{
-
-display:'flex',
-
-justifyContent:'center',
-
-marginBottom:'30px'
-
-}}>
 
 <button
 
@@ -86,7 +91,9 @@ color:'white',
 
 cursor:'pointer',
 
-fontSize:'15px'
+fontSize:'15px',
+
+height:'50px'
 
 }}
 
@@ -102,7 +109,7 @@ fontSize:'15px'
 
 <div style={{
 
-height:'75vh',
+height:'72vh',
 
 background:'white',
 
