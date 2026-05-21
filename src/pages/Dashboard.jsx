@@ -74,7 +74,22 @@ fontWeight:'700'
 
 }}>
 
-Bentornato {user?.nome || ""}
+Bentornato
+
+{
+
+user?.email
+
+?
+
+` ${user.email.split('@')[0]}`
+
+:
+
+""
+
+}
+
 </h1>
 
 
@@ -93,7 +108,6 @@ marginBottom:'40px'
 La tua home FishingTrack
 
 </p>
-
 
 <div style={{
 
