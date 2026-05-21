@@ -1,138 +1,47 @@
-import {useState} from 'react'
-
-import SessionCard from '../components/SessionCard'
-import SessionModal from '../components/SessionModal'
-import EditSessionModal from '../components/EditSessionModal'
-
-import {supabase} from '../supabase'
-
-
 export default function Dashboard({
 
 sessionCount,
 spotCount,
-sessions,
-refreshData
+sessions
 
 }){
 
-const [
-selectedSession,
-setSelectedSession
-]=useState(null)
+const ultima=
 
-const [
-editingSession,
-setEditingSession
-]=useState(null)
+sessions?.[0]
 
+const conteggioTipi={}
 
+sessions.forEach(s=>{
 
-async function eliminaSessione(session){
+const t=
 
-if(
-!window.confirm(
-"Eliminare sessione?"
-)
-){
-return
-}
+s.tipo_pescata||
 
-const {error}=
+"Altro"
 
-await supabase
+conteggioTipi[t]=
 
-.from(
-'fishing_sessions'
-)
-
-.delete()
-
-.eq(
-'id',
-session.id)
-
-
-if(error){
-
-console.log(error)
-
-return
-
-}
-
-await refreshData()
-
-}
-
-
-
-async function salvaModifica(
-sessione
-){
-
-const {error}=
-
-await supabase
-
-.from(
-'fishing_sessions'
-)
-
-.update({
-
-luogo:
-sessione.luogo,
-
-tipo_pescata:
-sessione.tipo_pescata,
-
-data:
-sessione.data,
-
-ora_inizio:
-sessione.ora_inizio,
-
-ora_fine:
-sessione.ora_fine,
-
-temperatura:
-sessione.temperatura,
-
-pressione:
-sessione.pressione,
-
-vento:
-sessione.vento,
-
-fase_lunare:
-sessione.fase_lunare,
-
-note:
-sessione.note
+(conteggioTipi[t]||0)+1
 
 })
 
-.eq(
-'id',
-sessione.id)
 
+const preferito=
 
-if(error){
-
-console.log(error)
-
-return
-
-}
-
-setEditingSession(
-null
+Object.keys(
+conteggioTipi
 )
 
-await refreshData()
+.sort(
 
-}
+(a,b)=>
+
+conteggioTipi[b]-
+
+conteggioTipi[a]
+
+)[0]
 
 
 
@@ -142,7 +51,7 @@ return(
 
 width:'100%',
 
-maxWidth:'1200px',
+maxWidth:'1100px',
 
 margin:'0 auto'
 
@@ -150,17 +59,17 @@ margin:'0 auto'
 
 <h1 style={{
 
-fontSize:'52px',
+fontSize:'58px',
 
-margin:'0 0 40px 0',
+marginTop:0,
 
-fontWeight:'700',
+marginBottom:'40px',
 
 textAlign:'center'
 
 }}>
 
-Bentornato
+Bentornato 🎣
 
 </h1>
 
@@ -174,137 +83,132 @@ justifyContent:'center',
 
 gap:'25px',
 
-marginBottom:'60px',
+flexWrap:'wrap',
 
-flexWrap:'wrap'
+marginBottom:'50px'
 
 }}>
 
 <Box
+
 title="🎣 Sessioni"
+
 value={sessionCount}
+
 />
 
 <Box
+
 title="📍 Spot"
+
 value={spotCount}
+
+/>
+
+<Box
+
+title="🕒 Ultima"
+
+value={
+
+ultima
+
+?
+
+new Date(
+ultima.data
+)
+
+.toLocaleDateString()
+
+:
+
+"-"
+
+}
+
+/>
+
+<Box
+
+title="⭐ Preferita"
+
+value={
+
+preferito||
+
+"-"
+
+}
+
 />
 
 </div>
 
 
-<h2 style={{
 
-textAlign:'center',
 
-marginBottom:'35px'
+<div style={{
+
+background:'white',
+
+padding:'35px',
+
+borderRadius:'25px',
+
+boxShadow:
+'0 2px 12px rgba(0,0,0,.08)',
+
+textAlign:'center'
 
 }}>
 
-Ultime Sessioni
+<h2>
+
+⚡ Azioni rapide
 
 </h2>
-
 
 
 <div style={{
 
 display:'flex',
 
-flexDirection:'column',
+justifyContent:'center',
 
-alignItems:'center'
+gap:'20px',
+
+marginTop:'25px',
+
+flexWrap:'wrap'
 
 }}>
 
-{
+<button style={btn}>
 
-sessions.length===0
+➕ Nuova Sessione
 
-?
+</button>
 
-<p>
 
-Nessuna sessione
+<button style={btn}>
 
-</p>
+📍 Nuovo Spot
 
-:
+</button>
 
-sessions.map(
-
-(s)=>
-
-<SessionCard
-
-key={s.id}
-
-session={s}
-
-onView={(x)=>
-setSelectedSession(x)
-}
-
-onEdit={(x)=>
-setEditingSession(x)
-}
-
-onDelete={(x)=>
-eliminaSessione(x)
-}
-
-/>
-
-)
-
-}
+</div>
 
 </div>
 
 
-
-<SessionModal
-
-session={selectedSession}
-
-isOpen={
-selectedSession!=null
-}
-
-onClose={()=>
-
-setSelectedSession(null)
-
-}
-
-/>
-
-
-<EditSessionModal
-
-session={editingSession}
-
-isOpen={
-editingSession!=null
-}
-
-onClose={()=>
-
-setEditingSession(null)
-
-}
-
-onSave={
-salvaModifica
-}
-
-/>
 
 </div>
 
 )
 
 }
+
 
 
 
@@ -319,53 +223,70 @@ return(
 
 <div style={{
 
-width:'220px',
+padding:'25px',
 
-height:'160px',
+width:'180px',
 
 background:'white',
 
-borderRadius:'25px',
-
-display:'flex',
-
-flexDirection:'column',
-
-justifyContent:'center',
-
-alignItems:'center',
+borderRadius:'20px',
 
 boxShadow:
-'0 2px 12px rgba(0,0,0,.08)'
+'0 2px 10px rgba(0,0,0,.1)',
+
+textAlign:'center'
 
 }}>
 
-<div style={{
+<h3 style={{
 
-fontSize:'24px',
+marginBottom:'15px',
 
-marginBottom:'15px'
+color:'#64748B'
 
 }}>
 
 {title}
 
-</div>
+</h3>
 
-<div style={{
 
-fontSize:'56px',
+<h1 style={{
 
-fontWeight:'bold'
+margin:0,
+
+fontSize:'38px',
+
+color:'#1E293B'
 
 }}>
 
 {value}
 
-</div>
+</h1>
 
 </div>
 
 )
+
+}
+
+
+
+const btn={
+
+padding:'14px 25px',
+
+background:'#234E70',
+
+color:'white',
+
+border:'none',
+
+borderRadius:'14px',
+
+cursor:'pointer',
+
+fontSize:'16px'
 
 }
