@@ -941,7 +941,6 @@ setOpenSpot(true)
 
 }
 
-onDelete={eliminaSpot}
 
 refreshData={loadData}
 
