@@ -160,8 +160,9 @@ spots={spots}
 
 onDelete={onDelete}
 
-/>
+refreshData={refreshData}
 
+/>
 </div>
 
 </div>

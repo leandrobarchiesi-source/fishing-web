@@ -1,13 +1,11 @@
 import {
-
 MapContainer,
 TileLayer,
 Marker,
 Popup,
-useMapEvents
-
+useMapEvents,
+useMap
 }
-
 from 'react-leaflet'
 
 import L from 'leaflet'
@@ -15,6 +13,7 @@ import {useState} from 'react'
 import {supabase} from '../supabase'
 
 import 'leaflet/dist/leaflet.css'
+
 
 
 const icon=L.icon({
@@ -27,9 +26,12 @@ shadowUrl:
 
 iconSize:[25,41],
 
-iconAnchor:[12,41]
+iconAnchor:[12,41],
+
+popupAnchor:[0,-35]
 
 })
+
 
 
 
@@ -81,15 +83,48 @@ icon={icon}
 
 
 
+function FlyToMarker({
+
+position
+
+}){
+
+const map=useMap()
+
+map.flyTo(
+
+[position.lat,position.lng],
+
+14,
+
+{
+
+duration:1.5
+
+}
+
+)
+
+return null
+
+}
+
+
+
+
 function EditableMarker({
 
-spot
+spot,
+refreshData
 
 }){
 
 const [nome,setNome]=useState(
-spot.nome
+
+spot.nome||""
+
 )
+
 
 const [position,setPosition]=useState({
 
@@ -102,6 +137,11 @@ spot.longitudine
 )
 
 })
+
+
+const [zoom,setZoom]=
+
+useState(false)
 
 
 
@@ -147,7 +187,7 @@ alert(
 "Spot aggiornato"
 )
 
-window.location.reload()
+refreshData?.()
 
 }
 
@@ -165,6 +205,12 @@ draggable={true}
 
 eventHandlers={{
 
+click(){
+
+setZoom(true)
+
+},
+
 dragend(e){
 
 const p=
@@ -179,9 +225,35 @@ setPosition(p)
 
 >
 
-<Popup>
+{
 
-<div style={{width:'220px'}}>
+zoom &&
+
+<FlyToMarker
+
+position={position}
+
+/>
+
+}
+
+
+<Popup
+
+offset={[0,-35]}
+
+closeButton={true}
+
+>
+
+<div style={{
+
+width:'240px',
+
+paddingTop:'10px'
+
+}}>
+
 
 <input
 
@@ -197,45 +269,82 @@ style={{
 
 width:'100%',
 
-padding:'8px',
+padding:'12px',
 
-marginBottom:'10px'
+borderRadius:'10px',
+
+border:'1px solid #D6DEE8',
+
+marginBottom:'15px',
+
+boxSizing:'border-box',
+
+fontSize:'15px'
 
 }}
 
 />
 
 
-<p>
 
-Lat:
+<div style={{
 
-{position.lat.toFixed(5)}
+marginBottom:'12px',
 
-</p>
-
-<p>
-
-Lon:
-
-{position.lng.toFixed(5)}
-
-</p>
-
-
-<p style={{
-
-fontSize:'12px',
-
-color:'#64748B'
+color:'#334155'
 
 }}>
 
-Trascina il marker
+<b>
 
-per cambiare posizione
+Lat:
 
-</p>
+</b>
+
+{' '}
+
+{position.lat.toFixed(5)}
+
+</div>
+
+
+
+<div style={{
+
+marginBottom:'15px',
+
+color:'#334155'
+
+}}>
+
+<b>
+
+Lon:
+
+</b>
+
+{' '}
+
+{position.lng.toFixed(5)}
+
+</div>
+
+
+
+<div style={{
+
+fontSize:'13px',
+
+color:'#64748B',
+
+marginBottom:'20px'
+
+}}>
+
+📍 Trascina il pin per cambiare posizione
+
+</div>
+
 
 
 <button
@@ -246,7 +355,7 @@ style={{
 
 width:'100%',
 
-padding:'10px',
+padding:'14px',
 
 background:'#234E70',
 
@@ -254,9 +363,13 @@ color:'white',
 
 border:'none',
 
-borderRadius:'10px',
+borderRadius:'14px',
 
-cursor:'pointer'
+cursor:'pointer',
+
+fontWeight:'600',
+
+fontSize:'16px'
 
 }}
 
@@ -278,11 +391,13 @@ cursor:'pointer'
 
 
 
+
 export default function SpotPickerMap({
 
 position,
 setPosition,
-spots=[]
+spots=[],
+refreshData
 
 }){
 
@@ -326,6 +441,8 @@ spot=>
 key={spot.id}
 
 spot={spot}
+
+refreshData={refreshData}
 
 />
 
