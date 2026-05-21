@@ -937,15 +937,13 @@ spots={spots}
 
 addSpot={()=>
 
-setOpenSpot(true)
+setAddingSpot(true)
 
 }
-
 
 refreshData={loadData}
 
-/>
-}
+/>}
 
 
 {selectedPage==="profilo" &&
