@@ -515,6 +515,9 @@ meteo.pressione,
 vento:
 meteo.vento,
 
+condizioni:
+meteo.condizioni,
+
 fase_lunare:
 fase
 
