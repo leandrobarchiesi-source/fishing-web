@@ -12,6 +12,7 @@ import SessionsPage from './pages/SessionsPage'
 import SpotPage from './pages/SpotPage'
 import ProfilePage from './pages/ProfilePage'
 import AddSessionModal from './components/AddSessionModal'
+import {getLunarPhase} from 'lunarphase-js'
 
 
 function App(){
@@ -253,6 +254,76 @@ await loadData()
 
 }
 
+async function getWeather(
+
+lat,
+lon,
+dataOra
+
+){
+
+try{
+
+const giorno=
+
+dataOra
+
+.toISOString()
+
+.split("T")[0]
+
+
+const ora=
+
+dataOra.getHours()
+
+
+
+const response=
+
+await fetch(
+
+`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,pressure_msl,wind_speed_10m&start_date=${giorno}&end_date=${giorno}`
+
+)
+
+
+const data=
+
+await response.json()
+
+
+return{
+
+temperatura:
+data.hourly.temperature_2m[ora],
+
+pressione:
+data.hourly.pressure_msl[ora],
+
+vento:
+data.hourly.wind_speed_10m[ora]+" km/h"
+
+}
+
+}
+
+catch{
+
+return{
+
+temperatura:null,
+
+pressione:null,
+
+vento:null
+
+}
+
+}
+
+}
+
 async function salvaSessione(sessione){
 
 const user=
@@ -267,8 +338,44 @@ await supabase
 
 
 const id=
-
 crypto.randomUUID()
+
+
+const dataOra=
+
+new Date(
+
+sessione.data+
+
+"T"+
+
+sessione.ora_inizio+
+
+":00"
+
+)
+
+
+
+const meteo=
+
+await getWeather(
+
+sessione.latitudine,
+
+sessione.longitudine,
+
+dataOra
+
+)
+
+
+const fase=
+
+getLunarPhase(
+dataOra
+)
+
 
 
 const {error}=
@@ -304,32 +411,43 @@ data:
 sessione.data,
 
 ora_inizio:
-sessione.data+"T"+sessione.ora_inizio+":00",
+dataOra.toISOString(),
 
 ora_fine:
-sessione.data+"T"+sessione.ora_fine+":00",
+
+new Date(
+
+sessione.data+
+
+"T"+
+
+sessione.ora_fine+
+
+":00"
+
+).toISOString(),
 
 note:
 sessione.note,
 
-temperatura:null,
+temperatura:
+meteo.temperatura,
 
-pressione:null,
+pressione:
+meteo.pressione,
 
-vento:null,
+vento:
+meteo.vento,
 
-fase_lunare:null
+fase_lunare:
+fase
 
 })
 
 
 if(error){
 
-console.log(error)
-
-alert(
-error.message
-)
+alert(error.message)
 
 return
 
