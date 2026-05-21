@@ -121,7 +121,6 @@ marginBottom:'40px'
 
 }}>
 
-La tua home FishingTrack
 
 </p>
 
