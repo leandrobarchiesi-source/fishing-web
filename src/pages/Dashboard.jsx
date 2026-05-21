@@ -2,7 +2,8 @@ export default function Dashboard({
 
 sessionCount,
 spotCount,
-sessions
+sessions,
+user
 
 }){
 
@@ -73,24 +74,7 @@ fontWeight:'700'
 
 }}>
 
-Bentornato
-
-{
-
-sessions?.length>0 &&
-
-sessions[0]?.nome_utente
-
-?
-
-` ${sessions[0].nome_utente}`
-
-:
-
-""
-
-}
-
+Bentornato {user?.nome || ""}
 </h1>
 
 

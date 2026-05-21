@@ -971,6 +971,8 @@ spotCount={spotCount}
 
 sessions={sessions}
 
+user={profile}
+
 refreshData={loadData}
 
 />
