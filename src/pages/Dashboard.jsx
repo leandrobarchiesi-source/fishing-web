@@ -59,20 +59,56 @@ margin:'0 auto'
 
 <h1 style={{
 
-fontSize:'58px',
+fontSize:'48px',
 
 marginTop:0,
 
-marginBottom:'40px',
+marginBottom:'10px',
 
-textAlign:'center'
+textAlign:'center',
+
+color:'#1E293B',
+
+fontWeight:'700'
 
 }}>
 
-Bentornato 🎣
+Bentornato
+
+{
+
+sessions?.length>0 &&
+
+sessions[0]?.nome_utente
+
+?
+
+` ${sessions[0].nome_utente}`
+
+:
+
+""
+
+}
 
 </h1>
 
+
+<p style={{
+
+textAlign:'center',
+
+color:'#64748B',
+
+fontSize:'18px',
+
+marginBottom:'40px'
+
+}}>
+
+La tua home FishingTrack
+
+</p>
 
 
 <div style={{
