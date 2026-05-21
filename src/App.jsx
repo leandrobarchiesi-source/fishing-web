@@ -806,8 +806,15 @@ setEditingSession(null)
 
 }
 
-/>
+onSave={(dati)=>{
 
+salvaModifica(
+dati
+)
+
+}}
+
+/>
 
 <AddSpotModal
 
