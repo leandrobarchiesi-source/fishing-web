@@ -595,9 +595,15 @@ logout={logout}
 
 <div style={{
 
-marginLeft:'240px',
+position:'fixed',
 
-minHeight:'100vh',
+left:'240px',
+
+top:0,
+
+right:0,
+
+bottom:0,
 
 background:'#EEF4F8',
 
@@ -605,10 +611,10 @@ padding:'40px',
 
 boxSizing:'border-box',
 
-overflowX:'hidden'
+overflowY:'auto'
 
 }}>
-    
+        
 {selectedPage==="dashboard" &&
 
 <Dashboard
