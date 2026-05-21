@@ -704,35 +704,32 @@ background:
 
 <div style={{
 
-background:'white',
-padding:'40px',
-width:'420px',
-borderRadius:'25px',
-boxShadow:
-'0 10px 30px rgba(0,0,0,.15)',
-textAlign:'center'
+textAlign:'center',
+
+marginBottom:'35px'
 
 }}>
 
-<div style={{
-fontSize:'70px'
-}}>
-🎣
-</div>
+<img
 
-<h1 style={{
-fontSize:'34px',
-color:'#234E70'
-}}>
-FishingTrack
-</h1>
+src="/logo.png"
 
-<p style={{
-marginBottom:30,
-color:'#666'
-}}>
-Il tuo diario di pesca digitale
-</p>
+alt="FishingTrack"
+
+style={{
+
+width:'280px',
+
+maxWidth:'100%',
+
+height:'auto',
+
+objectFit:'contain'
+
+}}
+
+/>
+
 
 {
 
