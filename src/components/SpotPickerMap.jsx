@@ -9,7 +9,7 @@ useMap
 from 'react-leaflet'
 
 import L from 'leaflet'
-import {useState} from 'react'
+import {useState,useRef} from 'react'
 import {supabase} from '../supabase'
 
 import 'leaflet/dist/leaflet.css'
@@ -139,10 +139,8 @@ spot.longitudine
 })
 
 
-const [zoom,setZoom]=
-
-useState(false)
-
+const [zoom,setZoom]=useState(false)
+const markerRef=useRef(null)
 
 
 async function salva(){
@@ -197,6 +195,8 @@ return(
 
 <Marker
 
+ref={markerRef}
+
 position={position}
 
 icon={icon}
@@ -218,6 +218,13 @@ const p=
 e.target.getLatLng()
 
 setPosition(p)
+
+
+setTimeout(()=>{
+
+markerRef.current?.openPopup()
+
+},100)
 
 }
 
