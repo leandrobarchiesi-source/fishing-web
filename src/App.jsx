@@ -77,31 +77,6 @@ await loadData()
 
 }
 
-<SessionsPage
-
-sessions={sessions}
-
-onView={setSelectedSession}
-
-onEdit={setEditingSession}
-
-onDelete={eliminaSessione}
-
-addSession={()=>{
-
-console.log(
-"Nuova sessione"
-)
-
-alert(
-"Nuova sessione"
-)
-
-setAddingSession(true)
-
-}}
-/>
-
 
 
 async function loadData(){
@@ -252,8 +227,6 @@ await supabase
 .data.user
 
 
-const {error}=
-
 await supabase
 
 .from(
@@ -273,147 +246,7 @@ longitudine:spot.longitudine
 })
 
 
-if(error){
-
-console.log(error)
-
-return
-
-}
-
-
 setAddingSpot(false)
-
-await loadData()
-
-}
-
-
-
-async function eliminaSpot(spot){
-
-const {data}=
-
-await supabase
-
-.from(
-'fishing_sessions'
-)
-
-.select('id')
-
-.eq(
-'spot_id',
-spot.id
-)
-
-
-if(data?.length>0){
-
-alert(
-
-"Impossibile eliminare.\n\nSpot utilizzato da "+
-
-data.length+
-
-" sessioni"
-
-)
-
-return
-
-}
-
-
-if(
-
-!window.confirm(
-"Eliminare spot?"
-)
-
-){
-
-return
-
-}
-
-
-await supabase
-
-.from(
-'spots'
-)
-
-.delete()
-
-.eq(
-'id',
-spot.id)
-
-
-await loadData()
-
-}
-
-
-
-async function salvaModifica(sessione){
-
-const {error}=
-
-await supabase
-
-.from(
-'fishing_sessions'
-)
-
-.update({
-
-luogo:sessione.luogo,
-
-tipo_pescata:
-sessione.tipo_pescata,
-
-data:sessione.data,
-
-ora_inizio:
-sessione.ora_inizio,
-
-ora_fine:
-sessione.ora_fine,
-
-temperatura:
-sessione.temperatura,
-
-pressione:
-sessione.pressione,
-
-vento:
-sessione.vento,
-
-fase_lunare:
-sessione.fase_lunare,
-
-note:
-sessione.note
-
-})
-
-.eq(
-'id',
-sessione.id)
-
-
-if(error){
-
-console.log(error)
-
-return
-
-}
-
-
-setEditingSession(null)
 
 await loadData()
 
@@ -424,17 +257,12 @@ await loadData()
 async function eliminaSessione(session){
 
 if(
-
 !window.confirm(
 "Eliminare sessione?"
 )
-
 ){
-
 return
-
 }
-
 
 await supabase
 
@@ -447,7 +275,6 @@ await supabase
 .eq(
 'id',
 session.id)
-
 
 await loadData()
 
@@ -462,13 +289,9 @@ return(
 <div style={{
 
 display:'flex',
-
 justifyContent:'center',
-
 alignItems:'center',
-
 height:'100vh',
-
 background:
 'linear-gradient(to bottom,#EAF6FF,#D8ECFF)'
 
@@ -477,115 +300,67 @@ background:
 <div style={{
 
 background:'white',
-
 padding:'40px',
-
 width:'420px',
-
 borderRadius:'25px',
-
 boxShadow:
 '0 10px 30px rgba(0,0,0,.15)',
-
 textAlign:'center'
 
 }}>
 
 <div style={{
-
 fontSize:'70px'
-
 }}>
-
 🎣
-
 </div>
 
-
 <h1 style={{
-
 fontSize:'34px',
-
 color:'#234E70'
-
 }}>
-
 FishingTrack
-
 </h1>
 
-
 <p style={{
-
 marginBottom:30,
-
 color:'#666'
-
 }}>
-
 Il tuo diario di pesca digitale
-
 </p>
 
-
 <input
-
 placeholder='Email'
-
 value={email}
-
 onChange={(e)=>
-
-setEmail(
-e.target.value
-)}
-
+setEmail(e.target.value)
+}
 style={inputStyle}
-
 />
-
 
 <input
-
 type='password'
-
 placeholder='Password'
-
 value={password}
-
 onChange={(e)=>
-
-setPassword(
-e.target.value
-)}
-
+setPassword(e.target.value)
+}
 style={inputStyle}
-
 />
-
 
 <button
-
 onClick={login}
-
 style={{
 
 width:'100%',
-
 padding:'14px',
-
 fontSize:'18px',
-
 background:'#234E70',
-
 color:'white',
-
 border:'none',
-
 borderRadius:'12px'
 
 }}
-
 >
 
 Accedi
@@ -645,6 +420,7 @@ overflowY:'auto'
 
 }}>
 
+
 {selectedPage==="dashboard" &&
 
 <Dashboard
@@ -674,6 +450,20 @@ onEdit={setEditingSession}
 
 onDelete={eliminaSessione}
 
+addSession={()=>{
+
+console.log(
+"Nuova sessione"
+)
+
+alert(
+"Nuova sessione"
+)
+
+setAddingSession(true)
+
+}}
+
 />
 
 }
@@ -684,8 +474,6 @@ onDelete={eliminaSessione}
 <SpotPage
 
 spots={spots}
-
-onDelete={eliminaSpot}
 
 addSpot={()=>
 
@@ -739,10 +527,7 @@ editingSession!=null
 onClose={()=>
 
 setEditingSession(null)
-}
 
-onSave={
-salvaModifica
 }
 
 />
@@ -757,11 +542,10 @@ addingSpot
 onClose={()=>
 
 setAddingSpot(false)
+
 }
 
-onSave={
-salvaSpot
-}
+onSave={salvaSpot}
 
 />
 
