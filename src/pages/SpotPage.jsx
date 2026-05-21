@@ -4,7 +4,8 @@ export default function SpotPage({
 
 spots,
 addSpot,
-onDelete
+onDelete,
+refreshData
 
 }){
 

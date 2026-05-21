@@ -937,12 +937,15 @@ spots={spots}
 
 addSpot={()=>
 
-setAddingSpot(true)
+setOpenSpot(true)
 
 }
 
-/>
+onDelete={eliminaSpot}
 
+refreshData={loadData}
+
+/>
 }
 
 
