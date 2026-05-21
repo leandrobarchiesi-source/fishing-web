@@ -10,36 +10,63 @@ onDelete
 
 return(
 
-<div>
-
 <div style={{
 
-display:'flex',
+width:'100%',
 
-justifyContent:'space-between',
+maxWidth:'1200px',
 
-alignItems:'center',
-
-marginBottom:20
+margin:'0 auto'
 
 }}>
 
-<div>
 
-<h1>
+<h1 style={{
+
+fontSize:'58px',
+
+textAlign:'center',
+
+margin:'0',
+
+fontWeight:'700'
+
+}}>
 
 📍 Spot
 
 </h1>
 
-<p>
+
+<p style={{
+
+textAlign:'center',
+
+color:'#64748B',
+
+fontSize:'18px',
+
+marginTop:'10px',
+
+marginBottom:'30px'
+
+}}>
 
 Tutti i tuoi spot sulla mappa
 
 </p>
 
-</div>
 
+
+<div style={{
+
+display:'flex',
+
+justifyContent:'center',
+
+marginBottom:'30px'
+
+}}>
 
 <button
 
@@ -47,17 +74,19 @@ onClick={addSpot}
 
 style={{
 
-padding:'12px 20px',
+padding:'14px 25px',
 
 border:'none',
 
 borderRadius:'12px',
 
-background:'#17233C',
+background:'#234E70',
 
 color:'white',
 
-cursor:'pointer'
+cursor:'pointer',
+
+fontSize:'15px'
 
 }}
 
@@ -70,6 +99,7 @@ cursor:'pointer'
 </div>
 
 
+
 <div style={{
 
 height:'75vh',
@@ -78,7 +108,10 @@ background:'white',
 
 padding:'10px',
 
-borderRadius:'20px'
+borderRadius:'20px',
+
+boxShadow:
+'0 2px 12px rgba(0,0,0,.08)'
 
 }}>
 
