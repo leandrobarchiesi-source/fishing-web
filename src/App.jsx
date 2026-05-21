@@ -87,10 +87,19 @@ onEdit={setEditingSession}
 
 onDelete={eliminaSessione}
 
-addSession={()=>
-setAddingSession(true)
-}
+addSession={()=>{
 
+console.log(
+"Nuova sessione"
+)
+
+alert(
+"Nuova sessione"
+)
+
+setAddingSession(true)
+
+}}
 />
 
 
