@@ -22,6 +22,7 @@ oraFine:"",
 temperatura:"",
 pressione:"",
 vento:"",
+condizioni:"",
 fase:"",
 note:""
 
@@ -93,6 +94,9 @@ session.pressione||"",
 vento:
 session.vento||"",
 
+condizioni:
+session.condizioni||"",
+
 fase:
 session.fase_lunare||"",
 
@@ -129,18 +133,7 @@ setForm(prev=>({
 
 function salva(){
 
-if(typeof onSave!=="function"){
-
-console.log(
-"onSave mancante"
-)
-
-return
-
-}
-
-
-onSave({
+const dati={
 
 ...session,
 
@@ -168,13 +161,21 @@ form.pressione,
 vento:
 form.vento,
 
+condizioni:
+form.condizioni,
+
 fase_lunare:
 form.fase,
 
 note:
 form.note
 
-})
+}
+
+
+onSave?.(
+dati
+)
 
 }
 
@@ -220,12 +221,12 @@ background:
 </h2>
 
 
-
 <Input
 label="Luogo"
 value={form.luogo}
 onChange={(v)=>update("luogo",v)}
 />
+
 
 <label>
 
@@ -279,6 +280,8 @@ Libera
 </option>
 
 </select>
+
+
 
 <Input
 label="Data"
@@ -342,6 +345,12 @@ onChange={(v)=>update("vento",v)}
 />
 
 <Input
+label="Condizioni"
+value={form.condizioni}
+onChange={(v)=>update("condizioni",v)}
+/>
+
+<Input
 label="Fase lunare"
 value={form.fase}
 onChange={(v)=>update("fase",v)}
@@ -378,6 +387,7 @@ height:'120px'
 }}
 
 />
+
 
 
 <div style={{
