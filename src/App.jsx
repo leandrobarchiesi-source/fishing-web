@@ -12,7 +12,6 @@ import SessionsPage from './pages/SessionsPage'
 import SpotPage from './pages/SpotPage'
 import ProfilePage from './pages/ProfilePage'
 import AddSessionModal from './components/AddSessionModal'
-import {getLunarPhase} from 'lunarphase-js'
 
 
 function App(){
@@ -251,6 +250,42 @@ longitudine:spot.longitudine
 setAddingSpot(false)
 
 await loadData()
+
+}
+
+function getLunarPhase(date){
+
+const phases=[
+
+"🌑 Luna Nuova",
+"🌒 Luna crescente",
+"🌓 Primo Quarto",
+"🌔 Gibbosa crescente",
+"🌕 Luna piena",
+"🌖 Gibbosa calante",
+"🌗 Ultimo Quarto",
+"🌘 Luna calante"
+
+]
+
+
+const lp=2551443
+
+const now=date.getTime()/1000
+
+const newMoon=
+592500
+
+const phase=
+
+((now-newMoon)%lp)/lp
+
+
+return phases[
+Math.floor(
+phase*8
+)%8
+]
 
 }
 
