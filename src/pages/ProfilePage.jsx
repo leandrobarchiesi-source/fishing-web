@@ -275,7 +275,7 @@ alt="profile"
 
 style={{
 
-width:'70px',
+width:'100px',
 
 opacity:.9
 
