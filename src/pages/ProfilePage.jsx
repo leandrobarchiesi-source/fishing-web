@@ -269,7 +269,7 @@ marginBottom:'25px'
 
 <img
 
-src="/favicon.png"
+src="/logo.png"
 
 alt="profile"
 
