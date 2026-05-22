@@ -197,40 +197,47 @@ margin:'0 auto'
 }}>
 
 
-<h1 style={{
+<div style={{
 
 textAlign:'center',
 
-fontSize:'58px',
-
-margin:'0',
-
-fontWeight:'700'
+marginBottom:'35px'
 
 }}>
 
-👤 Profilo
+<h1 style={{
+
+fontSize:'56px',
+
+margin:'0',
+
+fontWeight:'700',
+
+color:'#1E293B'
+
+}}>
+
+Profilo
 
 </h1>
 
 
 <p style={{
 
-textAlign:'center',
-
-color:'#64748B',
-
-fontSize:'18px',
-
 marginTop:'10px',
 
-marginBottom:'40px'
+fontSize:'20px',
+
+color:'#64748B'
 
 }}>
 
 Gestisci le informazioni del tuo account
 
 </p>
+
+</div>
+
 
 
 
@@ -256,22 +263,27 @@ boxShadow:
 
 textAlign:'center',
 
-marginBottom:'30px'
+marginBottom:'25px'
 
 }}>
 
-<div style={{
+<img
 
-fontSize:'80px'
+src="/favicon.png"
 
-}}>
+alt="profile"
 
-👤
+style={{
+
+width:'70px',
+
+opacity:.9
+
+}}
+
+/>
 
 </div>
-
-</div>
-
 
 
 <Input
