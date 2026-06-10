@@ -15,6 +15,7 @@ const [data,setData]=useState("")
 const [oraInizio,setOraInizio]=useState("")
 const [oraFine,setOraFine]=useState("")
 const [note,setNote]=useState("")
+const [temperaturaAcqua,setTemperaturaAcqua]=useState("")
 
 
 if(!isOpen){
@@ -48,30 +49,30 @@ return
 
 onSave({
 
-spot_id:
-spot.id,
+  spot_id: spot.id,
 
-luogo:
-spot.nome,
+  luogo: spot.nome,
 
-latitudine:
-spot.latitudine,
+  latitudine: spot.latitudine,
 
-longitudine:
-spot.longitudine,
+  longitudine: spot.longitudine,
 
-tipo_pescata:
-tipo,
+  tipo_pescata: tipo,
 
-data,
+  data,
 
-ora_inizio:
-oraInizio,
+  ora_inizio: oraInizio,
 
-ora_fine:
-oraFine,
+  ora_fine: oraFine,
 
-note
+  temperatura_acqua:
+    temperaturaAcqua === ""
+      ? null
+      : parseFloat(
+          temperaturaAcqua
+        ),
+
+  note
 
 })
 
@@ -276,6 +277,23 @@ style={input}
 
 />
 
+<label>
+
+💧 Temperatura acqua (°C)
+
+</label>
+
+<input
+  type='number'
+  step='0.1'
+  value={temperaturaAcqua}
+  onChange={(e) =>
+    setTemperaturaAcqua(
+      e.target.value
+    )
+  }
+  style={input}
+/>
 
 
 <label>
