@@ -584,65 +584,41 @@ await supabase
 
 .insert({
 
-id,
+  id,
 
-user_id:user.id,
+  user_id:user.id,
 
-spot_id:
-sessione.spot_id,
+  spot_id: sessione.spot_id,
 
-luogo:
-sessione.luogo,
+  luogo: sessione.luogo,
 
-latitudine:
-sessione.latitudine,
+  latitudine: sessione.latitudine,
 
-longitudine:
-sessione.longitudine,
+  longitudine: sessione.longitudine,
 
-tipo_pescata:
-sessione.tipo_pescata,
+  tipo_pescata: sessione.tipo_pescata,
 
-data:
-sessione.data,
+  data: sessione.data,
 
-ora_inizio:
-dataOra.toISOString(),
+  ora_inizio:
+    `${sessione.data}T${sessione.ora_inizio}:00`,
 
-ora_fine:
+  ora_fine:
+    `${sessione.data}T${sessione.ora_fine}:00`,
 
-new Date(
+  note: sessione.note,
 
-sessione.data+
+  temperatura: meteo.temperatura,
 
-"T"+
+  pressione: meteo.pressione,
 
-sessione.ora_fine+
+  vento: meteo.vento,
 
-":00"
+  condizioni: meteo.condizioni,
 
-).toISOString(),
-
-note:
-sessione.note,
-
-temperatura:
-meteo.temperatura,
-
-pressione:
-meteo.pressione,
-
-vento:
-meteo.vento,
-
-condizioni:
-meteo.condizioni,
-
-fase_lunare:
-fase
+  fase_lunare: fase
 
 })
-
 
 if(error){
 
