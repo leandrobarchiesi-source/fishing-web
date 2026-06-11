@@ -159,31 +159,23 @@ flexShrink:0
 <IconButton
   title={t(language,'view')}
   onClick={()=>onView(session)}
-
 >
-
-<FaEye/>
-
+  <FaEye/>
 </IconButton>
 
+<IconButton
+  title={t(language,'edit')}
+  onClick={()=>onEdit(session)}
+>
+  <FaEdit/>
+</IconButton>
 
 <IconButton
   title={t(language,'delete')}
   danger
   onClick={()=>onDelete(session)}
 >
-<FaEdit/>
-
-</IconButton>
-
-
-<IconButton
-  title={t(language,'delete')}
-  danger
-  onClick={()=>onDelete(session)}
->
-<FaTrash/>
-
+  <FaTrash/>
 </IconButton>
 
 </div>
@@ -206,7 +198,7 @@ function IconButton({
   title
 
 }){
-    
+
 return(
 
 <button
