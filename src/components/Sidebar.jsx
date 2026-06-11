@@ -8,15 +8,18 @@ import {
 }
 from 'react-icons/fa'
 
+import { t } from '../i18n/t'
+
 
 export default function Sidebar({
 
-selected,
-setSelected,
-logout
+  selected,
+  setSelected,
+  logout,
+  language
 
 }){
-
+    
 return(
 
 <div style={{
@@ -91,7 +94,7 @@ boxShadow:
 
 icon={<FaHome/>}
 
-label="Dashboard"
+label={t(language,'dashboard')}
 
 active={
 selected==="dashboard"
@@ -112,7 +115,7 @@ setSelected(
 
 icon={<FaFish/>}
 
-label="Sessioni"
+label={t(language,'sessions')}
 
 active={
 selected==="sessioni"
@@ -133,7 +136,7 @@ setSelected(
 
 icon={<FaMapMarkerAlt/>}
 
-label="Spot"
+label={t(language,'spots')}
 
 active={
 selected==="spot"
@@ -154,7 +157,7 @@ setSelected(
 
 icon={<FaChartBar/>}
 
-label="Statistiche"
+label={t(language,'statistics')}
 
 active={
 selected==="statistiche"
@@ -175,7 +178,7 @@ setSelected(
 
 icon={<FaUser/>}
 
-label="Profilo"
+label={t(language,'profile')}
 
 active={
 selected==="profilo"
@@ -215,7 +218,7 @@ marginBottom:'15px'
 
 icon={<FaSignOutAlt/>}
 
-label="Logout"
+label={t(language,'logout')}
 
 onClick={logout}
 
