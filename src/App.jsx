@@ -1026,12 +1026,12 @@ onEdit={setEditingSession}
 onDelete={eliminaSessione}
 
 addSession={()=>{
-
-setAddingSession(true)
-
+  setAddingSession(true)
 }}
-/>
 
+language={language}
+
+/>
 }
 
 

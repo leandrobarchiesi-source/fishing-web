@@ -7,10 +7,11 @@ sessions,
 onView,
 onEdit,
 onDelete,
-addSession
+addSession,
+language
 
 }){
-
+    
 return(
 
 <div style={{
