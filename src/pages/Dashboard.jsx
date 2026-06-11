@@ -1,327 +1,318 @@
+import { t } from '../i18n/t'
+
 export default function Dashboard({
 
-sessionCount,
-spotCount,
-sessions,
-profile
+  sessionCount,
+  spotCount,
+  sessions,
+  profile,
+
+  language,
+
+  onNewSession,
+  onNewSpot
 
 }){
 
-const ultima=
+  const ultima = sessions?.[0]
 
-sessions?.[0]
+  const conteggioTipi = {}
 
-const conteggioTipi={}
+  sessions.forEach(s => {
 
-sessions.forEach(s=>{
+    const tipo =
+      s.tipo_pescata || "Altro"
 
-const t=
+    conteggioTipi[tipo] =
+      (conteggioTipi[tipo] || 0) + 1
 
-s.tipo_pescata||
+  })
 
-"Altro"
+  const preferito =
 
-conteggioTipi[t]=
+    Object.keys(conteggioTipi)
 
-(conteggioTipi[t]||0)+1
+      .sort(
 
-})
+        (a,b) =>
+
+          conteggioTipi[b] -
+
+          conteggioTipi[a]
+
+      )[0]
+
+  return(
+
+    <div style={{
+
+      width:'100%',
+
+      maxWidth:'1100px',
+
+      margin:'0 auto'
+
+    }}>
+
+      <h1 style={{
+
+        fontSize:'48px',
+
+        marginTop:0,
+
+        marginBottom:'20px',
+
+        textAlign:'center',
+
+        color:'#1E293B',
+
+        fontWeight:'700'
+
+      }}>
+
+        {t(language,'welcome')}
+
+        {profile?.nome ? ` ${profile.nome}` : ''}
+
+      </h1>
 
 
-const preferito=
+      <p style={{
 
-Object.keys(
-conteggioTipi
-)
+        textAlign:'center',
 
-.sort(
+        color:'#64748B',
 
-(a,b)=>
+        fontSize:'18px',
 
-conteggioTipi[b]-
+        marginTop:'10px',
 
-conteggioTipi[a]
+        marginBottom:'60px'
 
-)[0]
+      }}>
+
+        {t(language,'homeSubtitle')}
+
+      </p>
 
 
+      <div style={{
 
-return(
+        display:'flex',
 
-<div style={{
+        justifyContent:'center',
 
-width:'100%',
+        gap:'25px',
 
-maxWidth:'1100px',
+        flexWrap:'wrap',
 
-margin:'0 auto'
+        marginBottom:'50px'
 
-}}>
+      }}>
 
-<h1 style={{
+        <Box
 
-fontSize:'48px',
+          title="🎣 Sessioni"
 
-marginTop:0,
+          value={sessionCount}
 
-marginBottom:'10px',
+        />
 
-textAlign:'center',
+        <Box
 
-color:'#1E293B',
+          title="📍 Spot"
 
-fontWeight:'700'
+          value={spotCount}
 
-}}>
+        />
 
-Bentornato
+        <Box
 
-{
+          title="🕒 Ultima"
 
-profile?.nome
+          value={
 
-?
+            ultima
 
-` ${profile.nome}`
+              ?
 
-:
+              new Date(
+                ultima.data
+              )
 
-""
+              .toLocaleDateString()
+
+              :
+
+              "-"
+
+          }
+
+        />
+
+        <Box
+
+          title="⭐ Preferita"
+
+          value={
+
+            preferito ||
+
+            "-"
+
+          }
+
+        />
+
+      </div>
+
+
+      <div style={{
+
+        background:'white',
+
+        padding:'35px',
+
+        borderRadius:'25px',
+
+        boxShadow:
+        '0 2px 12px rgba(0,0,0,.08)',
+
+        textAlign:'center'
+
+      }}>
+
+        <h2>
+
+          ⚡ {t(language,'quickActions')}
+
+        </h2>
+
+
+        <div style={{
+
+          display:'flex',
+
+          justifyContent:'center',
+
+          gap:'20px',
+
+          marginTop:'25px',
+
+          flexWrap:'wrap'
+
+        }}>
+
+          <button
+
+            style={btn}
+
+            onClick={onNewSession}
+
+          >
+
+            ➕ {t(language,'newSession')}
+
+          </button>
+
+
+          <button
+
+            style={btn}
+
+            onClick={onNewSpot}
+
+          >
+
+            📍 {t(language,'newSpot')}
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  )
 
 }
-
-</h1>
-
-
-<p style={{
-
-textAlign:'center',
-
-color:'#64748B',
-
-fontSize:'18px',
-
-marginBottom:'50px'
-
-}}>
-
-La tua home FishingTrack
-
-</p>
-
-
-<div style={{
-
-display:'flex',
-
-justifyContent:'center',
-
-gap:'25px',
-
-flexWrap:'wrap',
-
-marginBottom:'50px'
-
-}}>
-
-<Box
-
-title="🎣 Sessioni"
-
-value={sessionCount}
-
-/>
-
-<Box
-
-title="📍 Spot"
-
-value={spotCount}
-
-/>
-
-<Box
-
-title="🕒 Ultima"
-
-value={
-
-ultima
-
-?
-
-new Date(
-ultima.data
-)
-
-.toLocaleDateString()
-
-:
-
-"-"
-
-}
-
-/>
-
-<Box
-
-title="⭐ Preferita"
-
-value={
-
-preferito||
-
-"-"
-
-}
-
-/>
-
-</div>
-
-
-
-
-<div style={{
-
-background:'white',
-
-padding:'35px',
-
-borderRadius:'25px',
-
-boxShadow:
-'0 2px 12px rgba(0,0,0,.08)',
-
-textAlign:'center'
-
-}}>
-
-<h2>
-
-⚡ Azioni rapide
-
-</h2>
-
-
-<div style={{
-
-display:'flex',
-
-justifyContent:'center',
-
-gap:'20px',
-
-marginTop:'25px',
-
-flexWrap:'wrap'
-
-}}>
-
-<button style={btn}>
-
-➕ Nuova Sessione
-
-</button>
-
-
-<button style={btn}>
-
-📍 Nuovo Spot
-
-</button>
-
-</div>
-
-</div>
-
-
-
-</div>
-
-)
-
-}
-
-
 
 
 function Box({
 
-title,
-value
+  title,
+  value
 
 }){
 
-return(
+  return(
 
-<div style={{
+    <div style={{
 
-padding:'25px',
+      padding:'25px',
 
-width:'180px',
+      width:'180px',
 
-background:'white',
+      background:'white',
 
-borderRadius:'20px',
+      borderRadius:'20px',
 
-boxShadow:
-'0 2px 10px rgba(0,0,0,.1)',
+      boxShadow:
+      '0 2px 10px rgba(0,0,0,.1)',
 
-textAlign:'center'
+      textAlign:'center'
 
-}}>
+    }}>
 
-<h3 style={{
+      <h3 style={{
 
-marginBottom:'15px',
+        marginBottom:'15px',
 
-color:'#64748B'
+        color:'#64748B'
 
-}}>
+      }}>
 
-{title}
+        {title}
 
-</h3>
+      </h3>
 
 
-<h1 style={{
+      <h1 style={{
 
-margin:0,
+        margin:0,
 
-fontSize:'38px',
+        fontSize:'38px',
 
-color:'#1E293B'
+        color:'#1E293B'
 
-}}>
+      }}>
 
-{value}
+        {value}
 
-</h1>
+      </h1>
 
-</div>
+    </div>
 
-)
+  )
 
 }
 
 
+const btn = {
 
-const btn={
+  padding:'14px 25px',
 
-padding:'14px 25px',
+  background:'#234E70',
 
-background:'#234E70',
+  color:'white',
 
-color:'white',
+  border:'none',
 
-border:'none',
+  borderRadius:'14px',
 
-borderRadius:'14px',
+  cursor:'pointer',
 
-cursor:'pointer',
-
-fontSize:'16px'
+  fontSize:'16px'
 
 }

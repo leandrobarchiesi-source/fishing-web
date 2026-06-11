@@ -33,7 +33,7 @@ const [nome,setNome]=useState("")
 const [cognome,setCognome]=useState("")
 const [lingua,setLingua]=useState("it")
 const [profile,setProfile]=useState(null)
-
+const language = profile?.language || "it"
 
 useEffect(()=>{checkUser()},[])
 
@@ -957,8 +957,9 @@ setSelected={setSelectedPage}
 
 logout={logout}
 
-/>
+language={language}
 
+/>
 
 <div style={{
 
@@ -994,6 +995,16 @@ spotCount={spotCount}
 sessions={sessions}
 
 profile={profile}
+
+language={language}
+
+onNewSession={()=>
+  setAddingSession(true)
+}
+
+onNewSpot={()=>
+  setAddingSpot(true)
+}
 
 refreshData={loadData}
 
