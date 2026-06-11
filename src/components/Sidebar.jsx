@@ -51,79 +51,40 @@ boxShadow:
 
 <div style={{
 
-textAlign:'center',
+  textAlign:'center',
 
-paddingBottom:'25px',
+  paddingBottom:'20px',
 
-borderBottom:
-'1px solid rgba(255,255,255,.08)',
+  borderBottom:
+  '1px solid rgba(255,255,255,.08)',
 
-marginBottom:'30px'
-
-}}>
-
-
-<div style={{
-
-width:'72px',
-
-height:'72px',
-
-margin:'0 auto',
-
-borderRadius:'50%',
-
-background:'#4A90B8',
-
-display:'flex',
-
-alignItems:'center',
-
-justifyContent:'center',
-
-fontSize:'34px',
-
-boxShadow:
-'0 4px 10px rgba(0,0,0,.2)'
+  marginBottom:'30px'
 
 }}>
 
-🎣
+<img
+
+  src="/logo.png"
+
+  alt="FishingTrack"
+
+  style={{
+
+    width:'170px',
+
+    maxWidth:'100%',
+
+    height:'auto',
+
+    display:'block',
+
+    margin:'0 auto'
+
+  }}
+
+/>
 
 </div>
-
-
-<h2 style={{
-
-margin:'15px 0 4px 0',
-
-fontSize:'24px',
-
-fontWeight:'700'
-
-}}>
-
-FishingTrack
-
-</h2>
-
-
-<p style={{
-
-fontSize:'12px',
-
-opacity:.65,
-
-margin:0
-
-}}>
-
-Track your fishing life
-
-</p>
-
-</div>
-
 
 
 <MenuItem
