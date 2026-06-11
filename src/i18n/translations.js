@@ -17,26 +17,24 @@ export const translations = {
     newSpot: "Nuovo Spot",
 
     sessionsCount: "Sessioni",
-spotsCount: "Spot",
-lastSession: "Ultima",
-favoriteType: "Preferita",
+    spotsCount: "Spot",
+    lastSession: "Ultima",
+    favoriteType: "Preferita",
 
- allSessions: "Tutte le Sessioni",
+    allSessions: "Tutte le Sessioni",
 
-  manageSessions:
-    "Gestisci e modifica le sessioni",
+    manageSessions: "Gestisci e modifica le sessioni",
 
-  noSessions:
-    "Nessuna sessione",
+    noSessions: "Nessuna sessione",
      gara: "Gara",
-  testMatch: "Test-Match",
-  pool: "Pool",
-  prova: "Prova",
-  libera: "Libera",
+    testMatch: "Test-Match",
+    pool: "Pool",
+    prova: "Prova",
+    libera: "Libera",
 
-  view: "Visualizza",
-  edit: "Modifica",
-  delete: "Elimina"
+    view: "Visualizza",
+    edit: "Modifica",
+    delete: "Elimina"
 
   },
 
@@ -57,26 +55,24 @@ favoriteType: "Preferita",
     newSpot: "New Spot",
 
     sessionsCount: "Sessions",
-spotsCount: "Spots",
-lastSession: "Latest",
-favoriteType: "Favorite",
+    spotsCount: "Spots",
+    lastSession: "Latest",
+    favoriteType: "Favorite",
 
- allSessions: "All Sessions",
+    allSessions: "All Sessions",
 
-  manageSessions:
-    "Manage and edit sessions",
+    manageSessions: "Manage and edit sessions",
 
-  noSessions:
-    "No sessions found",
-     gara: "Competition",
-  testMatch: "Test Match",
-  pool: "Pool",
-  prova: "Practice",
-  libera: "Free Fishing",
+    noSessions: "No sessions found",
+    gara: "Competition",
+    testMatch: "Test Match",
+    pool: "Pool",
+    prova: "Practice",
+    libera: "Free Fishing",
 
-  view: "View",
-  edit: "Edit",
-  delete: "Delete"
+    view: "View",
+    edit: "Edit",
+    delete: "Delete"
 
   },
 
@@ -97,26 +93,24 @@ favoriteType: "Favorite",
     newSpot: "Nouveau spot",
 
     sessionsCount: "Sessions",
-spotsCount: "Spots",
-lastSession: "Dernière",
-favoriteType: "Préférée",
+    spotsCount: "Spots",
+    lastSession: "Dernière",
+    favoriteType: "Préférée",
 
-  allSessions: "Toutes les sessions",
+    allSessions: "Toutes les sessions",
 
-  manageSessions:
-    "Gérez et modifiez les sessions",
+    manageSessions: "Gérez et modifiez les sessions",
 
-  noSessions:
-    "Aucune session",
-     gara: "Compétition",
-  testMatch: "Test Match",
-  pool: "Pool",
-  prova: "Entraînement",
-  libera: "Pêche libre",
+    noSessions: "Aucune session",
+    gara: "Compétition",
+    testMatch: "Test Match",
+    pool: "Pool",
+    prova: "Entraînement",
+    libera: "Pêche libre",
 
-  view: "Afficher",
-  edit: "Modifier",
-  delete: "Supprimer"
+    view: "Afficher",
+    edit: "Modifier",
+    delete: "Supprimer"
 
   },
 
@@ -136,26 +130,24 @@ favoriteType: "Préférée",
     newSession: "Nueva sesión",
     newSpot: "Nuevo lugar",
     sessionsCount: "Sesiones",
-spotsCount: "Lugares",
-lastSession: "Última",
-favoriteType: "Favorita",
+    spotsCount: "Lugares",
+    lastSession: "Última",
+    favoriteType: "Favorita",
 
-  allSessions: "Todas las sesiones",
+    allSessions: "Todas las sesiones",
 
-  manageSessions:
-    "Gestiona y modifica las sesiones",
+    manageSessions: "Gestiona y modifica las sesiones",
 
-  noSessions:
-    "Ninguna sesión",
+    noSessions: "Ninguna sesión",
     gara: "Competición",
-  testMatch: "Test Match",
-  pool: "Pool",
-  prova: "Entrenamiento",
-  libera: "Pesca libre",
+    testMatch: "Test Match",
+    pool: "Pool",
+    prova: "Entrenamiento",
+    libera: "Pesca libre",
 
-  view: "Ver",
-  edit: "Editar",
-  delete: "Eliminar"
+    view: "Ver",
+    edit: "Editar",
+    delete: "Eliminar"
 
   }
 

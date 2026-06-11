@@ -11,7 +11,7 @@ addSession,
 language
 
 }){
-    
+
 return(
 
 <div style={{
@@ -161,26 +161,15 @@ key={s.id}
 
 session={s}
 
-onView={()=>
+language={language}
 
-onView(s)
+onView={()=>onView(s)}
 
-}
+onEdit={()=>onEdit(s)}
 
-onEdit={()=>
-
-onEdit(s)
-
-}
-
-onDelete={()=>
-
-onDelete(s)
-
-}
+onDelete={()=>onDelete(s)}
 
 />
-
 )
 
 }
