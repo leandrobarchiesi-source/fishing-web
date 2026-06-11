@@ -1,4 +1,5 @@
 import SessionCard from '../components/SessionCard'
+import { t } from '../i18n/t'
 
 export default function SessionsPage({
 
