@@ -25,51 +25,49 @@ margin:'0 auto'
 
 <div style={{
 
-display:'flex',
+  display:'flex',
 
-justifyContent:'space-between',
+  justifyContent:'space-between',
 
-alignItems:'center',
+  alignItems:'flex-start',
 
-flexWrap:'wrap',
+  flexWrap:'wrap',
 
-gap:'20px',
+  gap:'20px',
 
-marginBottom:'30px'
+  marginBottom:'40px'
 
 }}>
-
 
 <div>
 
 <h1 style={{
 
-fontSize:'58px',
+  fontSize:'58px',
 
-margin:'0',
+  margin:'0',
 
-fontWeight:'700'
+  fontWeight:'700'
 
 }}>
 
-🎣 Tutte le Sessioni
+  {t(language,'allSessions')}
 
 </h1>
 
-
 <p style={{
 
-color:'#64748B',
+  color:'#64748B',
 
-fontSize:'18px',
+  fontSize:'18px',
 
-marginTop:'10px',
+  marginTop:'20px',
 
-marginBottom:0
+  marginBottom:0
 
 }}>
 
-Gestisci e modifica le sessioni
+{t(language,'manageSessions')}
 
 </p>
 
@@ -103,8 +101,7 @@ height:'50px'
 
 >
 
-➕ Nuova Sessione
-
+➕ {t(language,'newSession')}
 </button>
 
 </div>
@@ -146,7 +143,7 @@ boxShadow:
 
 }}>
 
-Nessuna sessione
+{t(language,'noSessions')}
 
 </div>
 

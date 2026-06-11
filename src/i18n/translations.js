@@ -21,6 +21,14 @@ spotsCount: "Spot",
 lastSession: "Ultima",
 favoriteType: "Preferita",
 
+ allSessions: "Tutte le Sessioni",
+
+  manageSessions:
+    "Gestisci e modifica le sessioni",
+
+  noSessions:
+    "Nessuna sessione",
+
   },
 
   en: {
@@ -43,6 +51,15 @@ favoriteType: "Preferita",
 spotsCount: "Spots",
 lastSession: "Latest",
 favoriteType: "Favorite",
+
+ allSessions: "All Sessions",
+
+  manageSessions:
+    "Manage and edit sessions",
+
+  noSessions:
+    "No sessions found",
+
   },
 
   fr: {
@@ -65,6 +82,14 @@ favoriteType: "Favorite",
 spotsCount: "Spots",
 lastSession: "Dernière",
 favoriteType: "Préférée",
+
+  allSessions: "Toutes les sessions",
+
+  manageSessions:
+    "Gérez et modifiez les sessions",
+
+  noSessions:
+    "Aucune session",
   },
 
   es: {
@@ -86,6 +111,15 @@ favoriteType: "Préférée",
 spotsCount: "Lugares",
 lastSession: "Última",
 favoriteType: "Favorita",
+
+  allSessions: "Todas las sesiones",
+
+  manageSessions:
+    "Gestiona y modifica las sesiones",
+
+  noSessions:
+    "Ninguna sesión",
+
   }
 
 }
