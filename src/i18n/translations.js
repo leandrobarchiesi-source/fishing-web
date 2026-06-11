@@ -15,6 +15,12 @@ export const translations = {
 
     newSession: "Nuova Sessione",
     newSpot: "Nuovo Spot",
+
+    sessionsCount: "Sessioni",
+spotsCount: "Spot",
+lastSession: "Ultima",
+favoriteType: "Preferita",
+
   },
 
   en: {
@@ -32,6 +38,11 @@ export const translations = {
 
     newSession: "New Session",
     newSpot: "New Spot",
+
+    sessionsCount: "Sessions",
+spotsCount: "Spots",
+lastSession: "Latest",
+favoriteType: "Favorite",
   },
 
   fr: {
@@ -49,6 +60,11 @@ export const translations = {
 
     newSession: "Nouvelle session",
     newSpot: "Nouveau spot",
+
+    sessionsCount: "Sessions",
+spotsCount: "Spots",
+lastSession: "Dernière",
+favoriteType: "Préférée",
   },
 
   es: {
@@ -66,6 +82,10 @@ export const translations = {
 
     newSession: "Nueva sesión",
     newSpot: "Nuevo lugar",
+    sessionsCount: "Sesiones",
+spotsCount: "Lugares",
+lastSession: "Última",
+favoriteType: "Favorita",
   }
 
 }

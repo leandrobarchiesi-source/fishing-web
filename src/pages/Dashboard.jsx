@@ -110,26 +110,16 @@ export default function Dashboard({
 
       }}>
 
-        <Box
-
-          title="🎣 Sessioni"
-
-          value={sessionCount}
-
-        />
-
-        <Box
-
-          title="📍 Spot"
-
-          value={spotCount}
-
-        />
-
-        <Box
-
-          title="🕒 Ultima"
-
+<Box
+  title={`🎣 ${t(language,'sessionsCount')}`}
+  value={sessionCount}
+/>
+<Box
+  title={`📍 ${t(language,'spotsCount')}`}
+  value={spotCount}
+/>
+<Box
+  title={`🕒 ${t(language,'lastSession')}`}
           value={
 
             ultima
@@ -150,10 +140,8 @@ export default function Dashboard({
 
         />
 
-        <Box
-
-          title="⭐ Preferita"
-
+<Box
+  title={`⭐ ${t(language,'favoriteType')}`}
           value={
 
             preferito ||
