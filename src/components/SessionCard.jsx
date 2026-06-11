@@ -5,15 +5,18 @@ FaTrash
 }
 from 'react-icons/fa'
 
+import { t } from '../i18n/t'
 
 export default function SessionCard({
 
-session,
-onView,
-onEdit,
-onDelete
+  session,
+  onView,
+  onEdit,
+  onDelete,
+  language
 
 }){
+
 
 
 const data=
@@ -24,7 +27,30 @@ session.data
 
 .toLocaleDateString()
 
+function getTipo(tipo){
 
+  switch(tipo){
+
+    case 'Gara':
+      return t(language,'gara')
+
+    case 'Test-Match':
+      return t(language,'testMatch')
+
+    case 'Pool':
+      return t(language,'pool')
+
+    case 'Prova':
+      return t(language,'prova')
+
+    case 'Libera':
+      return t(language,'libera')
+
+    default:
+      return tipo
+  }
+
+}
 
 return(
 
@@ -109,8 +135,7 @@ whiteSpace:'nowrap'
 
 }}>
 
-{session.tipo_pescata}
-
+{getTipo(session.tipo_pescata)}
 {" • "}
 
 {data}
@@ -132,12 +157,8 @@ flexShrink:0
 }}>
 
 <IconButton
-
-onClick={()=>
-
-onView(session)
-
-}
+  title={t(language,'view')}
+  onClick={()=>onView(session)}
 
 >
 
@@ -147,32 +168,20 @@ onView(session)
 
 
 <IconButton
-
-onClick={()=>
-
-onEdit(session)
-
-}
-
+  title={t(language,'delete')}
+  danger
+  onClick={()=>onDelete(session)}
 >
-
 <FaEdit/>
 
 </IconButton>
 
 
 <IconButton
-
-danger
-
-onClick={()=>
-
-onDelete(session)
-
-}
-
+  title={t(language,'delete')}
+  danger
+  onClick={()=>onDelete(session)}
 >
-
 <FaTrash/>
 
 </IconButton>
@@ -191,12 +200,13 @@ onDelete(session)
 
 function IconButton({
 
-children,
-onClick,
-danger
+  children,
+  onClick,
+  danger,
+  title
 
 }){
-
+    
 return(
 
 <button

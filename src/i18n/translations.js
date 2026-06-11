@@ -28,6 +28,15 @@ favoriteType: "Preferita",
 
   noSessions:
     "Nessuna sessione",
+     gara: "Gara",
+  testMatch: "Test-Match",
+  pool: "Pool",
+  prova: "Prova",
+  libera: "Libera",
+
+  view: "Visualizza",
+  edit: "Modifica",
+  delete: "Elimina"
 
   },
 
@@ -59,6 +68,15 @@ favoriteType: "Favorite",
 
   noSessions:
     "No sessions found",
+     gara: "Competition",
+  testMatch: "Test Match",
+  pool: "Pool",
+  prova: "Practice",
+  libera: "Free Fishing",
+
+  view: "View",
+  edit: "Edit",
+  delete: "Delete"
 
   },
 
@@ -90,6 +108,16 @@ favoriteType: "Préférée",
 
   noSessions:
     "Aucune session",
+     gara: "Compétition",
+  testMatch: "Test Match",
+  pool: "Pool",
+  prova: "Entraînement",
+  libera: "Pêche libre",
+
+  view: "Afficher",
+  edit: "Modifier",
+  delete: "Supprimer"
+
   },
 
   es: {
@@ -119,6 +147,15 @@ favoriteType: "Favorita",
 
   noSessions:
     "Ninguna sesión",
+    gara: "Competición",
+  testMatch: "Test Match",
+  pool: "Pool",
+  prova: "Entrenamiento",
+  libera: "Pesca libre",
+
+  view: "Ver",
+  edit: "Editar",
+  delete: "Eliminar"
 
   }
 
