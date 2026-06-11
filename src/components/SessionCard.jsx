@@ -202,6 +202,7 @@ function IconButton({
 return(
 
 <button
+title={title}
 
 onClick={onClick}
 
