@@ -120,7 +120,7 @@ style={{
 
   rowGap:'4px',
 
-  marginBottom:'10px'
+  marginBottom:'4px'
 
 }}>
 
