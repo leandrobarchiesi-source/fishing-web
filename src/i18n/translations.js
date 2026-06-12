@@ -61,6 +61,7 @@ notes: "Note",
 
 save: "Salva",
 cancel: "Annulla",
+sessionDetails: "Dettaglio Sessione",
 
   },
 
@@ -125,6 +126,7 @@ notes: "Notes",
 
 save: "Save",
 cancel: "Cancel",
+sessionDetails: "Session Details",
 
   },
 
@@ -189,6 +191,7 @@ notes: "Notes",
 
 save: "Enregistrer",
 cancel: "Annuler",
+sessionDetails: "Détails de la Session",
 
   },
 
@@ -253,7 +256,7 @@ notes: "Notas",
 save: "Guardar",
 cancel: "Cancelar",    
 
-
+sessionDetails: "Detalle de la Sesión",
 
   }
 

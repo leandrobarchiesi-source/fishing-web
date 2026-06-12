@@ -118,7 +118,7 @@ style={{
 
   gridTemplateColumns:'180px 1fr',
 
-  rowGap:'10px',
+  rowGap:'4px',
 
   marginBottom:'20px'
 
@@ -157,7 +157,7 @@ style={{
 
   borderRadius:'12px',
 
-  padding:'15px',
+  padding:'10px',
 
   marginBottom:'20px'
 
@@ -175,7 +175,7 @@ style={{
 
     gridTemplateColumns:'180px 1fr',
 
-    rowGap:'8px'
+    rowGap:'4px'
 
   }}>
 
@@ -206,13 +206,17 @@ style={{
 
 <div style={{
 
-  padding:'20px',
+  padding:'12px',
 
   background:'#F1F5F9',
 
   borderRadius:'12px',
 
   minHeight:'120px',
+
+  maxHeight:'180px',
+
+  overflowY:'auto',
 
   whiteSpace:'pre-wrap',
 
