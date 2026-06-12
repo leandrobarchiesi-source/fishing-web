@@ -235,7 +235,7 @@ style={{
 
   justifyContent:'flex-end',
 
-  marginTop:'20px'
+  marginTop:'10px'
 
 }}>
 
@@ -245,7 +245,7 @@ style={{
 
     style={{
 
-      padding:'12px 24px',
+      padding:'8px 8px',
 
       background:'#234E70',
 
