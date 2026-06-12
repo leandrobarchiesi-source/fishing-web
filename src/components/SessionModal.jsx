@@ -8,7 +8,10 @@ session,
 
 isOpen,
 
-onClose
+onClose,
+
+language
+
 
 }){
 
@@ -55,187 +58,166 @@ background:
 
 <h2>
 
-🎣 Dettaglio Sessione
+  🎣 {t(language,'sessionDetails')}
 
 </h2>
 
-<hr/>
-
-<p>
-
-<b>Luogo:</b>
-
-{session.luogo}
-
-</p>
-
-<p>
-
-<b>Tipo:</b>
-
-{session.tipo_pescata}
-
-</p>
-
-<p>
-
-<b>Data:</b>
-
-{
-
-new Date(
-session.data
-)
-
-.toLocaleDateString()
-
-}
-
-</p>
-
-<p>
-
-🕒 Inizio:
-
-{
-
-session.ora_inizio
-
-?
-
-new Date(
-session.ora_inizio
-)
-
-.toLocaleTimeString(
-'it-IT',
-{
-
-hour:'2-digit',
-
-minute:'2-digit'
-
-}
-
-)
-
-:
-
-"-"
-
-}
-
-</p>
-
-
-<p>
-
-🏁 Fine:
-
-{
-
-session.ora_fine
-
-?
-
-new Date(
-session.ora_fine
-)
-
-.toLocaleTimeString(
-'it-IT',
-{
-
-hour:'2-digit',
-
-minute:'2-digit'
-
-}
-
-)
-
-:
-
-"-"
-
-}
-
-</p>
-
-<p>
-
-<b>Temperatura:</b>
-
-{session.temperatura ?? "-"}
-
-°C
-
-</p>
-
-<p>
-
-<b>Pressione:</b>
-
-{session.pressione ?? "-"}
-
-</p>
-
-<p>
-
-<b>Vento:</b>
-
-{session.vento ?? "-"}
-
-</p>
-
-<p>
-
-<b>Condizioni:</b>
-
-{session.condizioni ?? "-"}
-
-</p>
-
-<p>
-
-<b>Fase Lunare:</b>
-
-{session.fase_lunare ?? "-"}
-
-</p>
-
-<p>
-
-<b>Note:</b>
-
-</p>
-
 <div style={{
 
-padding:15,
+  display:'grid',
 
-background:"#F1F5F9",
+  gridTemplateColumns:'180px 1fr',
 
-borderRadius:10
+  rowGap:'10px',
+
+  marginBottom:'20px'
 
 }}>
 
-{session.note ?? "-"}
+  <b>{t(language,'location')}</b>
+  <span>{session.luogo}</span>
+
+  <b>{t(language,'type')}</b>
+  <span>{session.tipo_pescata}</span>
+
+  <b>{t(language,'date')}</b>
+  <span>
+    {new Date(session.data).toLocaleDateString()}
+  </span>
+
+  <b>{t(language,'startTime')}</b>
+  <span>{oraInizio}</span>
+
+  <b>{t(language,'endTime')}</b>
+  <span>{oraFine}</span>
+
+  <b>{t(language,'waterTemperature')}</b>
+  <span>
+    {session.temperatura_acqua ?? '-'} °C
+  </span>
 
 </div>
 
+
+<div style={{
+
+  background:'#F8FAFC',
+
+  border:'1px solid #E2E8F0',
+
+  borderRadius:'12px',
+
+  padding:'15px',
+
+  marginBottom:'20px'
+
+}}>
+
+  <h4>
+
+    {t(language,'weatherData')}
+
+  </h4>
+
+  <div style={{
+
+    display:'grid',
+
+    gridTemplateColumns:'180px 1fr',
+
+    rowGap:'8px'
+
+  }}>
+
+    <b>{t(language,'temperature')}</b>
+    <span>{session.temperatura ?? '-'} °C</span>
+
+    <b>{t(language,'pressure')}</b>
+    <span>{session.pressione ?? '-'}</span>
+
+    <b>{t(language,'wind')}</b>
+    <span>{session.vento ?? '-'}</span>
+
+    <b>{t(language,'conditions')}</b>
+    <span>{session.condizioni ?? '-'}</span>
+
+    <b>{t(language,'moonPhase')}</b>
+    <span>{session.fase_lunare ?? '-'}</span>
+
+  </div>
+
+</div>
+
+<h4>
+
+  {t(language,'notes')}
+
+</h4>
+
+<div style={{
+
+  padding:'20px',
+
+  background:'#F1F5F9',
+
+  borderRadius:'12px',
+
+  minHeight:'120px',
+
+  whiteSpace:'pre-wrap',
+
+  lineHeight:'1.6'
+
+}}>
+
+  {session.note || '-'}
+
+</div>
 <br/>
 
-<button
-onClick={onClose}
->
+<div style={{
 
-Chiudi
+  display:'flex',
 
-</button>
+  justifyContent:'flex-end',
+
+  marginTop:'20px'
+
+}}>
+
+  <button
+
+    onClick={onClose}
+
+    style={{
+
+      padding:'12px 24px',
+
+      background:'#234E70',
+
+      color:'white',
+
+      border:'none',
+
+      borderRadius:'10px',
+
+      cursor:'pointer',
+
+      fontSize:'15px',
+
+      fontWeight:'600'
+
+    }}
+
+  >
+
+    {t(language,'close')}
+
+  </button>
+
+</div>
 
 </Modal>
-
 )
 
 }
