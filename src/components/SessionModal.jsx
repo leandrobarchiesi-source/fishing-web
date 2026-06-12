@@ -159,7 +159,7 @@ style={{
 
   padding:'4px',
 
-  marginBottom:'10px'
+  marginBottom:'4px'
 
 }}>
 
@@ -235,7 +235,7 @@ style={{
 
   justifyContent:'flex-end',
 
-  marginTop:'10px'
+  marginTop:'4px'
 
 }}>
 
@@ -245,7 +245,7 @@ style={{
 
     style={{
 
-      padding:'8px 8px',
+      padding:'12px 12px',
 
       background:'#234E70',
 
