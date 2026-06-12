@@ -206,11 +206,11 @@ style={{
 
 <div style={{
 
-  padding:'8px',
+  padding:'4px',
 
   background:'#F1F5F9',
 
-  borderRadius:'12px',
+  borderRadius:'8px',
 
   minHeight:'120px',
 
