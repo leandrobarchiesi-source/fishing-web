@@ -84,15 +84,14 @@ style={{
 
     width:'90%',
 
-    maxHeight:'90vh',
-
+minHeight:'120px',
+maxHeight:'250px',
+overflowY:'auto',
     margin:'auto',
 
     borderRadius:'20px',
 
     padding:'30px',
-
-    overflowY:'auto'
 
   },
 
