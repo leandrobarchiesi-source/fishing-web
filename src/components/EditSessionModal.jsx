@@ -194,46 +194,77 @@ export default function EditSessionModal({
 
       }}>
 
-        <div style={{ flex: 1 }}>
+<div style={{
 
-          <label>Tipo</label>
+  display:'flex',
 
-          <select
+  alignItems:'center',
 
-            value={form.tipo}
+  gap:'15px',
 
-            onChange={(e) =>
-              update(
-                "tipo",
-                e.target.value
-              )
-            }
+  marginBottom:'12px'
 
-            style={styleInput}
+}}>
 
-          >
+  <label style={{
 
-            <option value="Gara">
-              Gara
-            </option>
+    width:'160px',
 
-            <option value="Test-Match">
-              Test-Match
-            </option>
+    fontWeight:'500',
 
-            <option value="Pool">
-              Pool
-            </option>
+    flexShrink:0
 
-            <option value="Prova">
-              Prova
-            </option>
+  }}>
 
-            <option value="Libera">
-              Libera
-            </option>
+    Tipo
 
-          </select>
+  </label>
+
+  <select
+
+    value={form.tipo}
+
+    onChange={(e)=>
+      update(
+        "tipo",
+        e.target.value
+      )
+    }
+
+    style={{
+
+      ...styleInput,
+
+      marginBottom:0,
+
+      flex:1
+
+    }}
+
+  >
+
+    <option value="Gara">
+      Gara
+    </option>
+
+    <option value="Test-Match">
+      Test-Match
+    </option>
+
+    <option value="Pool">
+      Pool
+    </option>
+
+    <option value="Prova">
+      Prova
+    </option>
+
+    <option value="Libera">
+      Libera
+    </option>
+
+  </select>
+
 
         </div>
 
@@ -436,9 +467,27 @@ function Input({
 
   return (
 
-    <>
+    <div style={{
 
-      <label>
+      display:'flex',
+
+      alignItems:'center',
+
+      gap:'15px',
+
+      marginBottom:'12px'
+
+    }}>
+
+      <label style={{
+
+        width:'160px',
+
+        fontWeight:'500',
+
+        flexShrink:0
+
+      }}>
 
         {label}
 
@@ -450,17 +499,25 @@ function Input({
 
         value={value}
 
-        onChange={(e) =>
+        onChange={(e)=>
           onChange(
             e.target.value
           )
         }
 
-        style={styleInput}
+        style={{
+
+          ...styleInput,
+
+          marginBottom:0,
+
+          flex:1
+
+        }}
 
       />
 
-    </>
+    </div>
 
   )
 
