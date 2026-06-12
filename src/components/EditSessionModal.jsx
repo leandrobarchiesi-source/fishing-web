@@ -1,5 +1,6 @@
 import Modal from 'react-modal'
 import { useEffect, useState } from 'react'
+import { t } from '../i18n/t'
 
 Modal.setAppElement('#root')
 
@@ -8,9 +9,10 @@ export default function EditSessionModal({
   session,
   isOpen,
   onClose,
-  onSave
+  onSave,
+  language
 
-}) {
+}){
 
   const [form, setForm] = useState({
 
@@ -142,91 +144,260 @@ export default function EditSessionModal({
 
   return (
 
-    <Modal
+<Modal
 
-      isOpen={isOpen}
+  isOpen={isOpen}
 
-      onRequestClose={onClose}
+  onRequestClose={onClose}
 
-      style={{
+  style={{
 
-        content: {
+    content: {
 
-          maxWidth: '900px',
-          width: '90%',
-          maxHeight: '90vh',
+      maxWidth: '900px',
+      width: '90%',
+      maxHeight: '90vh',
 
-          margin: 'auto',
+      margin: 'auto',
 
-          borderRadius: '20px',
+      borderRadius: '20px',
 
-          padding: '30px'
+      padding: '30px'
 
-        },
+    },
 
-        overlay: {
+    overlay: {
 
-          background:
-            'rgba(0,0,0,.5)'
+      background:
+        'rgba(0,0,0,.5)'
 
-        }
+    }
 
-      }}
+  }}
 
-    >
+>
 
-      <h2>
+  <h2>
+    🎣 {t(language,'editSession')}
+  </h2>
 
-        🎣 Modifica Sessione
+  <Input
+    label={t(language,'location')}
+    value={form.luogo}
+    onChange={(v) => update("luogo", v)}
+  />
 
-      </h2>
+  <div style={{
 
-      <Input
-        label="Luogo"
-        value={form.luogo}
-        onChange={(v) => update("luogo", v)}
-      />
+    display:'flex',
 
-      <div style={{
+    gap:'15px',
 
-        display: 'flex',
-        gap: '15px'
-
-      }}>
-
-<div style={{
-
-  display:'flex',
-
-  alignItems:'center',
-
-  gap:'15px',
-
-  marginBottom:'12px'
-
-}}>
-
-  <label style={{
-
-    width:'160px',
-
-    fontWeight:'500',
-
-    flexShrink:0
+    alignItems:'flex-start'
 
   }}>
 
-    Tipo
+    <div style={{flex:1}}>
+
+      <div style={{
+
+        display:'flex',
+
+        alignItems:'center',
+
+        gap:'15px',
+
+        marginBottom:'12px'
+
+      }}>
+
+        <label style={{
+
+          width:'160px',
+
+          fontWeight:'500',
+
+          flexShrink:0
+
+        }}>
+
+          {t(language,'type')}
+
+        </label>
+
+        <select
+
+          value={form.tipo}
+
+          onChange={(e)=>
+            update(
+              "tipo",
+              e.target.value
+            )
+          }
+
+          style={{
+
+            ...styleInput,
+
+            marginBottom:0,
+
+            flex:1
+
+          }}
+
+        >
+
+          <option value="Gara">Gara</option>
+          <option value="Test-Match">Test-Match</option>
+          <option value="Pool">Pool</option>
+          <option value="Prova">Prova</option>
+          <option value="Libera">Libera</option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+    <div style={{flex:1}}>
+
+      <Input
+        label={t(language,'date')}
+        type="date"
+        value={form.data}
+        onChange={(v)=>update("data",v)}
+      />
+
+    </div>
+
+  </div>
+
+  <div style={{
+
+    display:'flex',
+
+    gap:'10px'
+
+  }}>
+
+    <div style={{flex:1}}>
+
+      <Input
+        label={t(language,'startTime')}
+        type="time"
+        value={form.oraInizio}
+        onChange={(v)=>
+          update(
+            "oraInizio",
+            v
+          )
+        }
+      />
+
+    </div>
+
+    <div style={{flex:1}}>
+
+      <Input
+        label={t(language,'endTime')}
+        type="time"
+        value={form.oraFine}
+        onChange={(v)=>
+          update(
+            "oraFine",
+            v
+          )
+        }
+      />
+
+    </div>
+
+  </div>
+
+  <Input
+    label={t(language,'waterTemperature')}
+    value={form.temperaturaAcqua}
+    onChange={(v)=>
+      update(
+        "temperaturaAcqua",
+        v
+      )
+    }
+  />
+
+  <div style={{
+
+    background:'#F8FAFC',
+
+    border:
+      '1px solid #E2E8F0',
+
+    borderRadius:'12px',
+
+    padding:'15px',
+
+    marginBottom:'20px'
+
+  }}>
+
+    <h4 style={{
+
+      marginTop:0,
+
+      marginBottom:'15px'
+
+    }}>
+
+      {t(language,'weatherData')}
+
+    </h4>
+
+    <div style={{
+
+      display:'grid',
+
+      gridTemplateColumns:
+        '160px 1fr',
+
+      rowGap:'8px'
+
+    }}>
+
+      <b>{t(language,'temperature')}</b>
+      <span>{form.temperatura}</span>
+
+      <b>{t(language,'pressure')}</b>
+      <span>{form.pressione}</span>
+
+      <b>{t(language,'wind')}</b>
+      <span>{form.vento}</span>
+
+      <b>{t(language,'conditions')}</b>
+      <span>{form.condizioni}</span>
+
+      <b>{t(language,'moonPhase')}</b>
+      <span>{form.fase}</span>
+
+    </div>
+
+  </div>
+
+  <label>
+
+    {t(language,'notes')}
 
   </label>
 
-  <select
+  <textarea
 
-    value={form.tipo}
+    rows={10}
+
+    value={form.note}
 
     onChange={(e)=>
       update(
-        "tipo",
+        "note",
         e.target.value
       )
     }
@@ -235,222 +406,37 @@ export default function EditSessionModal({
 
       ...styleInput,
 
-      marginBottom:0,
-
-      flex:1
+      height:'260px'
 
     }}
 
-  >
+  />
 
-    <option value="Gara">
-      Gara
-    </option>
+  <div style={{
 
-    <option value="Test-Match">
-      Test-Match
-    </option>
+    display:'flex',
 
-    <option value="Pool">
-      Pool
-    </option>
+    gap:'10px',
 
-    <option value="Prova">
-      Prova
-    </option>
+    marginTop:'20px'
 
-    <option value="Libera">
-      Libera
-    </option>
+  }}>
 
-  </select>
+    <button onClick={salva}>
 
+      {t(language,'save')}
 
-        </div>
+    </button>
 
-        <div style={{ flex: 1 }}>
+    <button onClick={onClose}>
 
-          <Input
-            label="Data"
-            type="date"
-            value={form.data}
-            onChange={(v) =>
-              update("data", v)
-            }
-          />
+      {t(language,'cancel')}
 
-        </div>
+    </button>
 
-      </div>
+  </div>
 
-      <div style={{
-
-        display: 'flex',
-        gap: 10
-
-      }}>
-
-        <div style={{ flex: 1 }}>
-
-          <Input
-            label="Ora inizio"
-            type="time"
-            value={form.oraInizio}
-            onChange={(v) =>
-              update(
-                "oraInizio",
-                v
-              )
-            }
-          />
-
-        </div>
-
-        <div style={{ flex: 1 }}>
-
-          <Input
-            label="Ora fine"
-            type="time"
-            value={form.oraFine}
-            onChange={(v) =>
-              update(
-                "oraFine",
-                v
-              )
-            }
-          />
-
-        </div>
-
-      </div>
-
-      <Input
-        label="Temperatura Acqua"
-        value={form.temperaturaAcqua}
-        onChange={(v) =>
-          update(
-            "temperaturaAcqua",
-            v
-          )
-        }
-      />
-
-      <div style={{
-
-        background: '#F8FAFC',
-
-        border:
-          '1px solid #E2E8F0',
-
-        borderRadius: '12px',
-
-        padding: '15px',
-
-        marginBottom: '20px'
-
-      }}>
-
-        <h4 style={{
-
-          marginTop: 0,
-
-          marginBottom: '15px'
-
-        }}>
-
-          Dati Meteo
-
-        </h4>
-
-        <div style={{
-
-          display: 'grid',
-
-          gridTemplateColumns:
-            '1fr 1fr',
-
-          gap: '10px'
-
-        }}>
-
-          <div>
-            <b>Temperatura:</b> {form.temperatura}
-          </div>
-
-          <div>
-            <b>Pressione:</b> {form.pressione}
-          </div>
-
-          <div>
-            <b>Vento:</b> {form.vento}
-          </div>
-
-          <div>
-            <b>Condizioni:</b> {form.condizioni}
-          </div>
-
-          <div>
-            <b>Fase lunare:</b> {form.fase}
-          </div>
-
-        </div>
-
-      </div>
-
-      <label>
-
-        Note
-
-      </label>
-
-      <textarea
-
-        rows={10}
-
-        value={form.note}
-
-        onChange={(e) =>
-          update(
-            "note",
-            e.target.value
-          )
-        }
-
-        style={{
-
-          ...styleInput,
-
-          height: '260px'
-
-        }}
-
-      />
-
-      <div style={{
-
-        display: 'flex',
-
-        gap: '10px',
-
-        marginTop: '20px'
-
-      }}>
-
-        <button onClick={salva}>
-
-          Salva
-
-        </button>
-
-        <button onClick={onClose}>
-
-          Annulla
-
-        </button>
-
-      </div>
-
-    </Modal>
+</Modal>
 
   )
 

@@ -37,7 +37,30 @@ export const translations = {
     delete: "Elimina",
     allSpots: "Tutti gli Spot",
     manageSpots: "Gestisci i tuoi spot sulla mappa",
-    addSpot: "Aggiungi Spot"
+    addSpot: "Aggiungi Spot",
+    editSession: "Modifica Sessione",
+
+location: "Luogo",
+type: "Tipo",
+date: "Data",
+
+startTime: "Ora inizio",
+endTime: "Ora fine",
+
+waterTemperature: "Temperatura Acqua",
+
+weatherData: "Dati Meteo",
+
+temperature: "Temperatura",
+pressure: "Pressione",
+wind: "Vento",
+conditions: "Condizioni",
+moonPhase: "Fase lunare",
+
+notes: "Note",
+
+save: "Salva",
+cancel: "Annulla",
 
   },
 
@@ -78,7 +101,30 @@ export const translations = {
     delete: "Delete",
     allSpots: "All Spots",
     manageSpots: "Manage your fishing spots on the map",
-    addSpot: "Add Spot"
+    addSpot: "Add Spot",
+    editSession: "Edit Session",
+
+location: "Location",
+type: "Type",
+date: "Date",
+
+startTime: "Start Time",
+endTime: "End Time",
+
+waterTemperature: "Water Temperature",
+
+weatherData: "Weather Data",
+
+temperature: "Temperature",
+pressure: "Pressure",
+wind: "Wind",
+conditions: "Conditions",
+moonPhase: "Moon Phase",
+
+notes: "Notes",
+
+save: "Save",
+cancel: "Cancel",
 
   },
 
@@ -119,7 +165,30 @@ export const translations = {
     delete: "Supprimer",
     allSpots: "Tous les Spots",
     manageSpots: "Gérez vos spots de pêche sur la carte",
-    addSpot: "Ajouter un Spot"
+    addSpot: "Ajouter un Spot",
+    editSession: "Modifier la Session",
+
+location: "Lieu",
+type: "Type",
+date: "Date",
+
+startTime: "Heure début",
+endTime: "Heure fin",
+
+waterTemperature: "Température de l'eau",
+
+weatherData: "Données météo",
+
+temperature: "Température",
+pressure: "Pression",
+wind: "Vent",
+conditions: "Conditions",
+moonPhase: "Phase lunaire",
+
+notes: "Notes",
+
+save: "Enregistrer",
+cancel: "Annuler",
 
   },
 
@@ -160,6 +229,31 @@ export const translations = {
     allSpots: "Todos los Lugares",
     manageSpots: "Gestiona tus lugares de pesca en el mapa",
     addSpot: "Añadir Lugar",
+editSession: "Editar Sesión",
+
+location: "Lugar",
+type: "Tipo",
+date: "Fecha",
+
+startTime: "Hora inicio",
+endTime: "Hora fin",
+
+waterTemperature: "Temperatura del agua",
+
+weatherData: "Datos meteorológicos",
+
+temperature: "Temperatura",
+pressure: "Presión",
+wind: "Viento",
+conditions: "Condiciones",
+moonPhase: "Fase lunar",
+
+notes: "Notas",
+
+save: "Guardar",
+cancel: "Cancelar",    
+
+
 
   }
 
