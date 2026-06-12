@@ -1,4 +1,6 @@
 import Modal from 'react-modal'
+import { t } from '../i18n/t'
+
 
 Modal.setAppElement('#root')
 
