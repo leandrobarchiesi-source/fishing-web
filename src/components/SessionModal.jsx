@@ -23,6 +23,51 @@ return null
 
 }
 
+const oraInizio =
+
+  session.ora_inizio
+
+    ?
+
+    new Date(
+      session.ora_inizio
+    )
+
+    .toLocaleTimeString(
+      'it-IT',
+      {
+        hour:'2-digit',
+        minute:'2-digit'
+      }
+    )
+
+    :
+
+    '-'
+
+
+const oraFine =
+
+  session.ora_fine
+
+    ?
+
+    new Date(
+      session.ora_fine
+    )
+
+    .toLocaleTimeString(
+      'it-IT',
+      {
+        hour:'2-digit',
+        minute:'2-digit'
+      }
+    )
+
+    :
+
+    '-'
+
 return(
 
 <Modal
