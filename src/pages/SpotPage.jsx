@@ -138,6 +138,8 @@ onDelete={onDelete}
 
 refreshData={refreshData}
 
+language={language}
+
 />
 </div>
 

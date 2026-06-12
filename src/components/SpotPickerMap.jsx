@@ -13,6 +13,7 @@ import L from 'leaflet'
 import {useState,useRef} from 'react'
 import {FaTrash} from 'react-icons/fa'
 import {supabase} from '../supabase'
+import { t } from '../i18n/t'
 
 import 'leaflet/dist/leaflet.css'
 
@@ -117,7 +118,8 @@ return null
 function EditableMarker({
 
 spot,
-refreshData
+refreshData,
+language
 
 }){
 
@@ -194,7 +196,7 @@ async function elimina(){
 if(
 
 !window.confirm(
-"Eliminare spot?"
+t(language,'deleteSpotQuestion')
 )
 
 ){
@@ -228,9 +230,7 @@ sessioni.length>0
 ){
 
 alert(
-
-"Spot utilizzato in sessioni esistenti"
-
+t(language,'spotUsedInSessions')
 )
 
 return
@@ -399,7 +399,7 @@ color:'#334155'
 
 <b>
 
-Lat:
+{t(language,'latitude')}:
 
 </b>
 
@@ -421,7 +421,7 @@ color:'#334155'
 
 <b>
 
-Lon:
+{t(language,'longitude')}:
 
 </b>
 
@@ -443,7 +443,7 @@ marginBottom:'20px'
 
 }}>
 
-📍 Trascina il pin per cambiare posizione
+📍 {t(language,'dragPin')}
 
 </div>
 
@@ -477,7 +477,7 @@ fontSize:'16px'
 
 >
 
-💾 Salva
+💾 {t(language,'save')}
 
 </button>
 
@@ -513,7 +513,7 @@ fontWeight:'600'
 
 {' '}
 
-Elimina Spot
+{t(language,'deleteSpot')}
 
 </button>
 
@@ -535,7 +535,8 @@ export default function SpotPickerMap({
 position,
 setPosition,
 spots=[],
-refreshData
+refreshData,
+language
 
 }){
 
@@ -565,7 +566,7 @@ zIndex:1
 
 <LayersControl.BaseLayer
 checked
-name="🗺 Mappa"
+name={`🗺 ${t(language,'map')}`}
 >
 
 <TileLayer
@@ -578,7 +579,7 @@ url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
 
 <LayersControl.BaseLayer
-name="🛰 Satellite"
+name={`🛰 ${t(language,'satellite')}`}
 >
 
 <TileLayer
@@ -606,6 +607,8 @@ key={spot.id}
 spot={spot}
 
 refreshData={refreshData}
+
+language={language}
 
 />
 
