@@ -46,20 +46,32 @@ export default function EditSessionModal({
 
       data: session.data?.substring(0, 10) || "",
 
-      oraInizio:
-        session.ora_inizio
-          ? new Date(session.ora_inizio)
-              .toISOString()
-              .substring(11, 16)
-          : "",
+oraInizio:
+  session.ora_inizio
+    ? new Date(session.ora_inizio)
+        .toLocaleTimeString(
+          'it-IT',
+          {
+            hour:'2-digit',
+            minute:'2-digit',
+            hour12:false
+          }
+        )
+    : "",
 
-      oraFine:
-        session.ora_fine
-          ? new Date(session.ora_fine)
-              .toISOString()
-              .substring(11, 16)
-          : "",
-
+oraFine:
+  session.ora_fine
+    ? new Date(session.ora_fine)
+        .toLocaleTimeString(
+          'it-IT',
+          {
+            hour:'2-digit',
+            minute:'2-digit',
+            hour12:false
+          }
+        )
+    : "",
+    
       temperaturaAcqua:
         session.temperatura_acqua || "",
 
