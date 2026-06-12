@@ -78,29 +78,32 @@ onRequestClose={onClose}
 
 style={{
 
-content:{
+  content:{
 
-maxWidth:'700px',
+    maxWidth:'900px',
 
-margin:'auto',
+    width:'90%',
 
-height:'fit-content',
+    maxHeight:'90vh',
 
-borderRadius:'20px',
+    margin:'auto',
 
-padding:'30px'
+    borderRadius:'20px',
 
-},
+    padding:'30px',
 
-overlay:{
+    overflowY:'auto'
 
-background:
-'rgba(0,0,0,.5)'
+  },
 
-}
+  overlay:{
+
+    background:
+      'rgba(0,0,0,.5)'
+
+  }
 
 }}
-
 >
 
 <h2>
