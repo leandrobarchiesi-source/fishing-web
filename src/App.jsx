@@ -1102,6 +1102,8 @@ onSave={(dati)=>{
 salvaModifica(
 dati
 )
+language={language}
+
 
 }}
 
