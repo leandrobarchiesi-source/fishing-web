@@ -84,7 +84,7 @@ style={{
 
     width:'90%',
 
-    maxHeight:'70vh',
+    maxHeight:'80vh',
 
     margin:'auto',
 
