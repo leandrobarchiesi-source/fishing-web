@@ -157,9 +157,9 @@ style={{
 
   borderRadius:'12px',
 
-  padding:'10px',
+  padding:'4px',
 
-  marginBottom:'20px'
+  marginBottom:'10px'
 
 }}>
 
@@ -206,7 +206,7 @@ style={{
 
 <div style={{
 
-  padding:'12px',
+  padding:'8px',
 
   background:'#F1F5F9',
 
@@ -220,7 +220,7 @@ style={{
 
   whiteSpace:'pre-wrap',
 
-  lineHeight:'1.6'
+  lineHeight:'1.4'
 
 }}>
 
