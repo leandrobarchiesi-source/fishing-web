@@ -214,7 +214,7 @@ style={{
 
   minHeight:'120px',
 
-  maxHeight:'180px',
+  maxHeight:'160px',
 
   overflowY:'auto',
 
@@ -235,7 +235,7 @@ style={{
 
   justifyContent:'flex-end',
 
-  marginTop:'4px'
+  marginTop:'2px'
 
 }}>
 
