@@ -98,7 +98,7 @@ function FlyToMarker({
 
     [
 
-      position.lat + 0.002,
+      position.lat + 0.003,
 
       position.lng
 
