@@ -1042,15 +1042,14 @@ language={language}
 spots={spots}
 
 addSpot={()=>
-
-setAddingSpot(true)
-
+  setAddingSpot(true)
 }
 
 refreshData={loadData}
 
-/>}
+language={language}
 
+/>}
 
 {selectedPage==="profilo" &&
 

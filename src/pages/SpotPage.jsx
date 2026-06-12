@@ -1,11 +1,13 @@
 import SpotPickerMap from '../components/SpotPickerMap'
+import { t } from '../i18n/t'
 
 export default function SpotPage({
 
-spots,
-addSpot,
-onDelete,
-refreshData
+  spots,
+  addSpot,
+  onDelete,
+  refreshData,
+  language
 
 }){
 
@@ -28,59 +30,32 @@ display:'flex',
 
 justifyContent:'space-between',
 
-alignItems:'center',
+alignItems:'flex-start',
 
 flexWrap:'wrap',
 
 gap:'20px',
 
-marginBottom:'25px'
+marginBottom:'40px'
 
 }}>
 
 
 <div>
 
-<div style={{
-
-display:'flex',
-
-alignItems:'center',
-
-gap:'12px',
-
-marginBottom:'6px'
-
-}}>
-
-<div style={{
-
-fontSize:'34px'
-
-}}>
-
-📍
-
-</div>
-
-
 <h1 style={{
 
-fontSize:'52px',
+fontSize:'58px',
 
-margin:0,
+margin:'0',
 
-fontWeight:'700',
-
-lineHeight:1
+fontWeight:'700'
 
 }}>
 
-Spot
+{t(language,'allSpots')}
 
 </h1>
-
-</div>
 
 
 <p style={{
@@ -89,13 +64,13 @@ color:'#64748B',
 
 fontSize:'18px',
 
-margin:0,
+marginTop:'20px',
 
-paddingLeft:'46px'
+marginBottom:0
 
 }}>
 
-Tutti i tuoi spot sulla mappa
+{t(language,'manageSpots')}
 
 </p>
 
@@ -129,7 +104,7 @@ height:'50px'
 
 >
 
-➕ Aggiungi Spot
+➕ {t(language,'addSpot')}
 
 </button>
 

@@ -34,7 +34,10 @@ export const translations = {
 
     view: "Visualizza",
     edit: "Modifica",
-    delete: "Elimina"
+    delete: "Elimina",
+    allSpots: "Tutti gli Spot",
+    manageSpots: "Gestisci i tuoi spot sulla mappa",
+    addSpot: "Aggiungi Spot"
 
   },
 
@@ -72,7 +75,10 @@ export const translations = {
 
     view: "View",
     edit: "Edit",
-    delete: "Delete"
+    delete: "Delete",
+    allSpots: "All Spots",
+    manageSpots: "Manage your fishing spots on the map",
+    addSpot: "Add Spot"
 
   },
 
@@ -110,7 +116,10 @@ export const translations = {
 
     view: "Afficher",
     edit: "Modifier",
-    delete: "Supprimer"
+    delete: "Supprimer",
+    allSpots: "Tous les Spots",
+    manageSpots: "Gérez vos spots de pêche sur la carte",
+    addSpot: "Ajouter un Spot"
 
   },
 
@@ -147,7 +156,10 @@ export const translations = {
 
     view: "Ver",
     edit: "Editar",
-    delete: "Eliminar"
+    delete: "Eliminar",
+    allSpots: "Todos los Lugares",
+    manageSpots: "Gestiona tus lugares de pesca en el mapa",
+    addSpot: "Añadir Lugar",
 
   }
 
