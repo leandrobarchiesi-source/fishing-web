@@ -1074,6 +1074,8 @@ isOpen={
 selectedSession!=null
 }
 
+language={language}
+
 onClose={()=>
 
 setSelectedSession(null)
