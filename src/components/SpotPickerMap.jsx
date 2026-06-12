@@ -88,30 +88,35 @@ icon={icon}
 
 function FlyToMarker({
 
-position
+  position
 
 }){
 
-const map=useMap()
+  const map = useMap()
 
-map.flyTo(
+  map.flyTo(
 
-[position.lat,position.lng],
+    [
 
-14,
+      position.lat + 0.002,
 
-{
+      position.lng
 
-duration:1.5
+    ],
+
+    14,
+
+    {
+
+      duration:1.5
+
+    }
+
+  )
+
+  return null
 
 }
-
-)
-
-return null
-
-}
-
 
 
 
@@ -287,7 +292,18 @@ eventHandlers={{
 
 click(){
 
-setZoom(true)
+  setZoom(true)
+
+  map.flyTo(
+    [
+      position.lat + 0.002,
+      position.lng
+    ],
+    16,
+    {
+      duration:0.8
+    }
+  )
 
 },
 
