@@ -159,7 +159,7 @@ style={{
 
   padding:'4px',
 
-  marginBottom:'4px'
+  marginBottom:'2px'
 
 }}>
 
@@ -206,11 +206,11 @@ style={{
 
 <div style={{
 
-  padding:'4px',
+  padding:'6px',
 
   background:'#F1F5F9',
 
-  borderRadius:'8px',
+  borderRadius:'12px',
 
   minHeight:'120px',
 
