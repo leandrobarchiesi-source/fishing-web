@@ -332,6 +332,8 @@ sessione.ora_fine,
 temperatura:
 sessione.temperatura,
 
+temperatura_acqua: sessione.temperatura_acqua,
+
 pressione:
 sessione.pressione,
 
