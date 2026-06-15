@@ -1,10 +1,12 @@
 import {useEffect,useState} from 'react'
 import {supabase} from '../supabase'
+import { t } from '../i18n/t'
 
 export default function ProfilePage({
 
-user,
-logout
+  user,
+  logout,
+  language
 
 }){
 
@@ -92,7 +94,7 @@ user.id
 
 
 alert(
-"Profilo aggiornato"
+  t(language,'profileUpdated')
 )
 
 }
@@ -104,9 +106,8 @@ async function cambiaPassword(){
 const nuova=
 
 prompt(
-"Nuova password"
+  t(language,'newPassword')
 )
-
 
 if(!nuova){
 
@@ -122,7 +123,7 @@ nuova.length<6
 ){
 
 alert(
-"Minimo 6 caratteri"
+  t(language,'min6Chars')
 )
 
 return
@@ -143,7 +144,7 @@ nuova
 
 
 alert(
-"Password aggiornata"
+  t(language,'passwordUpdated')
 )
 
 }
@@ -217,7 +218,7 @@ color:'#1E293B'
 
 }}>
 
-Profilo
+{t(language,'profile')}
 
 </h1>
 
@@ -232,7 +233,7 @@ color:'#64748B'
 
 }}>
 
-Gestisci le informazioni del tuo account
+{t(language,'manageAccount')}
 
 </p>
 
@@ -288,7 +289,7 @@ opacity:.9
 
 <Input
 
-label="Nome"
+label={t(language,'firstName')}
 
 value={nome}
 
@@ -299,7 +300,7 @@ setValue={setNome}
 
 <Input
 
-label="Cognome"
+label={t(language,'lastName')}
 
 value={cognome}
 
@@ -325,7 +326,7 @@ fontWeight:'600'
 
 }}>
 
-Lingua
+{t(language,'language')}
 
 </label>
 
@@ -396,7 +397,7 @@ style={btn}
 
 >
 
-Salva profilo
+{t(language,'saveProfile')}
 
 </button>
 
@@ -409,7 +410,7 @@ style={btn}
 
 >
 
-🔒 Password
+🔒 {t(language,'password')}
 
 </button>
 

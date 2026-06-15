@@ -643,11 +643,11 @@ await loadData()
 async function eliminaSessione(session){
 
 if(
-!window.confirm(
-"Eliminare sessione?"
-)
+  !window.confirm(
+    t(language,'deleteSessionQuestion')
+  )
 ){
-return
+  return
 }
 
 await supabase
@@ -1062,12 +1062,13 @@ language={language}
 
 <ProfilePage
 
-user={user}
+  user={user}
 
-logout={logout}
+  logout={logout}
+
+  language={language}
 
 />
-
 }
 
 {

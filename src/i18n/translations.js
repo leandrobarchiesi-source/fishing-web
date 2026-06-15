@@ -64,6 +64,25 @@ cancel: "Annulla",
 sessionDetails: "Dettaglio Sessione",
 underConstruction: "In allestimento",
 statisticsComingSoon: "Le statistiche saranno disponibili prossimamente",
+deleteSessionQuestion: "Eliminare la sessione?",
+manageAccount: "Gestisci le informazioni del tuo account",
+
+firstName: "Nome",
+lastName: "Cognome",
+
+language: "Lingua",
+
+saveProfile: "Salva profilo",
+
+password: "Password",
+
+profileUpdated: "Profilo aggiornato",
+
+newPassword: "Nuova password",
+
+min6Chars: "Minimo 6 caratteri",
+
+passwordUpdated: "Password aggiornata",
 
   },
 
@@ -131,6 +150,25 @@ cancel: "Cancel",
 sessionDetails: "Session Details",
 underConstruction: "Under Construction",
 statisticsComingSoon: "Statistics will be available soon",
+deleteSessionQuestion: "Delete this session?",
+manageAccount: "Manage your account information",
+
+firstName: "First Name",
+lastName: "Last Name",
+
+language: "Language",
+
+saveProfile: "Save Profile",
+
+password: "Password",
+
+profileUpdated: "Profile updated",
+
+newPassword: "New password",
+
+min6Chars: "Minimum 6 characters",
+
+passwordUpdated: "Password updated",
 
   },
 
@@ -198,6 +236,25 @@ cancel: "Annuler",
 sessionDetails: "Détails de la Session",
 underConstruction: "En préparation",
 statisticsComingSoon: "Les statistiques seront bientôt disponibles",
+deleteSessionQuestion: "Supprimer cette session ?",
+manageAccount: "Gérez les informations de votre compte",
+
+firstName: "Prénom",
+lastName: "Nom",
+
+language: "Langue",
+
+saveProfile: "Enregistrer le profil",
+
+password: "Mot de passe",
+
+profileUpdated: "Profil mis à jour",
+
+newPassword: "Nouveau mot de passe",
+
+min6Chars: "Minimum 6 caractères",
+
+passwordUpdated: "Mot de passe mis à jour",
 
   },
 
@@ -265,6 +322,25 @@ cancel: "Cancelar",
 sessionDetails: "Detalle de la Sesión",
 underConstruction: "En construcción",
 statisticsComingSoon: "Las estadísticas estarán disponibles próximamente",
+deleteSessionQuestion: "¿Eliminar esta sesión?",
+manageAccount: "Gestiona la información de tu cuenta",
+
+firstName: "Nombre",
+lastName: "Apellido",
+
+language: "Idioma",
+
+saveProfile: "Guardar perfil",
+
+password: "Contraseña",
+
+profileUpdated: "Perfil actualizado",
+
+newPassword: "Nueva contraseña",
+
+min6Chars: "Mínimo 6 caracteres",
+
+passwordUpdated: "Contraseña actualizada",
 
   }
 
