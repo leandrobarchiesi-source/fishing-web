@@ -853,7 +853,7 @@ setRegisterMode(false)
 
 >
 
-Hai già un account? Accedi
+Already have an account? Log in
 
 </p>
 
