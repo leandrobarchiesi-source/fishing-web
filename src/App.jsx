@@ -1069,6 +1069,13 @@ logout={logout}
 
 }
 
+{
+  selected === "statistiche" &&
+  <StatisticsPage
+    language={language}
+  />
+}
+
 
 <SessionModal
 
