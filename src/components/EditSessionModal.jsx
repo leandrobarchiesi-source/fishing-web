@@ -418,7 +418,7 @@ oraFine:
 
       ...styleInput,
 
-      height:'260px'
+      height:'250px'
 
     }}
 
