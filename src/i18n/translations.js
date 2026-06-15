@@ -62,6 +62,8 @@ notes: "Note",
 save: "Salva",
 cancel: "Annulla",
 sessionDetails: "Dettaglio Sessione",
+underConstruction: "In allestimento",
+statisticsComingSoon: "Le statistiche saranno disponibili prossimamente",
 
   },
 
@@ -127,6 +129,8 @@ notes: "Notes",
 save: "Save",
 cancel: "Cancel",
 sessionDetails: "Session Details",
+underConstruction: "Under Construction",
+statisticsComingSoon: "Statistics will be available soon",
 
   },
 
@@ -192,6 +196,8 @@ notes: "Notes",
 save: "Enregistrer",
 cancel: "Annuler",
 sessionDetails: "Détails de la Session",
+underConstruction: "En préparation",
+statisticsComingSoon: "Les statistiques seront bientôt disponibles",
 
   },
 
@@ -257,6 +263,8 @@ save: "Guardar",
 cancel: "Cancelar",    
 
 sessionDetails: "Detalle de la Sesión",
+underConstruction: "En construcción",
+statisticsComingSoon: "Las estadísticas estarán disponibles próximamente",
 
   }
 
