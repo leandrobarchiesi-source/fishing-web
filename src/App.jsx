@@ -902,7 +902,7 @@ cursor:'pointer'
 
 >
 
-Accedi
+Enter
 
 </button>
 
@@ -927,7 +927,7 @@ setRegisterMode(true)
 
 >
 
-Non hai un account? Crealo
+Don't have an account? Register
 
 </p>
 
