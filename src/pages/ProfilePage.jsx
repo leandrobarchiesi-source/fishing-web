@@ -173,7 +173,7 @@ textAlign:'center'
 
 <h2>
 
-Caricamento...
+Loading...
 
 </h2>
 
