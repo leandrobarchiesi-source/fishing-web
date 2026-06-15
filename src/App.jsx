@@ -13,7 +13,7 @@ import SpotPage from './pages/SpotPage'
 import ProfilePage from './pages/ProfilePage'
 import AddSessionModal from './components/AddSessionModal'
 import StatisticsPage from './pages/StatisticsPage'
-import { t } from '../i18n/t'
+import { t } from './i18n/t'
 
 
 
