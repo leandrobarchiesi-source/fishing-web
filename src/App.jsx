@@ -12,6 +12,7 @@ import SessionsPage from './pages/SessionsPage'
 import SpotPage from './pages/SpotPage'
 import ProfilePage from './pages/ProfilePage'
 import AddSessionModal from './components/AddSessionModal'
+import StatisticsPage from './pages/StatisticsPage'
 
 
 function App(){
