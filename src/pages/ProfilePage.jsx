@@ -173,7 +173,7 @@ textAlign:'center'
 
 <h2>
 
-Loading...
+<h2>{t(language,'loading')}</h2>
 
 </h2>
 

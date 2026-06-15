@@ -83,6 +83,8 @@ newPassword: "Nuova password",
 min6Chars: "Minimo 6 caratteri",
 
 passwordUpdated: "Password aggiornata",
+loading: "Caricamento...",
+deleteSpotQuestion: "Eliminare lo spot?",
 
   },
 
@@ -170,6 +172,9 @@ min6Chars: "Minimum 6 characters",
 
 passwordUpdated: "Password updated",
 
+loading: "Loading...",
+deleteSpotQuestion: "Delete this spot?",
+
   },
 
   fr: {
@@ -256,6 +261,9 @@ min6Chars: "Minimum 6 caractères",
 
 passwordUpdated: "Mot de passe mis à jour",
 
+loading: "Chargement...",
+deleteSpotQuestion: "Supprimer ce spot ?",
+
   },
 
   es: {
@@ -341,6 +349,9 @@ newPassword: "Nueva contraseña",
 min6Chars: "Mínimo 6 caracteres",
 
 passwordUpdated: "Contraseña actualizada",
+
+loading: "Cargando...",
+deleteSpotQuestion: "¿Eliminar este lugar?",
 
   }
 
