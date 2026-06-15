@@ -430,7 +430,7 @@ oraFine:
 
     gap:'10px',
 
-    marginTop:'20px'
+    marginTop:'10px'
 
   }}>
 
@@ -473,7 +473,7 @@ function Input({
 
       gap:'15px',
 
-      marginBottom:'12px'
+      marginBottom:'8px'
 
     }}>
 
