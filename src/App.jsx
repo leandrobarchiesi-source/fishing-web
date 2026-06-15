@@ -610,6 +610,8 @@ await supabase
 
   temperatura: meteo.temperatura,
 
+  temperatura_acqua: sessione.temperatura_acqua,
+
   pressione: meteo.pressione,
 
   vento: meteo.vento,
