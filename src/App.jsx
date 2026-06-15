@@ -1070,7 +1070,7 @@ logout={logout}
 }
 
 {
-  selected === "statistiche" &&
+  selectedPage === "statistiche" &&
   <StatisticsPage
     language={language}
   />
