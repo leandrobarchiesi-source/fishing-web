@@ -1,55 +1,55 @@
-<div style={{
+import { t } from '../i18n/t'
 
-  display:'flex',
+export default function StatisticsPage({
 
-  flexDirection:'column',
+  language
 
-  justifyContent:'center',
+}) {
 
-  alignItems:'center',
+  return (
 
-  height:'70vh',
+    <div style={{
 
-  textAlign:'center'
+      display:'flex',
 
-}}>
+      flexDirection:'column',
 
-  <h1 style={{
+      justifyContent:'center',
 
-    fontSize:'56px',
+      alignItems:'center',
 
-    marginBottom:'20px',
+      height:'70vh',
 
-    color:'#234E70'
+      textAlign:'center'
 
-  }}>
+    }}>
 
-    📊
+      <h1 style={{
 
-  </h1>
+        fontSize:'56px',
 
-  <h2 style={{
+        marginBottom:'20px'
 
-    fontSize:'32px',
+      }}>
 
-    marginBottom:'10px'
+        📊
 
-  }}>
+      </h1>
 
-    {t(language,'underConstruction')}
+      <h2>
 
-  </h2>
+        {t(language,'underConstruction')}
 
-  <p style={{
+      </h2>
 
-    color:'#64748B',
+      <p>
 
-    fontSize:'18px'
+        {t(language,'statisticsComingSoon')}
 
-  }}>
+      </p>
 
-    {t(language,'statisticsComingSoon')}
+    </div>
 
-  </p>
+  )
 
-</div>
+}
