@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from './supabase'
-
+import LandingPage from "./landing/LandingPage";
 import Sidebar from './components/Sidebar'
 
 import SessionModal from './components/SessionModal'
@@ -17,8 +17,11 @@ import { t } from './i18n/t'
 
 
 
-
+const SHOW_LANDING = true;
 function App(){
+   if (SHOW_LANDING) {
+    return <LandingPage />;
+  }
 
 const [user,setUser]=useState(null)
 const [email,setEmail]=useState("")
