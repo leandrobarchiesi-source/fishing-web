@@ -1,0 +1,16 @@
+
+{
+  "menu": {
+    "features": "Features",
+    "screenshots": "Screenshots",
+    "beta": "Beta Program"
+  },
+
+  "hero": {
+    "badge": "BETA AVAILABLE",
+    "title": "FishingTrack",
+    "subtitle": "Track Every Fishing Adventure",
+    "description": "Record every fishing session, save your favourite fishing spots and synchronize your data securely across all your devices.",
+    "download": "Download Beta"
+  }
+}

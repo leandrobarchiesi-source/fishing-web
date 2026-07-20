@@ -1,0 +1,15 @@
+{
+  "menu": {
+    "features": "Funzionalità",
+    "screenshots": "Screenshot",
+    "beta": "Programma Beta"
+  },
+
+  "hero": {
+    "badge": "BETA DISPONIBILE",
+    "title": "FishingTrack",
+    "subtitle": "Registra ogni avventura di pesca",
+    "description": "Registra ogni sessione di pesca, salva i tuoi spot preferiti e sincronizza i dati in sicurezza su tutti i tuoi dispositivi.",
+    "download": "Scarica la Beta"
+  }
+}

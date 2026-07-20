@@ -1,0 +1,233 @@
+.hero{
+
+    padding:90px 0 120px;
+
+    background:
+    linear-gradient(
+    180deg,
+    #F9FCFF 0%,
+    #EEF4F8 100%);
+
+}
+
+.hero-content{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:80px;
+
+}
+
+/* -------------------- */
+
+.hero-left{
+
+    flex:1;
+
+    max-width:580px;
+
+}
+
+.hero-badge{
+
+    display:inline-block;
+
+    margin-bottom:24px;
+
+    padding:8px 18px;
+
+    background:#EAF4FF;
+
+    color:#1565C0;
+
+    border-radius:999px;
+
+    font-weight:600;
+
+    font-size:14px;
+
+    letter-spacing:.5px;
+
+}
+
+.hero h1{
+
+    margin:0;
+
+    font-size:72px;
+
+    line-height:1;
+
+    color:#1565C0;
+
+}
+
+.hero h2{
+
+    margin:18px 0 26px;
+
+    font-size:44px;
+
+    font-weight:300;
+
+    color:#2F2F2F;
+
+    line-height:1.2;
+
+}
+
+.hero p{
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    color:#555;
+
+}
+
+/* -------------------- */
+
+.download-button{
+
+    margin-top:35px;
+
+    padding:18px 42px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#1565C0;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.download-button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 30px rgba(21,101,192,.25);
+
+}
+
+/* -------------------- */
+
+.hero-checks{
+
+    display:flex;
+
+    gap:30px;
+
+    margin-top:35px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-checks span{
+
+    color:#2F2F2F;
+
+    font-size:18px;
+
+    font-weight:500;
+
+}
+
+/* -------------------- */
+
+.hero-right{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+/* -------------------- */
+
+.phone{
+
+    width:340px;
+
+    padding:14px;
+
+    background:#111;
+
+    border-radius:42px;
+
+    box-shadow:
+
+    0 35px 80px rgba(0,0,0,.20);
+
+}
+
+.phone img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:30px;
+
+}
+
+/* -------------------- */
+
+@media(max-width:1000px){
+
+.hero-content{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.hero-left{
+
+    max-width:100%;
+
+}
+
+.hero-checks{
+
+    justify-content:center;
+
+}
+
+.hero h1{
+
+    font-size:56px;
+
+}
+
+.hero h2{
+
+    font-size:34px;
+
+}
+
+.phone{
+
+    width:300px;
+
+}
+
+}
