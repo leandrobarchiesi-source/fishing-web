@@ -21,7 +21,7 @@ export default function Footer() {
 
         <a
           className="footer-link"
-          href="mailto:info@fishingtrack.app"
+          href="mailto:leandro.barchiesi@gmail.com"
         >
           {t("footer.contact")}
         </a>
