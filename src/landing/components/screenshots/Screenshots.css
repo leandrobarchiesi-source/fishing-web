@@ -66,31 +66,13 @@
 
 }
 
-@media (max-width:992px){
-
-    .swiper{
-
-        padding:20px 40px 40px;
-
-    }
-
-}
-
-@media (max-width:576px){
-
-    .swiper{
-
-        padding:20px 10px 40px;
-
-    }
-
-}
-
 .swiper-slide{
 
     display:flex;
 
     justify-content:center;
+
+    align-items:center;
 
 }
 
@@ -130,6 +112,8 @@
 
     box-shadow:0 35px 80px rgba(0,0,0,.20);
 
+    margin:0 auto;
+
 }
 
 .phone img{
@@ -164,6 +148,8 @@
 
 }
 
+/* ============================================ */
+
 @media (max-width:576px){
 
     .screenshots-title h2{
@@ -178,9 +164,90 @@
 
     }
 
+    .swiper{
+
+        padding:20px 0 40px;
+
+    }
+
+    .swiper-slide{
+
+        justify-content:center;
+
+        align-items:center;
+
+    }
+
     .phone{
 
         width:260px;
+
+        margin:0 auto;
+
+    }
+
+    .swiper-button-prev{
+
+        left:8px;
+
+    }
+
+    .swiper-button-next{
+
+        right:8px;
+
+    }
+
+}
+
+/* ============================================ */
+/* MOBILE */
+/* ============================================ */
+
+@media (max-width:576px){
+
+    .screenshots-title h2{
+
+        font-size:38px;
+
+    }
+
+    .screenshots-title p{
+
+        font-size:18px;
+
+    }
+
+    .swiper{
+
+        padding:20px 0 40px;
+
+    }
+
+    .swiper-slide{
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+    }
+
+    .phone{
+
+        width:260px;
+
+        margin:0 auto;
+
+    }
+
+    /* Nasconde le frecce su smartphone */
+
+    .swiper-button-next,
+    .swiper-button-prev{
+
+        display:none;
 
     }
 

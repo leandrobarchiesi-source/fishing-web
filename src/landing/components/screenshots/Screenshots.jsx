@@ -43,22 +43,21 @@ export default function Screenshots() {
     grabCursor
     observer
     observeParents
-    speed={500}
-    navigation={{
-    enabled:true
-}}
     spaceBetween={20}
     slidesPerView={1}
+    centeredSlides={true}
     breakpoints={{
-        768:{
-            slidesPerView:2
+        768: {
+            slidesPerView: 2,
+            centeredSlides: false,
         },
-        1200:{
-            slidesPerView:3
-        }
+        1200: {
+            slidesPerView: 3,
+            centeredSlides: false,
+        },
     }}
 >
-            {screenshots.map((image, index) => (
+                {screenshots.map((image, index) => (
 
             <SwiperSlide key={index}>
 
