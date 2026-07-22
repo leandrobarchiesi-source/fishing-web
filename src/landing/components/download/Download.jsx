@@ -26,15 +26,15 @@ export default function Download() {
             {t("download.description")}
           </p>
 
-          <a
-            href="/download/FishingTrack_Beta.apk"
-            className="download-button"
-            download
-          >
-            <FaDownload />
-            {t("download.button")}
-          </a>
-
+<a
+  href="https://github.com/leandrobarchiesi-source/fishing-web/releases/download/v1.0.0-beta1/FishingTrack_Beta.apk"
+  className="download-button"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <FaDownload />
+  {t("download.button")}
+</a>
           <div className="download-platform">
 
             <FaAndroid />
