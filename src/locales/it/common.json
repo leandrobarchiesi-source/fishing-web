@@ -56,7 +56,9 @@
   "title": "Prova FishingTrack in anteprima",
   "description": "Scarica gratuitamente la versione Beta, prova tutte le funzionalità e aiutaci a migliorare FishingTrack con i tuoi suggerimenti.",
   "button": "Scarica la Beta",
-  "platform": "Versione beta • Android 10 o superiore"
+  "platform": "Android 10 o superiore",
+  "securityTitle": "Perché Android mostra un avviso?",
+  "securityText": "FishingTrack è distribuita direttamente dallo sviluppatore e non tramite Google Play. Per questo Android potrebbe mostrare un avviso di sicurezza. L'APK è firmato ed è sicuro da installare."
 },
 
 "footer": {

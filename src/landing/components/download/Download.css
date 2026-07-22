@@ -159,3 +159,93 @@
     }
 
 }
+
+/* ============================================ */
+/* Security info */
+/* ============================================ */
+
+.download-info{
+
+    margin:40px auto 0;
+
+    max-width:650px;
+
+    padding:22px 26px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+    text-align:left;
+
+    background:#F3F8FF;
+
+    border:1px solid #D7E8FF;
+
+    border-radius:18px;
+
+}
+
+.download-info-icon{
+
+    font-size:34px;
+
+    line-height:1;
+
+    flex-shrink:0;
+
+}
+
+.download-info-text h3{
+
+    margin:0 0 8px;
+
+    color:#163B66;
+
+    font-size:20px;
+
+}
+
+.download-info-text p{
+
+    margin:0;
+
+    max-width:none;
+
+    font-size:16px;
+
+    line-height:1.6;
+
+    color:#555;
+
+}
+
+@media (max-width:768px){
+
+    .download-info{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        align-items:center;
+
+        padding:20px;
+
+    }
+
+    .download-info-text h3{
+
+        font-size:18px;
+
+    }
+
+    .download-info-text p{
+
+        font-size:15px;
+
+    }
+
+}

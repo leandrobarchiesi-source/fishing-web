@@ -42,7 +42,17 @@ export default function Download() {
             <span>{t("download.platform")}</span>
 
           </div>
+<div className="download-info">
+  <div className="download-info-icon">
+    🛡️
+  </div>
 
+  <div className="download-info-text">
+    <h3>{t("download.securityTitle")}</h3>
+
+    <p>{t("download.securityText")}</p>
+  </div>
+</div>
         </div>
 
       </div>
