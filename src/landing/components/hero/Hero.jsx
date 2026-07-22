@@ -37,11 +37,6 @@ export default function Hero() {
 
           </p>
 
-          <button className="download-button">
-
-            ⬇ {t("hero.download")}
-
-          </button>
 
         </div>
 

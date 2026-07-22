@@ -36,28 +36,29 @@ export default function Screenshots() {
 
         </div>
 
-        <Swiper
-          modules={[Navigation]}
-          navigation
-          loop={true}
-          grabCursor={true}
-          spaceBetween={20}
-          slidesPerView={4}
-          centeredSlides={false}
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-            },
-            768: {
-              slidesPerView: 2,
-            },
-            1200: {
-              slidesPerView: 3,
-            },
-          }}
-        >
-
-          {screenshots.map((image, index) => (
+<Swiper
+    modules={[Navigation]}
+    navigation
+    loop
+    grabCursor
+    observer
+    observeParents
+    speed={500}
+    navigation={{
+    enabled:true
+}}
+    spaceBetween={20}
+    slidesPerView={1}
+    breakpoints={{
+        768:{
+            slidesPerView:2
+        },
+        1200:{
+            slidesPerView:3
+        }
+    }}
+>
+            {screenshots.map((image, index) => (
 
             <SwiperSlide key={index}>
 
