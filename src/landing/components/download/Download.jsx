@@ -15,30 +15,25 @@ export default function Download() {
         <div className="download-card">
 
           <span className="download-badge">
-
             {t("download.badge")}
-
           </span>
 
           <h2>
-
             {t("download.title")}
-
           </h2>
 
           <p>
-
             {t("download.description")}
-
           </p>
 
-          <button className="download-button">
-
+          <a
+            href="/download/FishingTrack_Beta.apk"
+            className="download-button"
+            download
+          >
             <FaDownload />
-
             {t("download.button")}
-
-          </button>
+          </a>
 
           <div className="download-platform">
 
