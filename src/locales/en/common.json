@@ -1,4 +1,3 @@
-
 {
   "menu": {
     "features": "Features",
@@ -10,7 +9,65 @@
     "badge": "BETA AVAILABLE",
     "title": "FishingTrack",
     "subtitle": "Track Every Fishing Adventure",
-    "description": "Record every fishing session, save your favourite fishing spots and synchronize your data securely across all your devices.",
+    "description": "Record every fishing session, save your favourite fishing spots and securely synchronize your data across all your devices.",
     "download": "Download Beta"
-  }
+  },
+
+  "features": {
+
+    "badge": "FEATURES",
+    "title": "Designed for Every Fishing Adventure",
+    "subtitle": "Everything you need to remember every fishing trip.",
+
+"spots": {
+  "badge": "SESSION SUMMARY",
+  "title": "Everything you need to remember every trip",
+  "description": "Each fishing session automatically stores GPS location, weather, water temperature, wind, atmospheric pressure, moon phase and your notes. With one tap you can open your favourite navigation app and return to the exact fishing spot."
+},
+
+"spotsManager": {
+  "badge": "YOUR SPOTS",
+  "title": "Organize your fishing spots",
+  "description": "All your fishing spots are saved in a dedicated list. Browse them anytime, edit their information and keep your favourite locations well organized."
+},
+
+    "session": {
+      "badge": "FISHING LOG",
+      "title": "Record Every Fishing Session",
+      "description": "Save location, fishing type, duration, weather, water temperature, moon phase and personal notes to remember every fishing adventure."
+    },
+
+      "cloud": {
+  "badge": "CLOUD BACKUP",
+  "title": "Your data is always safe",
+  "description": "Back up your fishing sessions to the cloud and synchronize them across your devices. Future releases will also let you manage everything directly from the web."
+}
+
+
+  },
+
+"screenshots": {
+
+  "badge": "SCREENSHOTS",
+
+  "title": "Take a Look Inside",
+
+  "description": "Explore FishingTrack before downloading the beta."
+
+},
+
+"download": {
+  "badge": "BETA PROGRAM",
+  "title": "Join the FishingTrack Beta",
+  "description": "Download the beta for free, explore all features and help us improve FishingTrack before the official release.",
+  "button": "Download Beta",
+  "platform": "Available for Android"
+},
+
+"footer": {
+  "subtitle": "Track Every Fishing Adventure.",
+  "privacy": "Privacy Policy",
+  "contact": "Contact"
+}
+
 }

@@ -50,7 +50,7 @@ export default function Hero() {
           <div className="phone">
 
             <img
-              src="/images/dashboard.png"
+              src="/images/hero/dashboard.png"
               alt="FishingTrack Dashboard"
             />
 

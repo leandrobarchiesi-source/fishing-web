@@ -11,5 +11,58 @@
     "subtitle": "Registra ogni avventura di pesca",
     "description": "Registra ogni sessione di pesca, salva i tuoi spot preferiti e sincronizza i dati in sicurezza su tutti i tuoi dispositivi.",
     "download": "Scarica la Beta"
-  }
+  },
+
+  "features": {
+
+    "badge": "FUNZIONALITÀ",
+    "title": "Pensata per ogni avventura di pesca",
+    "subtitle": "Tutto ciò che ti serve per ricordare ogni uscita di pesca.",
+
+"spots": {
+  "badge": "RIEPILOGO SESSIONE",
+  "title": "Tutto quello che serve per ricordare ogni uscita",
+  "description": "Ogni sessione raccoglie automaticamente posizione GPS, meteo, temperatura dell'acqua, vento, pressione atmosferica, fase lunare e le tue note. Con un solo tocco puoi aprire la tua app di navigazione preferita e tornare esattamente sul luogo della cattura."
+},
+
+"spotsManager": {
+  "badge": "I TUOI SPOT",
+  "title": "Organizza i tuoi spot di pesca",
+  "description": "Tutti gli spot vengono salvati in un elenco dedicato. Puoi consultarli in qualsiasi momento, modificarne le informazioni e tenere sempre organizzati i tuoi luoghi di pesca preferiti."
+},
+    "session": {
+      "badge": "DIARIO DI PESCA",
+      "title": "Registra ogni uscita nei minimi dettagli",
+      "description": "Annota posizione, tipo di pesca, durata, meteo, temperatura dell'acqua, fase lunare e tutte le informazioni utili per ricordare ogni esperienza."
+    },
+
+
+      "cloud": {
+  "badge": "BACKUP CLOUD",
+  "title": "I tuoi dati sempre al sicuro",
+  "description": "Salva le tue sessioni nel cloud e sincronizzale tra tutti i tuoi dispositivi. Le future versioni permetteranno anche la gestione completa direttamente dal browser."
+}
+
+  },
+
+  "screenshots": {
+  "badge": "SCREENSHOT",
+  "title": "Scopri FishingTrack",
+  "description": "Uno sguardo all'app prima di iniziare."
+},
+
+"download": {
+  "badge": "PROGRAMMA BETA",
+  "title": "Prova FishingTrack in anteprima",
+  "description": "Scarica gratuitamente la versione Beta, prova tutte le funzionalità e aiutaci a migliorare FishingTrack con i tuoi suggerimenti.",
+  "button": "Scarica la Beta",
+  "platform": "Disponibile per Android"
+},
+
+"footer": {
+  "subtitle": "Registra ogni avventura di pesca.",
+  "privacy": "Privacy Policy",
+  "contact": "Contatti"
+}
+
 }

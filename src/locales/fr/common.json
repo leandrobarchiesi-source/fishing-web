@@ -8,8 +8,63 @@
   "hero": {
     "badge": "BÊTA DISPONIBLE",
     "title": "FishingTrack",
-    "subtitle": "Suivez chaque aventure de pêche",
-    "description": "Enregistrez chaque session de pêche, sauvegardez vos lieux favoris et synchronisez vos données en toute sécurité sur tous vos appareils.",
+    "subtitle": "Enregistrez chaque aventure de pêche",
+    "description": "Enregistrez chaque session de pêche, sauvegardez vos lieux préférés et synchronisez vos données en toute sécurité sur tous vos appareils.",
     "download": "Télécharger la Bêta"
-  }
+  },
+
+  "features": {
+
+    "badge": "FONCTIONNALITÉS",
+    "title": "Conçu pour chaque aventure de pêche",
+    "subtitle": "Tout ce dont vous avez besoin pour conserver chaque sortie de pêche.",
+
+"spots": {
+  "badge": "RÉSUMÉ DE SESSION",
+  "title": "Tout ce qu'il faut pour revivre chaque sortie",
+  "description": "Chaque session enregistre automatiquement la position GPS, la météo, la température de l'eau, le vent, la pression atmosphérique, la phase lunaire et vos notes. En un seul geste, retrouvez exactement votre lieu de pêche."
+},
+
+"spotsManager": {
+  "badge": "VOS SPOTS",
+  "title": "Organisez vos spots de pêche",
+  "description": "Tous vos spots sont enregistrés dans une liste dédiée. Consultez-les à tout moment, modifiez leurs informations et gardez vos meilleurs lieux parfaitement organisés."
+},
+
+    "session": {
+      "badge": "JOURNAL DE PÊCHE",
+      "title": "Enregistrez chaque session de pêche",
+      "description": "Conservez le lieu, le type de pêche, la durée, la météo, la température de l'eau, la phase lunaire et vos notes personnelles pour ne rien oublier."
+    },
+
+
+      "cloud": {
+  "badge": "SAUVEGARDE CLOUD",
+  "title": "Vos données toujours en sécurité",
+  "description": "Sauvegardez vos sessions dans le cloud et synchronisez-les sur tous vos appareils. Les prochaines versions permettront également une gestion complète depuis le web."
+}
+
+
+  },
+
+  "screenshots": {
+  "badge": "CAPTURES D'ÉCRAN",
+  "title": "Découvrez FishingTrack",
+  "description": "Un aperçu de l'application avant de commencer."
+},
+
+"download": {
+  "badge": "PROGRAMME BÊTA",
+  "title": "Essayez FishingTrack en avant-première",
+  "description": "Téléchargez gratuitement la version bêta et aidez-nous à améliorer FishingTrack.",
+  "button": "Télécharger la Bêta",
+  "platform": "Disponible pour Android"
+},
+
+"footer": {
+  "subtitle": "Enregistrez chaque aventure de pêche.",
+  "privacy": "Politique de confidentialité",
+  "contact": "Contact"
+}
+
 }
