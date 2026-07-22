@@ -85,15 +85,17 @@ export default function Header() {
             onClick={() => setOpen(!open)}
           >
 
-            <img
-              src={current.flag}
-              className="flag"
-              alt=""
-            />
+<img
+  src={current.flag}
+  className="flag"
+  alt=""
+/>
 
-            {current.label}
+<span className="language-code">
+  {current.code.toUpperCase()}
+</span>
 
-            ▼
+<span className="arrow">▼</span>
 
           </button>
 

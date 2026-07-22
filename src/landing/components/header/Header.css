@@ -84,6 +84,15 @@
 
 }
 
+.language-code{
+    font-weight:600;
+    letter-spacing:.5px;
+}
+
+.arrow{
+    font-size:11px;
+}
+
 /* ====================================== */
 
 .language{
@@ -194,12 +203,46 @@
 
 /* ====================================== */
 
-@media(max-width:1000px){
+@media (max-width:1000px){
 
     .menu{
-
         display:none;
+    }
 
+    .header-content{
+        justify-content:space-between;
+        min-height:72px;
+        gap:12px;
+    }
+
+    .logo img{
+        height:60px;
+    }
+
+    .language{
+        margin-left:0;
+    }
+
+    .language-button{
+        padding:8px 12px;
+        gap:8px;
+        font-size:14px;
+        border-radius:12px;
+    }
+
+    .flag{
+        width:20px;
+        height:14px;
+    }
+
+    .language-menu{
+        width:180px;
+        top:50px;
+    }
+
+    .language-menu button{
+        font-size:14px;
+        padding:12px 14px;
     }
 
 }
